@@ -1,0 +1,36 @@
+{
+  "name": "qa_core_framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint . --config eslint.config.mjs --ext .ts",
+    "build": "tsc",
+    "prepare": "husky install",
+    "report:allure": "allure generate ./allure-results --clean && allure open"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.26.0",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.18",
+    "@typescript-eslint/eslint-plugin": "^8.33.0",
+    "@typescript-eslint/parser": "^8.33.0",
+    "allure-playwright": "^3.2.2",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.26.0",
+    "faker": "^6.6.6",
+    "husky": "^8.0.0",
+    "lint-staged": "^16.0.0",
+    "playwright": "^1.52.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  },
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "eslint-plugin-prettier": "^5.4.0"
+  }
+}
