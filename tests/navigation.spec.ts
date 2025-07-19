@@ -329,7 +329,5 @@ test.describe("Check access to every exercise", () => {
     await navigationPage.openExerciseMenu(exerciseMenuName);
     await navigationPage.openExercise(exerciseName);
     await navigationPage.checkExerciseURL(exerciseSlug);
-
-    await navigationPage.checkExerciseURL(exerciseSlug);
   });
 });
