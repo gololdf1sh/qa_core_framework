@@ -1,0 +1,44 @@
+export type exerciseMenuNamesDataTypes = {
+  elementsMenuName: string;
+  formMenuName: string;
+  alertsFrameWindowsMenuName: string;
+  windowsMenuName: string;
+  interactionMenuName: string;
+  bookStoreApplicationMenuName: string;
+};
+
+export type exercisesNamesDataTypes = {
+  textBoxExerciseName: string;
+  checkBoxExerciseName: string;
+  radioButtonExerciseName: string;
+  webTablesExerciseName: string;
+  buttonsExerciseName: string;
+  linksExerciseName: string;
+  brokenLinksImagesExerciseName: string;
+  uploadAndDownloadExerciseName: string;
+  dynamicPropertiesExerciseName: string;
+  practiceFormExerciseName: string;
+  browserWindowsExerciseName: string;
+  alertsExerciseName: string;
+  framesExerciseName: string;
+  nestedFramesExerciseName: string;
+  modalDialogExerciseName: string;
+  accordianExerciseName: string;
+  autoCompleteExerciseName: string;
+  datePickerExerciseName: string;
+  sliderExerciseName: string;
+  progressBarExerciseName: string;
+  tabsExerciseName: string;
+  toolTipsExerciseName: string;
+  menuExerciseName: string;
+  selectMenuExerciseName: string;
+  sortableExerciseName: string;
+  selectableExerciseName: string;
+  resizableExerciseName: string;
+  droppableExerciseName: string;
+  dragabbleExerciseName: string;
+  loginExerciseName: string;
+  bookStoreExerciseName: string;
+  profileExerciseName: string;
+  bookStoreAPIExerciseName: string;
+};
