@@ -50,22 +50,13 @@ export class TextBoxPage {
   async checkResultField(data: TextBoxInputFieldsDataType, validCase: boolean = true) {
     if (!validCase) {
       await expect(this.resultField).not.toContainText(data.fullName);
-    } else {
-      await expect(this.resultField).toContainText(data.fullName);
-    }
-    if (!validCase) {
       await expect(this.resultField).not.toContainText(data.email);
-    } else {
-      await expect(this.resultField).toContainText(data.email);
-    }
-    if (!validCase) {
       await expect(this.resultField).not.toContainText(data.currentAddress);
-    } else {
-      await expect(this.resultField).toContainText(data.currentAddress);
-    }
-    if (!validCase) {
       await expect(this.resultField).not.toContainText(data.permanentAddress);
     } else {
+      await expect(this.resultField).toContainText(data.fullName);
+      await expect(this.resultField).toContainText(data.email);
+      await expect(this.resultField).toContainText(data.currentAddress);
       await expect(this.resultField).toContainText(data.permanentAddress);
     }
   }
