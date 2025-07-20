@@ -11,11 +11,6 @@ export class NavigationPage {
     return this.page.locator("li", { hasText: `${exerciseName}` });
   }
 
-  async openExercise(exerciseName: string) {
-    const exerciseButton = await this.generateExerciseButtonLocator(exerciseName);
-    await exerciseButton.click();
-  }
-
   async generateExerciseMenuButtonLocator(exerciseMenuName: string) {
     return this.page.locator('[class="card mt-4 top-card"]', { hasText: `${exerciseMenuName}` });
   }
@@ -23,6 +18,16 @@ export class NavigationPage {
   async openExerciseMenu(exerciseMenuName: string) {
     const menuButton = await this.generateExerciseMenuButtonLocator(exerciseMenuName);
     await menuButton.click();
+  }
+
+  async clickOnExerciseButton(exerciseName: string) {
+    const exerciseButton = await this.generateExerciseButtonLocator(exerciseName);
+    await exerciseButton.click();
+  }
+
+  async openExercise(exerciseMenuName: string, exerciseName: string) {
+    await this.openExerciseMenu(exerciseMenuName);
+    await this.clickOnExerciseButton(exerciseName);
   }
 
   async checkExerciseHeader(exerciseName: string) {
