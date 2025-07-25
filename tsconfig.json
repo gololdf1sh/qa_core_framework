@@ -12,5 +12,5 @@
     "rootDir": ".",
     "types": ["node", "playwright"]
   },
-  "include": ["src", "tests", "configs", "fixtures"]
+  "include": ["src", "tests", "configs", "fixtures", "playwright.config.ts"]
 }
