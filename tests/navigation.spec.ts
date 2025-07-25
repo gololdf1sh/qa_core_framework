@@ -10,6 +10,8 @@ test.describe("Check access to every exercise", () => {
     await page.goto("https://demoqa.com/");
   });
 
+  // TODO: Implement navigation verification through a parameterized test
+
   // Elements
 
   test("Elements - Text Box", async () => {

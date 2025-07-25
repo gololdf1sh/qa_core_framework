@@ -18,102 +18,132 @@ test.describe("Check Text Box functionality", () => {
   });
 
   test("Check Text Box positive scenario", async () => {
-    await textBoxPage.fillTextBoxInputs({
-      fullName: textBoxData.userFullName.validUserFullName,
-      email: textBoxData.userEmail.validUserEmail,
-      currentAddress: textBoxData.currentAddress.validCurrentAddress,
-      permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
+    await test.step("Fill Text Box Inputs", async () => {
+      await textBoxPage.fillTextBoxInputs({
+        fullName: textBoxData.userFullName.validUserFullName,
+        email: textBoxData.userEmail.validUserEmail,
+        currentAddress: textBoxData.currentAddress.validCurrentAddress,
+        permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
+      });
     });
 
-    await textBoxPage.clickSubmitButton();
+    await test.step("Click Submit Button", async () => {
+      await textBoxPage.clickSubmitButton();
+    });
 
-    await textBoxPage.checkResultField({
-      fullName: textBoxData.userFullName.validUserFullName,
-      email: textBoxData.userEmail.validUserEmail,
-      currentAddress: textBoxData.currentAddress.validCurrentAddress,
-      permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
+    await test.step("Check Result Field", async () => {
+      await textBoxPage.checkResultField({
+        fullName: textBoxData.userFullName.validUserFullName,
+        email: textBoxData.userEmail.validUserEmail,
+        currentAddress: textBoxData.currentAddress.validCurrentAddress,
+        permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
+      });
     });
   });
 
   test("Check Text Box positive scenario - empty fields with valid email", async () => {
-    await textBoxPage.fillTextBoxInputs({
-      fullName: textBoxData.userFullName.emptyUserFullName,
-      email: textBoxData.userEmail.validUserEmail,
-      currentAddress: textBoxData.currentAddress.emptyCurrentAddress,
-      permanentAddress: textBoxData.permanentAddress.emptyPermanentAddress,
+    await test.step("Fill Text Box Inputs", async () => {
+      await textBoxPage.fillTextBoxInputs({
+        fullName: textBoxData.userFullName.emptyUserFullName,
+        email: textBoxData.userEmail.validUserEmail,
+        currentAddress: textBoxData.currentAddress.emptyCurrentAddress,
+        permanentAddress: textBoxData.permanentAddress.emptyPermanentAddress,
+      });
     });
 
-    await textBoxPage.clickSubmitButton();
+    await test.step("Click Submit Button", async () => {
+      await textBoxPage.clickSubmitButton();
+    });
 
-    await textBoxPage.checkResultField({
-      fullName: textBoxData.userFullName.emptyUserFullName,
-      email: textBoxData.userEmail.validUserEmail,
-      currentAddress: textBoxData.currentAddress.emptyCurrentAddress,
-      permanentAddress: textBoxData.permanentAddress.emptyPermanentAddress,
+    await test.step("Check Result Field", async () => {
+      await textBoxPage.checkResultField({
+        fullName: textBoxData.userFullName.emptyUserFullName,
+        email: textBoxData.userEmail.validUserEmail,
+        currentAddress: textBoxData.currentAddress.emptyCurrentAddress,
+        permanentAddress: textBoxData.permanentAddress.emptyPermanentAddress,
+      });
     });
   });
 
   // BUG
   test("Check Text Box negative scenario - not valid email - first case (test+user@gmail.com)", async () => {
-    await textBoxPage.fillTextBoxInputs({
-      fullName: textBoxData.userFullName.validUserFullName,
-      email: textBoxData.userEmail.notValidUserEmail.firstCase,
-      currentAddress: textBoxData.currentAddress.validCurrentAddress,
-      permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
-    });
-
-    await textBoxPage.clickSubmitButton();
-
-    await textBoxPage.checkResultField(
-      {
+    await test.step("Fill Text Box Inputs", async () => {
+      await textBoxPage.fillTextBoxInputs({
         fullName: textBoxData.userFullName.validUserFullName,
         email: textBoxData.userEmail.notValidUserEmail.firstCase,
         currentAddress: textBoxData.currentAddress.validCurrentAddress,
         permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
-      },
-      false,
-    );
+      });
+    });
+
+    await test.step("Click Submit Button", async () => {
+      await textBoxPage.clickSubmitButton();
+    });
+
+    await test.step("Check Result Field", async () => {
+      await textBoxPage.checkResultField(
+        {
+          fullName: textBoxData.userFullName.validUserFullName,
+          email: textBoxData.userEmail.notValidUserEmail.firstCase,
+          currentAddress: textBoxData.currentAddress.validCurrentAddress,
+          permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
+        },
+        false,
+      );
+    });
   });
 
   test("Check Text Box negative scenario - not valid email - second case (testusergmail.com)", async () => {
-    await textBoxPage.fillTextBoxInputs({
-      fullName: textBoxData.userFullName.validUserFullName,
-      email: textBoxData.userEmail.notValidUserEmail.secondCase,
-      currentAddress: textBoxData.currentAddress.validCurrentAddress,
-      permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
-    });
-
-    await textBoxPage.clickSubmitButton();
-
-    await textBoxPage.checkResultField(
-      {
+    await test.step("Fill Text Box Inputs", async () => {
+      await textBoxPage.fillTextBoxInputs({
         fullName: textBoxData.userFullName.validUserFullName,
         email: textBoxData.userEmail.notValidUserEmail.secondCase,
         currentAddress: textBoxData.currentAddress.validCurrentAddress,
         permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
-      },
-      false,
-    );
+      });
+    });
+
+    await test.step("Click Submit Button", async () => {
+      await textBoxPage.clickSubmitButton();
+    });
+
+    await test.step("Check Result Field", async () => {
+      await textBoxPage.checkResultField(
+        {
+          fullName: textBoxData.userFullName.validUserFullName,
+          email: textBoxData.userEmail.notValidUserEmail.secondCase,
+          currentAddress: textBoxData.currentAddress.validCurrentAddress,
+          permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
+        },
+        false,
+      );
+    });
   });
 
   test("Check Text Box negative scenario - not valid email - third case (testuser@gmailcom)", async () => {
-    await textBoxPage.fillTextBoxInputs({
-      fullName: textBoxData.userFullName.validUserFullName,
-      email: textBoxData.userEmail.notValidUserEmail.thirdCase,
-      currentAddress: textBoxData.currentAddress.validCurrentAddress,
-      permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
-    });
-
-    await textBoxPage.clickSubmitButton();
-
-    await textBoxPage.checkResultField(
-      {
+    await test.step("Fill Text Box Inputs", async () => {
+      await textBoxPage.fillTextBoxInputs({
         fullName: textBoxData.userFullName.validUserFullName,
         email: textBoxData.userEmail.notValidUserEmail.thirdCase,
         currentAddress: textBoxData.currentAddress.validCurrentAddress,
         permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
-      },
-      false,
-    );
+      });
+    });
+
+    await test.step("Click Submit Button", async () => {
+      await textBoxPage.clickSubmitButton();
+    });
+
+    await test.step("Check Result Field", async () => {
+      await textBoxPage.checkResultField(
+        {
+          fullName: textBoxData.userFullName.validUserFullName,
+          email: textBoxData.userEmail.notValidUserEmail.thirdCase,
+          currentAddress: textBoxData.currentAddress.validCurrentAddress,
+          permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
+        },
+        false,
+      );
+    });
   });
 });

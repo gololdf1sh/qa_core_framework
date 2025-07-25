@@ -4,7 +4,7 @@ dotenv.config();
 
 export default defineConfig({
   testDir: "./tests",
-  timeout: 10000,
+  timeout: 50000,
   retries: 0,
   use: {
     baseURL: process.env.BASE_URL,
@@ -15,5 +15,5 @@ export default defineConfig({
     trace: "on-first-retry",
     video: "retain-on-failure",
   },
-  reporter: [["list"], ["allure-playwright"]],
+  reporter: [["list"], ["html", { open: "on-failure" }], ["allure-playwright"]],
 });

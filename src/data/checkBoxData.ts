@@ -1,0 +1,41 @@
+import { CheckBoxDataTypes } from "../types";
+
+export const checkBoxFilesNamesData: CheckBoxDataTypes = {
+  home: "Home",
+  desktop: "Desktop",
+  notes: "Notes",
+  commands: "Commands",
+  documents: "Documents",
+  workspace: "Workspace",
+  react: "React",
+  angular: "Angular",
+  veu: "Veu",
+  office: "Office",
+  public: "Public",
+  private: "Private",
+  classified: "Classified",
+  general: "General",
+  downloads: "Downloads",
+  wordFileDoc: "Word File.doc",
+  excelFileDoc: "Excel file.doc",
+};
+
+export const checkBoxResultFilesNamesData: CheckBoxDataTypes = {
+  home: "home",
+  desktop: "desktop",
+  notes: "notes",
+  commands: "commands",
+  documents: "documents",
+  workspace: "workspace",
+  react: "react",
+  angular: "angular",
+  veu: "veu",
+  office: "office",
+  public: "public",
+  private: "private",
+  classified: "classified",
+  general: "general",
+  downloads: "downloads",
+  wordFileDoc: "wordFile",
+  excelFileDoc: "excelFile",
+};
