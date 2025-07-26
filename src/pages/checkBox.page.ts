@@ -27,10 +27,6 @@ export class CheckBoxPage {
     }
   }
 
-  async clickOnMinusButton() {
-    await this.minusButton.click();
-  }
-
   async generateFileLocator(fileName: string) {
     return this.page.locator('[class="rct-title"]', { hasText: `${fileName}` });
   }
