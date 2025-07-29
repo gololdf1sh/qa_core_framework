@@ -20,7 +20,7 @@ test.describe("Check Radio Button Functionality", () => {
   test("Check that 'Yes' Radio Button is available and Result Field is working correctly", async () => {
     const radioButtonName = radioButtonsNames.yesButtonName;
 
-    await test.step("Click on Yes Radio Button", async () => {
+    await test.step("Click on 'Yes' Radio Button", async () => {
       await radioButtonPage.clickOnRadioButton(radioButtonName);
     });
 
@@ -32,7 +32,7 @@ test.describe("Check Radio Button Functionality", () => {
   test("Check that 'Impressive' Radio Button is available and Result Field is working correctly", async () => {
     const radioButtonName = radioButtonsNames.impressiveButtonName;
 
-    await test.step("Click on Yes Radio Button", async () => {
+    await test.step("Click on 'Impressive' Radio Button", async () => {
       await radioButtonPage.clickOnRadioButton(radioButtonName);
     });
 
@@ -45,7 +45,7 @@ test.describe("Check Radio Button Functionality", () => {
   test.skip("Check that 'No' Radio Button is available and Result Field is working correctly", async () => {
     const radioButtonName = radioButtonsNames.noButtonName;
 
-    await test.step("Click on Yes Radio Button", async () => {
+    await test.step("Click on 'No' Radio Button", async () => {
       await radioButtonPage.clickOnRadioButton(radioButtonName);
     });
 

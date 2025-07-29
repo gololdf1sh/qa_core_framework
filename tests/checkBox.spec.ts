@@ -1,6 +1,11 @@
 import { test } from "@playwright/test";
 import { CheckBoxPage, NavigationPage } from "../src/pages";
-import { checkBoxFilesNamesData, checkBoxResultFilesNamesData, exercisesMenusNamesData, exercisesNamesData } from "../src/data";
+import {
+  checkBoxFilesNamesData,
+  checkBoxResultFilesNamesData,
+  exercisesMenusNamesData,
+  exercisesNamesData,
+} from "../src/data";
 
 test.describe("Check Check Box functionality", () => {
   let navigationPage: NavigationPage;

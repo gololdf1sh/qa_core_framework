@@ -1,0 +1,94 @@
+import { expect, Locator, type Page } from "@playwright/test";
+
+export class WebTablesPage {
+  readonly page: Page;
+  readonly addButton: Locator;
+  readonly searchInput: Locator;
+  readonly rowsPerPageDropdown: Locator;
+
+  constructor(page: Page) {
+    this.page = page;
+    this.addButton = this.page.locator("#addNewRecordButton");
+    this.searchInput = this.page.locator("#searchBox");
+    this.rowsPerPageDropdown = this.page.getByLabel("rows per page");
+  }
+
+  async generateFirstNameCellLocator(stringNumber: number) {
+    const indexedStringNumber = stringNumber - 1;
+    return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7);
+  }
+
+  async generateLastNameCellLocator(stringNumber: number) {
+    const indexedStringNumber = stringNumber - 1;
+    return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7 + 1);
+  }
+
+  async generateAgeCellLocator(stringNumber: number) {
+    const indexedStringNumber = stringNumber - 1;
+    return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7 + 2);
+  }
+
+  async generateEmailCellLocator(stringNumber: number) {
+    const indexedStringNumber = stringNumber - 1;
+    return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7 + 3);
+  }
+
+  async generateSalaryCellLocator(stringNumber: number) {
+    const indexedStringNumber = stringNumber - 1;
+    return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7 + 4);
+  }
+
+  async generateDepartmentCellLocator(stringNumber: number) {
+    const indexedStringNumber = stringNumber - 1;
+    return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7 + 5);
+  }
+
+  async checkFirstNameCell(stringNumber: number, firstName: string) {
+    let firstNameCellLocator = await this.generateFirstNameCellLocator(stringNumber);
+    await expect(firstNameCellLocator).toContainText(firstName);
+  }
+
+  async checkLastNameCell(stringNumber: number, lastName: string) {
+    let lastNameCellLocator = await this.generateLastNameCellLocator(stringNumber);
+    await expect(lastNameCellLocator).toContainText(lastName);
+  }
+
+  async checkAgeCell(stringNumber: number, age: string) {
+    let ageCellLocator = await this.generateAgeCellLocator(stringNumber);
+    await expect(ageCellLocator).toContainText(age);
+  }
+
+  async checkEmailCell(stringNumber: number, email: string) {
+    let emailCellLocator = await this.generateEmailCellLocator(stringNumber);
+    await expect(emailCellLocator).toContainText(email);
+  }
+
+  async checkSalaryCell(stringNumber: number, salary: string) {
+    let salaryCellLocator = await this.generateSalaryCellLocator(stringNumber);
+    await expect(salaryCellLocator).toContainText(salary);
+  }
+
+  async checkDepartmentCell(stringNumber: number, department: string) {
+    let departmentCellLocator = await this.generateDepartmentCellLocator(stringNumber);
+    await expect(departmentCellLocator).toContainText(department);
+  }
+
+  async checkUserData(
+    userNumber: number,
+    firstName: string,
+    lastName: string,
+    age: string,
+    email: string,
+    salary: string,
+    department: string,
+  ) {
+    let stringNumber = userNumber;
+
+    await this.checkFirstNameCell(stringNumber, firstName);
+    await this.checkLastNameCell(stringNumber, lastName);
+    await this.checkAgeCell(stringNumber, age);
+    await this.checkEmailCell(stringNumber, email);
+    await this.checkSalaryCell(stringNumber, salary);
+    await this.checkDepartmentCell(stringNumber, department);
+  }
+}
