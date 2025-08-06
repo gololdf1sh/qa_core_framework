@@ -1,13 +1,17 @@
 import { expect, Locator, type Page } from "@playwright/test";
+import { WebTablesRegistrationFormModalPage } from "../pages";
+import { generateUserDataTypes } from "../types";
 
 export class WebTablesPage {
   readonly page: Page;
+  readonly webTablesRegistrationFormModalPage: WebTablesRegistrationFormModalPage;
   readonly addButton: Locator;
   readonly searchInput: Locator;
   readonly rowsPerPageDropdown: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.webTablesRegistrationFormModalPage = new WebTablesRegistrationFormModalPage(page);
     this.addButton = this.page.locator("#addNewRecordButton");
     this.searchInput = this.page.locator("#searchBox");
     this.rowsPerPageDropdown = this.page.getByLabel("rows per page");
@@ -90,5 +94,14 @@ export class WebTablesPage {
     await this.checkEmailCell(stringNumber, email);
     await this.checkSalaryCell(stringNumber, salary);
     await this.checkDepartmentCell(stringNumber, department);
+  }
+
+  async clickOnAddButton() {
+    await this.addButton.click();
+  }
+
+  async addUserViaRegistrationForm(userData: generateUserDataTypes) {
+    await this.clickOnAddButton();
+    await this.webTablesRegistrationFormModalPage.fillUserInfoAndClickSubmitButton(userData);
   }
 }

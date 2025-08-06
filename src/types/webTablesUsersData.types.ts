@@ -24,3 +24,12 @@ export type webTablesUsersDataTypes = {
     department: string;
   };
 };
+
+export type generateUserDataTypes = {
+  userFirstName: string;
+  userLastName: string;
+  userAge: string;
+  userEmail: string;
+  userSalary: string;
+  userDepartment: string;
+};

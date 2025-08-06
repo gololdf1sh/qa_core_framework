@@ -1,4 +1,5 @@
 import { webTablesUsersDataTypes } from "../types";
+import { faker } from "@faker-js/faker";
 
 export const webTablesUsersData: webTablesUsersDataTypes = {
   firstUser: {
@@ -26,3 +27,14 @@ export const webTablesUsersData: webTablesUsersDataTypes = {
     department: "Legal",
   },
 };
+
+export function generateUserData() {
+  return {
+    userFirstName: faker.person.firstName(),
+    userLastName: faker.person.lastName(),
+    userAge: faker.number.int({ min: 0, max: 99 }).toString(), // BUG - age input validation can accept age = 0
+    userEmail: faker.internet.email(),
+    userSalary: faker.number.int({ min: 0, max: 9999999999 }).toString(),
+    userDepartment: faker.word.sample(),
+  };
+}
