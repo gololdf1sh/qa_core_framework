@@ -41,11 +41,27 @@ test.describe("Check Web Tables Functionality", () => {
   });
 
   test("Web Tables: Check that User is able to add another User via Registration Form", async () => {
-    await test.step("Add User via Registration Form", async () => {
-      const userData = generateUserData();
-      await webTablesPage.addUserViaRegistrationForm(userData);
+    const userNumber = 1;
+    const userData = generateUserData();
 
-      await test.step("Check Added User Data", async () => {});
+    await test.step("Delete All Users from Web Table", async () => {
+      await webTablesPage.deleteAllUsersFromWebTable();
+    });
+
+    await test.step("Add User via Registration Form", async () => {
+      await webTablesPage.addUserViaRegistrationForm(userData);
+    });
+
+    await test.step("Check Added User Data", async () => {
+      await webTablesPage.checkUserData(
+        userNumber,
+        userData.userFirstName,
+        userData.userLastName,
+        userData.userAge,
+        userData.userEmail,
+        userData.userSalary,
+        userData.userDepartment,
+      );
     });
   });
 });
