@@ -8,6 +8,7 @@ export class WebTablesPage {
   readonly addButton: Locator;
   readonly searchInput: Locator;
   readonly rowsPerPageDropdown: Locator;
+  readonly deleteUserButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +16,7 @@ export class WebTablesPage {
     this.addButton = this.page.locator("#addNewRecordButton");
     this.searchInput = this.page.locator("#searchBox");
     this.rowsPerPageDropdown = this.page.getByLabel("rows per page");
+    this.deleteUserButton = this.page.getByTitle("Delete");
   }
 
   async generateFirstNameCellLocator(stringNumber: number) {
@@ -94,6 +96,17 @@ export class WebTablesPage {
     await this.checkEmailCell(stringNumber, email);
     await this.checkSalaryCell(stringNumber, salary);
     await this.checkDepartmentCell(stringNumber, department);
+  }
+
+  async clickOnFirstDeleteUserButton() {
+    await this.deleteUserButton.first().click();
+  }
+
+  async deleteAllUsersFromWebTable() {
+    let countedDeleteButtons = await this.deleteUserButton.count();
+    for (let i = 0; i < countedDeleteButtons; i++) {
+      await this.clickOnFirstDeleteUserButton();
+    }
   }
 
   async clickOnAddButton() {
