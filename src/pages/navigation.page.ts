@@ -8,7 +8,7 @@ export class NavigationPage {
   }
 
   async generateExerciseButtonLocator(exerciseName: string) {
-    return this.page.locator("li", { hasText: `${exerciseName}` });
+    return this.page.getByText(exerciseName, { exact: true });
   }
 
   async generateExerciseMenuButtonLocator(exerciseMenuName: string) {
