@@ -23,7 +23,7 @@ export const exercisesNamesData: exercisesNamesDataTypes = {
   browserWindowsExerciseName: "Browser Windows",
   alertsExerciseName: "Alerts",
   framesExerciseName: "Frame",
-  nestedFramesExerciseName: "Nested Frame",
+  nestedFramesExerciseName: "Nested Frames",
   modalDialogExerciseName: "Modal Dialogs",
   accordianExerciseName: "Accordian",
   autoCompleteExerciseName: "Auto Complete",
