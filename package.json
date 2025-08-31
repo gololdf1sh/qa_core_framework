@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "tests": "npx playwright test",
+    "test": "npx playwright test",
     "lint": "eslint . --config eslint.config.mjs --ext .ts",
     "build": "tsc",
     "prepare": "husky install",
@@ -28,7 +28,7 @@
   },
   "private": true,
   "keywords": [],
-  "author": "",
+  "author": "Oleksandr Kiriukhin",
   "license": "ISC",
   "type": "module",
   "dependencies": {

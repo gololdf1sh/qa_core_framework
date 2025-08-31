@@ -18,5 +18,5 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
-      - run: npx playwright install --with-deps
-      - run: npm run "tests"
+      - run: npx playwright install
+      - run: npm test
