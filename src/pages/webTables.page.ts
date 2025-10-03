@@ -1,9 +1,8 @@
 import { expect, Locator, type Page } from "@playwright/test";
-import { WebTablesRegistrationFormModalPage } from "../pages";
+import { CommonMethodsPage, WebTablesRegistrationFormModalPage } from "../pages";
 import { generateUserDataTypes } from "../types";
 
-export class WebTablesPage {
-  readonly page: Page;
+export class WebTablesPage extends CommonMethodsPage {
   readonly webTablesRegistrationFormModalPage: WebTablesRegistrationFormModalPage;
   readonly addButton: Locator;
   readonly searchInput: Locator;
@@ -11,7 +10,7 @@ export class WebTablesPage {
   readonly deleteUserButton: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.webTablesRegistrationFormModalPage = new WebTablesRegistrationFormModalPage(page);
     this.addButton = this.page.locator("#addNewRecordButton");
     this.searchInput = this.page.locator("#searchBox");
@@ -99,6 +98,7 @@ export class WebTablesPage {
   }
 
   async clickOnFirstDeleteUserButton() {
+    await this.checkThatElementIsVisible(this.deleteUserButton.first());
     await this.deleteUserButton.first().click();
   }
 
@@ -110,6 +110,7 @@ export class WebTablesPage {
   }
 
   async clickOnAddButton() {
+    await this.checkThatElementIsVisible(this.addButton);
     await this.addButton.click();
   }
 

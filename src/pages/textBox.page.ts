@@ -1,8 +1,8 @@
 import { Page, expect, Locator } from "@playwright/test";
 import { TextBoxInputFieldsDataType } from "../types";
+import { CommonMethodsPage } from "./commonMethods.page";
 
-export class TextBoxPage {
-  page: Page;
+export class TextBoxPage extends CommonMethodsPage {
   readonly fullNameInput: Locator;
   readonly emailInput: Locator;
   readonly currentAddressInput: Locator;
@@ -11,7 +11,7 @@ export class TextBoxPage {
   readonly resultField: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.fullNameInput = this.page.locator("#userName");
     this.emailInput = this.page.locator("#userEmail");
     this.currentAddressInput = this.page.locator("#currentAddress");
@@ -21,22 +21,27 @@ export class TextBoxPage {
   }
 
   async fillFullNameInput(userFullName: string) {
+    await this.checkThatElementIsVisible(this.fullNameInput);
     await this.fullNameInput.fill(userFullName);
   }
 
   async fillEmailInput(userEmail: string) {
+    await this.checkThatElementIsVisible(this.emailInput);
     await this.emailInput.fill(userEmail);
   }
 
   async fillCurrentAddressInput(userCurrentAddress: string) {
+    await this.checkThatElementIsVisible(this.currentAddressInput);
     await this.currentAddressInput.fill(userCurrentAddress);
   }
 
   async fillPermanentAddressInput(userPermanentAddress: string) {
+    await this.checkThatElementIsVisible(this.permanentAddressInput);
     await this.permanentAddressInput.fill(userPermanentAddress);
   }
 
   async clickSubmitButton() {
+    await this.checkThatElementIsVisible(this.submitButton);
     await this.submitButton.click();
   }
 

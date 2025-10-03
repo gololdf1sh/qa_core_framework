@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from "@playwright/test";
+import { CommonMethodsPage } from "./commonMethods.page";
 
-export class LinksPage {
-  page: Page;
+export class LinksPage extends CommonMethodsPage {
   readonly simpleLink: Locator;
   readonly dynamicLink: Locator;
   readonly createdLink: Locator;
@@ -14,7 +14,7 @@ export class LinksPage {
   readonly linkResponseResultField: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.simpleLink = this.page.locator("#simpleLink");
     this.dynamicLink = this.page.locator("#dynamicLink");
     this.createdLink = this.page.locator("#created");
@@ -28,7 +28,7 @@ export class LinksPage {
   }
 
   async clickOnLinkButton(linkButtonLocator: Locator) {
-    await expect(linkButtonLocator).toBeVisible();
+    await this.checkThatElementIsVisible(linkButtonLocator);
     await linkButtonLocator.click();
   }
 
@@ -41,7 +41,7 @@ export class LinksPage {
   }
 
   async checkThatResultFieldContainsExpectedText(expectedText: string) {
-    await expect(this.linkResponseResultField).toBeVisible();
+    await this.checkThatElementIsVisible(this.linkResponseResultField);
     await expect(this.linkResponseResultField).toContainText(expectedText);
   }
 

@@ -1,20 +1,21 @@
 import { expect, Locator, Page } from "@playwright/test";
 import { CheckBoxDataTypes } from "../types";
+import { CommonMethodsPage } from "./commonMethods.page";
 
-export class CheckBoxPage {
-  page: Page;
+export class CheckBoxPage extends CommonMethodsPage {
   readonly resultField: Locator;
   readonly plusButton: Locator;
   readonly minusButton: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.resultField = this.page.locator("#result");
     this.plusButton = this.page.getByLabel("Expand all");
     this.minusButton = this.page.getByTitle("Collapse all");
   }
 
   async clickOnPlusButton() {
+    await this.checkThatElementIsVisible(this.plusButton);
     await this.plusButton.click();
   }
 
@@ -23,7 +24,7 @@ export class CheckBoxPage {
 
     for (const fileName of fileNames) {
       const fileNameLocator = await this.generateFileLocator(fileName);
-      await expect(fileNameLocator).toBeVisible();
+      await this.checkThatElementIsVisible(fileNameLocator);
     }
   }
 
@@ -33,6 +34,7 @@ export class CheckBoxPage {
 
   async clickOnFile(fileName: string) {
     let fileNameLocator = await this.generateFileLocator(fileName);
+    await this.checkThatElementIsVisible(fileNameLocator);
     await fileNameLocator.click();
   }
 

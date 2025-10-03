@@ -1,7 +1,7 @@
 import { Locator, type Page } from "@playwright/test";
+import { CommonMethodsPage } from "./commonMethods.page";
 
-export class WebTablesRegistrationFormModalPage {
-  readonly page: Page;
+export class WebTablesRegistrationFormModalPage extends CommonMethodsPage {
   readonly firstNameInput: Locator;
   readonly lastNameInput: Locator;
   readonly emailInput: Locator;
@@ -11,7 +11,7 @@ export class WebTablesRegistrationFormModalPage {
   readonly submitButton: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.firstNameInput = this.page.locator("#firstName");
     this.lastNameInput = this.page.locator("#lastName");
     this.emailInput = this.page.locator("#userEmail");
@@ -22,30 +22,37 @@ export class WebTablesRegistrationFormModalPage {
   }
 
   async fillFirstNameInput(userFirstName: string) {
+    await this.checkThatElementIsVisible(this.firstNameInput);
     await this.firstNameInput.fill(userFirstName);
   }
 
   async fillLastNameInput(userLastName: string) {
+    await this.checkThatElementIsVisible(this.lastNameInput);
     await this.lastNameInput.fill(userLastName);
   }
 
   async fillEmailInput(userEmail: string) {
+    await this.checkThatElementIsVisible(this.emailInput);
     await this.emailInput.fill(userEmail);
   }
 
   async fillAgeInput(userAge: string) {
+    await this.checkThatElementIsVisible(this.ageInput);
     await this.ageInput.fill(userAge);
   }
 
   async fillSalaryInput(userSalary: string) {
+    await this.checkThatElementIsVisible(this.salaryInput);
     await this.salaryInput.fill(userSalary);
   }
 
   async fillDepartmentInput(userDepartment: string) {
+    await this.checkThatElementIsVisible(this.departmentInput);
     await this.departmentInput.fill(userDepartment);
   }
 
   async clickSubmitButton() {
+    await this.checkThatElementIsVisible(this.submitButton);
     await this.submitButton.click();
   }
 
