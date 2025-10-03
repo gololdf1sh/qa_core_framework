@@ -16,6 +16,7 @@ export class RadioButtonPage extends CommonMethodsPage {
     let radioButtonLocator = await this.generateRadioButtonLocator(radioButtonName);
     await this.checkThatElementIsVisible(radioButtonLocator);
     await radioButtonLocator.click();
+    await this.page.waitForTimeout(500);
   }
 
   async checkResultField(radioButtonName: string) {

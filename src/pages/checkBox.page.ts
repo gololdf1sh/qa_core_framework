@@ -16,6 +16,7 @@ export class CheckBoxPage extends CommonMethodsPage {
 
   async clickOnPlusButton() {
     await this.checkThatElementIsVisible(this.plusButton);
+    await this.page.waitForTimeout(500);
     await this.plusButton.click();
   }
 
@@ -36,6 +37,7 @@ export class CheckBoxPage extends CommonMethodsPage {
     let fileNameLocator = await this.generateFileLocator(fileName);
     await this.checkThatElementIsVisible(fileNameLocator);
     await fileNameLocator.click();
+    await this.page.waitForTimeout(500);
   }
 
   async clickOnAllFilesInTree(checkBoxFilesNamesData: CheckBoxDataTypes) {

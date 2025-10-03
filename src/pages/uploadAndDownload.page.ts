@@ -15,6 +15,7 @@ export class UploadAndDownloadPage extends CommonMethodsPage {
   async clickOnDownloadButton() {
     await this.checkThatElementIsVisible(this.downloadButton);
     await this.downloadButton.click();
+    await this.page.waitForTimeout(500);
   }
 
   async downloadFileMethod() {
@@ -32,5 +33,6 @@ export class UploadAndDownloadPage extends CommonMethodsPage {
 
   async uploadFileMethod(pathToFile: string) {
     await this.uploadFileInput.setInputFiles(pathToFile);
+    await this.page.waitForTimeout(500);
   }
 }

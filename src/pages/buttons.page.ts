@@ -22,18 +22,21 @@ export class ButtonsPage extends CommonMethodsPage {
     const buttonLocator = await this.generateButtonLocator(buttonName);
     await this.checkThatElementIsVisible(buttonLocator);
     await buttonLocator.dblclick();
+    await this.page.waitForTimeout(500);
   }
 
   async rightClickOnButton(buttonName: string) {
     const buttonLocator = await this.generateButtonLocator(buttonName);
     await this.checkThatElementIsVisible(buttonLocator);
     await buttonLocator.click({ button: "right" });
+    await this.page.waitForTimeout(500);
   }
 
   async clickOnButton(buttonName: string) {
     const buttonLocator = await this.generateButtonLocator(buttonName);
     await this.checkThatElementIsVisible(buttonLocator);
     await buttonLocator.click();
+    await this.page.waitForTimeout(500);
   }
 
   async checkResultField(expectedField: string, expectedText: string) {

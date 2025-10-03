@@ -24,16 +24,19 @@ export class WebTablesRegistrationFormModalPage extends CommonMethodsPage {
   async fillFirstNameInput(userFirstName: string) {
     await this.checkThatElementIsVisible(this.firstNameInput);
     await this.firstNameInput.fill(userFirstName);
+    await this.page.waitForTimeout(500);
   }
 
   async fillLastNameInput(userLastName: string) {
     await this.checkThatElementIsVisible(this.lastNameInput);
     await this.lastNameInput.fill(userLastName);
+    await this.page.waitForTimeout(500);
   }
 
   async fillEmailInput(userEmail: string) {
     await this.checkThatElementIsVisible(this.emailInput);
     await this.emailInput.fill(userEmail);
+    await this.page.waitForTimeout(500);
   }
 
   async fillAgeInput(userAge: string) {
@@ -44,16 +47,19 @@ export class WebTablesRegistrationFormModalPage extends CommonMethodsPage {
   async fillSalaryInput(userSalary: string) {
     await this.checkThatElementIsVisible(this.salaryInput);
     await this.salaryInput.fill(userSalary);
+    await this.page.waitForTimeout(500);
   }
 
   async fillDepartmentInput(userDepartment: string) {
     await this.checkThatElementIsVisible(this.departmentInput);
     await this.departmentInput.fill(userDepartment);
+    await this.page.waitForTimeout(500);
   }
 
   async clickSubmitButton() {
     await this.checkThatElementIsVisible(this.submitButton);
     await this.submitButton.click();
+    await this.page.waitForTimeout(500);
   }
 
   async fillUserInfoAndClickSubmitButton(userData: {

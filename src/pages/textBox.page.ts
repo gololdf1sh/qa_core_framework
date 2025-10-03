@@ -23,26 +23,31 @@ export class TextBoxPage extends CommonMethodsPage {
   async fillFullNameInput(userFullName: string) {
     await this.checkThatElementIsVisible(this.fullNameInput);
     await this.fullNameInput.fill(userFullName);
+    await this.page.waitForTimeout(500);
   }
 
   async fillEmailInput(userEmail: string) {
     await this.checkThatElementIsVisible(this.emailInput);
     await this.emailInput.fill(userEmail);
+    await this.page.waitForTimeout(500);
   }
 
   async fillCurrentAddressInput(userCurrentAddress: string) {
     await this.checkThatElementIsVisible(this.currentAddressInput);
     await this.currentAddressInput.fill(userCurrentAddress);
+    await this.page.waitForTimeout(500);
   }
 
   async fillPermanentAddressInput(userPermanentAddress: string) {
     await this.checkThatElementIsVisible(this.permanentAddressInput);
     await this.permanentAddressInput.fill(userPermanentAddress);
+    await this.page.waitForTimeout(500);
   }
 
   async clickSubmitButton() {
     await this.checkThatElementIsVisible(this.submitButton);
     await this.submitButton.click();
+    await this.page.waitForTimeout(500);
   }
 
   async fillTextBoxInputs(data: TextBoxInputFieldsDataType) {

@@ -30,6 +30,7 @@ export class LinksPage extends CommonMethodsPage {
   async clickOnLinkButton(linkButtonLocator: Locator) {
     await this.checkThatElementIsVisible(linkButtonLocator);
     await linkButtonLocator.click();
+    await this.page.waitForTimeout(500);
   }
 
   async clickOnLinkButtonAndCheckResponse(linkButtonLocator: Locator, urlPart: string, expectedStatus: number) {

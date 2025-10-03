@@ -100,6 +100,7 @@ export class WebTablesPage extends CommonMethodsPage {
   async clickOnFirstDeleteUserButton() {
     await this.checkThatElementIsVisible(this.deleteUserButton.first());
     await this.deleteUserButton.first().click();
+    await this.page.waitForTimeout(500);
   }
 
   async deleteAllUsersFromWebTable() {
@@ -112,6 +113,7 @@ export class WebTablesPage extends CommonMethodsPage {
   async clickOnAddButton() {
     await this.checkThatElementIsVisible(this.addButton);
     await this.addButton.click();
+    await this.page.waitForTimeout(500);
   }
 
   async addUserViaRegistrationForm(userData: generateUserDataTypes) {
