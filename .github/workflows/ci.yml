@@ -17,4 +17,4 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install
-      - run: npx playwright test --workers=2 --retries=2
+      - run: npx playwright test --workers=2 --retries=1
