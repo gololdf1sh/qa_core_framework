@@ -1,10 +1,9 @@
 import { expect, type Page } from "@playwright/test";
+import { CommonMethodsPage } from "./commonMethods.page";
 
-export class NavigationPage {
-  readonly page: Page;
-
+export class NavigationPage extends CommonMethodsPage {
   constructor(page: Page) {
-    this.page = page;
+    super(page);
   }
 
   async generateExerciseButtonLocator(exerciseName: string) {
@@ -17,12 +16,16 @@ export class NavigationPage {
 
   async openExerciseMenu(exerciseMenuName: string) {
     const menuButton = await this.generateExerciseMenuButtonLocator(exerciseMenuName);
+    await this.checkThatElementIsVisible(menuButton);
     await menuButton.click();
+    await this.page.waitForTimeout(500);
   }
 
   async clickOnExerciseButton(exerciseName: string) {
     const exerciseButton = await this.generateExerciseButtonLocator(exerciseName);
+    await this.checkThatElementIsVisible(exerciseButton);
     await exerciseButton.click();
+    await this.page.waitForTimeout(500);
   }
 
   async openExercise(exerciseMenuName: string, exerciseName: string) {
@@ -31,7 +34,7 @@ export class NavigationPage {
   }
 
   async checkExerciseHeader(exerciseName: string) {
-    await expect(this.page.locator('[class="text-center"]', { hasText: `${exerciseName}` })).toBeVisible();
+    await this.checkThatElementIsVisible(this.page.locator('[class="text-center"]', { hasText: `${exerciseName}` }));
   }
 
   generateExerciseURL(exerciseSlug: string) {

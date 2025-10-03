@@ -27,7 +27,6 @@ test.describe("Check Links functionality", () => {
     await test.step("Click on Link and check response status", async () => {
       await linksPage.clickOnLinkButtonAndCheckResponse(createdLinkLocator, urlPart, expectedStatus);
     });
-
     await test.step("Check that Result field Contains expected text", async () => {
       await linksPage.checkThatResultFieldContainsExpectedText(expectedText);
     });
@@ -42,7 +41,6 @@ test.describe("Check Links functionality", () => {
     await test.step("Click on Link and check response status", async () => {
       await linksPage.clickOnLinkButtonAndCheckResponse(createdLinkLocator, urlPart, expectedStatus);
     });
-
     await test.step("Check that Result field Contains expected text", async () => {
       await linksPage.checkThatResultFieldContainsExpectedText(expectedText);
     });
@@ -57,7 +55,6 @@ test.describe("Check Links functionality", () => {
     await test.step("Click on Link and check response status", async () => {
       await linksPage.clickOnLinkButtonAndCheckResponse(createdLinkLocator, urlPart, expectedStatus);
     });
-
     await test.step("Check that Result field Contains expected text", async () => {
       await linksPage.checkThatResultFieldContainsExpectedText(expectedText);
     });
@@ -72,7 +69,6 @@ test.describe("Check Links functionality", () => {
     await test.step("Click on Link and check response status", async () => {
       await linksPage.clickOnLinkButtonAndCheckResponse(createdLinkLocator, urlPart, expectedStatus);
     });
-
     await test.step("Check that Result field Contains expected text", async () => {
       await linksPage.checkThatResultFieldContainsExpectedText(expectedText);
     });
@@ -87,7 +83,6 @@ test.describe("Check Links functionality", () => {
     await test.step("Click on Link and check response status", async () => {
       await linksPage.clickOnLinkButtonAndCheckResponse(createdLinkLocator, urlPart, expectedStatus);
     });
-
     await test.step("Check that Result field Contains expected text", async () => {
       await linksPage.checkThatResultFieldContainsExpectedText(expectedText);
     });
@@ -102,7 +97,6 @@ test.describe("Check Links functionality", () => {
     await test.step("Click on Link and check response status", async () => {
       await linksPage.clickOnLinkButtonAndCheckResponse(createdLinkLocator, urlPart, expectedStatus);
     });
-
     await test.step("Check that Result field Contains expected text", async () => {
       await linksPage.checkThatResultFieldContainsExpectedText(expectedText);
     });
@@ -117,7 +111,6 @@ test.describe("Check Links functionality", () => {
     await test.step("Click on Link and check response status", async () => {
       await linksPage.clickOnLinkButtonAndCheckResponse(createdLinkLocator, urlPart, expectedStatus);
     });
-
     await test.step("Check that Result field Contains expected text", async () => {
       await linksPage.checkThatResultFieldContainsExpectedText(expectedText);
     });
@@ -130,7 +123,6 @@ test.describe("Check Links functionality", () => {
     await test.step("Click on Link", async () => {
       newPage = await linksPage.clickAndOpenNewPage(createdLinkLocator);
     });
-
     await test.step("Check that user was redirected to Home page", async () => {
       await expect(newPage).toHaveURL("https://demoqa.com/");
     });
@@ -143,7 +135,6 @@ test.describe("Check Links functionality", () => {
     await test.step("Click on Link", async () => {
       newPage = await linksPage.clickAndOpenNewPage(createdLinkLocator);
     });
-
     await test.step("Check that user was redirected to Home page", async () => {
       await expect(newPage).toHaveURL("https://demoqa.com/");
     });

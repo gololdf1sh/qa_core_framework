@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "npx playwright test",
+    "test": "npx playwright test --workers=2 --retries=1",
     "lint": "eslint . --config eslint.config.mjs --ext .ts",
     "build": "tsc",
     "prepare": "husky install",

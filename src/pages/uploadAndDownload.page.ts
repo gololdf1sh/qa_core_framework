@@ -1,24 +1,21 @@
 import { Page, expect, Locator } from "@playwright/test";
 import * as fs from "node:fs/promises";
+import { CommonMethodsPage } from "./commonMethods.page";
 
-export class UploadAndDownloadPage {
-  page: Page;
+export class UploadAndDownloadPage extends CommonMethodsPage {
   readonly downloadButton: Locator;
   readonly uploadFileInput: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.downloadButton = this.page.locator("#downloadButton");
     this.uploadFileInput = this.page.locator("#uploadFile");
   }
 
   async clickOnDownloadButton() {
-    await this.checkThatDownloadButtonIsVisible();
+    await this.checkThatElementIsVisible(this.downloadButton);
     await this.downloadButton.click();
-  }
-
-  async checkThatDownloadButtonIsVisible() {
-    await expect(this.downloadButton).toBeVisible({ timeout: 3000 });
+    await this.page.waitForTimeout(500);
   }
 
   async downloadFileMethod() {
@@ -36,5 +33,6 @@ export class UploadAndDownloadPage {
 
   async uploadFileMethod(pathToFile: string) {
     await this.uploadFileInput.setInputFiles(pathToFile);
+    await this.page.waitForTimeout(500);
   }
 }
