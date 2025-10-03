@@ -16,5 +16,5 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npx playwright install
-      - run: npx playwright test --workers=2 --retries=1
+      - run: npx playwright install --with-deps
+      - run: npx playwright test --workers=1 --retries=1
