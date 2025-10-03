@@ -4,8 +4,8 @@ dotenv.config();
 
 export default defineConfig({
   testDir: "./tests",
-  timeout: 50000,
-  retries: 0,
+  timeout: 30000,
+  retries: 1,
   use: {
     baseURL: process.env.BASE_URL,
     headless: true,

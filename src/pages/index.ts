@@ -6,3 +6,4 @@ export * from "../pages/webTables.page";
 export * from "../pages/webTablesRegistrationFormModal.page";
 export * from "../pages/buttons.page";
 export * from "../pages/links.page";
+export * from "../pages/uploadAndDownload.page";
