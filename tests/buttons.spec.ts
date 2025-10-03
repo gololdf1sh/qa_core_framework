@@ -36,21 +36,18 @@ test.describe("Check Buttons functionality", () => {
     await test.step("Check that Result field contains expected result", async () => {
       await buttonsPage.checkResultField(doubleClickMeResultFieldName, doubleClickMeResultFieldText);
     });
-
     await test.step("Right-click on 'Right Click Me' button", async () => {
       await buttonsPage.rightClickOnButton(rightClickMeButtonName);
     });
     await test.step("Check that Result field contains expected result", async () => {
       await buttonsPage.checkResultField(rightClickMeButtonResultFieldName, rightClickMeButtonResultFieldText);
     });
-
     await test.step("Single-click on 'Click Me' button", async () => {
       await buttonsPage.clickOnButton(clickMeButtonName);
     });
     await test.step("Check that Result field contains expected result", async () => {
       await buttonsPage.checkResultField(clickMeButtonResultFieldName, clickMeButtonResultFieldText);
     });
-
     await test.step("Check that Result fields contains all 3 results", async () => {
       await buttonsPage.checkResultField(doubleClickMeResultFieldName, doubleClickMeResultFieldText);
       await buttonsPage.checkResultField(rightClickMeButtonResultFieldName, rightClickMeButtonResultFieldText);
@@ -68,7 +65,6 @@ test.describe("Check Buttons functionality", () => {
     await test.step("Check that Result field does not displayed", async () => {
       await buttonsPage.checkThatResultFieldIsNotDisplayed(doubleClickMeResultFieldName);
     });
-
     await test.step("Single-click on 'Right Click Me' button", async () => {
       await buttonsPage.clickOnButton(rightClickMeButtonName);
     });
@@ -78,7 +74,6 @@ test.describe("Check Buttons functionality", () => {
     await test.step("Check that Result field does not displayed", async () => {
       await buttonsPage.checkThatResultFieldIsNotDisplayed(rightClickMeButtonResultFieldName);
     });
-
     await test.step("Right-click on 'Click Me' button", async () => {
       await buttonsPage.rightClickOnButton(clickMeButtonName);
     });

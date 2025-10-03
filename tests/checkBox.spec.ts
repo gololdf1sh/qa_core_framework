@@ -26,15 +26,12 @@ test.describe("Check Check Box functionality", () => {
     await test.step("Click on Plus Button", async () => {
       await checkBoxPage.clickOnPlusButton();
     });
-
     await test.step("Check that all Files in tree are visible", async () => {
       await checkBoxPage.checkThatAllFilesInTreeAreVisible(checkBoxFilesNamesData);
     });
-
     await test.step("Click on every File in tree", async () => {
       await checkBoxPage.clickOnAllFilesInTree(checkBoxFilesNamesData);
     });
-
     await test.step("Check Result Field", async () => {
       await checkBoxPage.checkResultField(checkBoxResultFilesNamesData);
     });

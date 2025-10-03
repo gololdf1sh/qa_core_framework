@@ -26,11 +26,9 @@ test.describe("Check Text Box functionality", () => {
         permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
       });
     });
-
     await test.step("Click Submit Button", async () => {
       await textBoxPage.clickSubmitButton();
     });
-
     await test.step("Check Result Field", async () => {
       await textBoxPage.checkResultField({
         fullName: textBoxData.userFullName.validUserFullName,
@@ -50,11 +48,9 @@ test.describe("Check Text Box functionality", () => {
         permanentAddress: textBoxData.permanentAddress.emptyPermanentAddress,
       });
     });
-
     await test.step("Click Submit Button", async () => {
       await textBoxPage.clickSubmitButton();
     });
-
     await test.step("Check Result Field", async () => {
       await textBoxPage.checkResultField({
         fullName: textBoxData.userFullName.emptyUserFullName,
@@ -75,11 +71,9 @@ test.describe("Check Text Box functionality", () => {
         permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
       });
     });
-
     await test.step("Click Submit Button", async () => {
       await textBoxPage.clickSubmitButton();
     });
-
     await test.step("Check Result Field", async () => {
       await textBoxPage.checkResultField(
         {
@@ -102,11 +96,9 @@ test.describe("Check Text Box functionality", () => {
         permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
       });
     });
-
     await test.step("Click Submit Button", async () => {
       await textBoxPage.clickSubmitButton();
     });
-
     await test.step("Check Result Field", async () => {
       await textBoxPage.checkResultField(
         {
@@ -129,11 +121,9 @@ test.describe("Check Text Box functionality", () => {
         permanentAddress: textBoxData.permanentAddress.validPermanentAddress,
       });
     });
-
     await test.step("Click Submit Button", async () => {
       await textBoxPage.clickSubmitButton();
     });
-
     await test.step("Check Result Field", async () => {
       await textBoxPage.checkResultField(
         {
