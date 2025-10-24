@@ -14,7 +14,7 @@ test.describe("Check Links functionality", () => {
     const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.linksExerciseName;
 
-    await page.goto("https://demoqa.com/");
+    await navigationPage.goToUrl(process.env.BASE_URL!);
     await navigationPage.openExercise(exerciseMenuName, exerciseName);
   });
 

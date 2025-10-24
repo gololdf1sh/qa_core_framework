@@ -13,7 +13,7 @@ test.describe("Check Radio Button Functionality", () => {
     const exercisesMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.radioButtonExerciseName;
 
-    await page.goto("https://demoqa.com/");
+    await navigationPage.goToUrl(process.env.BASE_URL!);
     await navigationPage.openExercise(exercisesMenuName, exerciseName);
   });
 

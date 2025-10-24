@@ -13,7 +13,7 @@ test.describe("Check Text Box functionality", () => {
     const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.textBoxExerciseName;
 
-    await page.goto("https://demoqa.com/");
+    await navigationPage.goToUrl(process.env.BASE_URL!);
     await navigationPage.openExercise(exerciseMenuName, exerciseName);
   });
 
