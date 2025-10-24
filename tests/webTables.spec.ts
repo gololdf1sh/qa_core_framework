@@ -13,8 +13,7 @@ test.describe("Check Web Tables Functionality", () => {
     const exercisesMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.webTablesExerciseName;
 
-    await page.goto("https://demoqa.com/");
-    await page.waitForLoadState("domcontentloaded");
+    await navigationPage.goToUrl(process.env.BASE_URL!);
     await navigationPage.openExercise(exercisesMenuName, exerciseName);
   });
 

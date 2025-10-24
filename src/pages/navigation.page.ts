@@ -6,6 +6,11 @@ export class NavigationPage extends CommonMethodsPage {
     super(page);
   }
 
+  async goToUrl(url: string) {
+    await this.page.goto(url);
+    await this.page.waitForLoadState("domcontentloaded", { timeout: 10000 });
+  }
+
   async generateExerciseButtonLocator(exerciseName: string) {
     return this.page.getByText(exerciseName, { exact: true });
   }

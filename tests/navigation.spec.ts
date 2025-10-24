@@ -7,7 +7,7 @@ test.describe("Check access to every exercise", () => {
 
   test.beforeEach(async ({ page }) => {
     navigationPage = new NavigationPage(page);
-    await page.goto("https://demoqa.com/");
+    await navigationPage.goToUrl(process.env.BASE_URL!);
   });
 
   // TODO: Implement navigation verification through a parameterized test
