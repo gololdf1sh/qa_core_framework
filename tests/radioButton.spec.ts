@@ -6,6 +6,8 @@ test.describe("Check Radio Button Functionality", () => {
   let radioButtonPage: RadioButtonPage;
   let navigationPage: NavigationPage;
 
+  let radioButtonName: string;
+
   test.beforeEach(async ({ page }) => {
     radioButtonPage = new RadioButtonPage(page);
     navigationPage = new NavigationPage(page);
@@ -18,7 +20,7 @@ test.describe("Check Radio Button Functionality", () => {
   });
 
   test("Check that 'Yes' Radio Button is available and Result Field is working correctly", async () => {
-    const radioButtonName = radioButtonsNames.yesButtonName;
+    radioButtonName = radioButtonsNames.yesButtonName;
 
     await test.step("Click on 'Yes' Radio Button", async () => {
       await radioButtonPage.clickOnRadioButton(radioButtonName);
@@ -29,7 +31,7 @@ test.describe("Check Radio Button Functionality", () => {
   });
 
   test("Check that 'Impressive' Radio Button is available and Result Field is working correctly", async () => {
-    const radioButtonName = radioButtonsNames.impressiveButtonName;
+    radioButtonName = radioButtonsNames.impressiveButtonName;
 
     await test.step("Click on 'Impressive' Radio Button", async () => {
       await radioButtonPage.clickOnRadioButton(radioButtonName);
@@ -41,7 +43,7 @@ test.describe("Check Radio Button Functionality", () => {
 
   // BUG - "No" Radio Button is not available
   test.skip("Check that 'No' Radio Button is available and Result Field is working correctly", async () => {
-    const radioButtonName = radioButtonsNames.noButtonName;
+    radioButtonName = radioButtonsNames.noButtonName;
 
     await test.step("Click on 'No' Radio Button", async () => {
       await radioButtonPage.clickOnRadioButton(radioButtonName);

@@ -5,6 +5,10 @@ import { exercisesMenusNamesData, exercisesNamesData } from "../src/data";
 test.describe("Check access to every exercise", () => {
   let navigationPage: NavigationPage;
 
+  let exerciseMenuName: string;
+  let exerciseName: string;
+  let exerciseSlug: string;
+
   test.beforeEach(async ({ page }) => {
     navigationPage = new NavigationPage(page);
     await navigationPage.goToUrl(process.env.BASE_URL!);
@@ -15,8 +19,8 @@ test.describe("Check access to every exercise", () => {
   // Elements
 
   test("Elements - Text Box", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.textBoxExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
+    exerciseName = exercisesNamesData.textBoxExerciseName;
 
     await test.step("Click on Elements Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -27,8 +31,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Elements - Check Box", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.checkBoxExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
+    exerciseName = exercisesNamesData.checkBoxExerciseName;
 
     await test.step("Click on Elements Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -39,8 +43,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Elements - Radio Button", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.radioButtonExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
+    exerciseName = exercisesNamesData.radioButtonExerciseName;
 
     await test.step("Click on Elements Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -51,8 +55,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Elements - Web Tables", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.webTablesExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
+    exerciseName = exercisesNamesData.webTablesExerciseName;
 
     await test.step("Click on Elements Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -63,8 +67,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Elements - Buttons", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.buttonsExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
+    exerciseName = exercisesNamesData.buttonsExerciseName;
 
     await test.step("Click on Elements Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -76,8 +80,8 @@ test.describe("Check access to every exercise", () => {
 
   // TODO: Investigate why Playwright not able to see "locator('li', { hasText: 'Links' })" - Problem: locator resolved to 2 elements
   test.skip("Elements - Links", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.linksExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
+    exerciseName = exercisesNamesData.linksExerciseName;
 
     await test.step("Click on Elements Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -88,8 +92,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Elements - Broken Links - Images", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.brokenLinksImagesExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
+    exerciseName = exercisesNamesData.brokenLinksImagesExerciseName;
 
     await test.step("Click on Elements Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -100,8 +104,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Elements - Upload and Download", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.uploadAndDownloadExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
+    exerciseName = exercisesNamesData.uploadAndDownloadExerciseName;
 
     await test.step("Click on Elements Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -112,8 +116,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Elements - Dynamic Properties", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.dynamicPropertiesExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
+    exerciseName = exercisesNamesData.dynamicPropertiesExerciseName;
 
     await test.step("Click on Elements Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -126,8 +130,8 @@ test.describe("Check access to every exercise", () => {
   // Forms
 
   test("Forms - Practice Form", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.formMenuName;
-    const exerciseName = exercisesNamesData.practiceFormExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.formMenuName;
+    exerciseName = exercisesNamesData.practiceFormExerciseName;
 
     await test.step("Click on Forms Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -140,8 +144,8 @@ test.describe("Check access to every exercise", () => {
   // Alerts, Frame & Windows
 
   test("Alerts, Frame & Windows - Browser Windows", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
-    const exerciseName = exercisesNamesData.browserWindowsExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
+    exerciseName = exercisesNamesData.browserWindowsExerciseName;
 
     await test.step("Click on Alerts, Frame & Windows Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -152,8 +156,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Alerts, Frame & Windows - Alerts", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
-    const exerciseName = exercisesNamesData.alertsExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
+    exerciseName = exercisesNamesData.alertsExerciseName;
 
     await test.step("Click on Alerts, Frame & Windows Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -165,8 +169,8 @@ test.describe("Check access to every exercise", () => {
 
   // TODO: Investigate why Playwright not able to see "locator("li", { hasText: "Frames" })" - Problem: locator resolved to 2 elements
   test.skip("Alerts, Frame & Windows - Frames", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
-    const exerciseName = exercisesNamesData.framesExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
+    exerciseName = exercisesNamesData.framesExerciseName;
 
     await test.step("Click on Alerts, Frame & Windows Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -177,8 +181,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Alerts, Frame & Windows - Nested Frames", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
-    const exerciseName = exercisesNamesData.nestedFramesExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
+    exerciseName = exercisesNamesData.nestedFramesExerciseName;
 
     await test.step("Click on Alerts, Frame & Windows Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -189,8 +193,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Alerts, Frame & Windows - Modal Dialogs", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
-    const exerciseName = exercisesNamesData.modalDialogExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
+    exerciseName = exercisesNamesData.modalDialogExerciseName;
 
     await test.step("Click on Alerts, Frame & Windows Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -203,8 +207,8 @@ test.describe("Check access to every exercise", () => {
   // Widgets
 
   test("Widgets - Accordian", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    const exerciseName = exercisesNamesData.accordianExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
+    exerciseName = exercisesNamesData.accordianExerciseName;
 
     await test.step("Click on Widgets Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -215,8 +219,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Widgets - Auto Complete", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    const exerciseName = exercisesNamesData.autoCompleteExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
+    exerciseName = exercisesNamesData.autoCompleteExerciseName;
 
     await test.step("Click on Widgets Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -227,8 +231,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Widgets - Date Picker", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    const exerciseName = exercisesNamesData.datePickerExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
+    exerciseName = exercisesNamesData.datePickerExerciseName;
 
     await test.step("Click on Widgets Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -239,8 +243,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Widgets - Slider", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    const exerciseName = exercisesNamesData.sliderExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
+    exerciseName = exercisesNamesData.sliderExerciseName;
 
     await test.step("Click on Widgets Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -251,8 +255,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Widgets - Progress Bar", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    const exerciseName = exercisesNamesData.progressBarExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
+    exerciseName = exercisesNamesData.progressBarExerciseName;
 
     await test.step("Click on Widgets Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -263,8 +267,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Widgets - Tabs", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    const exerciseName = exercisesNamesData.tabsExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
+    exerciseName = exercisesNamesData.tabsExerciseName;
 
     await test.step("Click on Widgets Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -275,8 +279,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Widgets - Tool Tips", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    const exerciseName = exercisesNamesData.toolTipsExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
+    exerciseName = exercisesNamesData.toolTipsExerciseName;
 
     await test.step("Click on Widgets Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -288,8 +292,8 @@ test.describe("Check access to every exercise", () => {
 
   // TODO: Investigate why Playwright not able to see "locator("li", { hasText: "Menu" })" - Problem: locator resolved to 2 elements
   test.skip("Widgets - Menu", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    const exerciseName = exercisesNamesData.menuExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
+    exerciseName = exercisesNamesData.menuExerciseName;
 
     await test.step("Click on Widgets Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -300,8 +304,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Widgets - Select Menu", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    const exerciseName = exercisesNamesData.selectMenuExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
+    exerciseName = exercisesNamesData.selectMenuExerciseName;
 
     await test.step("Click on Widgets Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -314,8 +318,8 @@ test.describe("Check access to every exercise", () => {
   // Interactions
 
   test("Interactions - Sortable", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
-    const exerciseName = exercisesNamesData.sortableExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
+    exerciseName = exercisesNamesData.sortableExerciseName;
 
     await test.step("Click on Interactions Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -326,8 +330,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Interactions - Selectable", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
-    const exerciseName = exercisesNamesData.selectableExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
+    exerciseName = exercisesNamesData.selectableExerciseName;
 
     await test.step("Click on Interactions Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -338,8 +342,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Interactions - Resizable", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
-    const exerciseName = exercisesNamesData.resizableExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
+    exerciseName = exercisesNamesData.resizableExerciseName;
 
     await test.step("Click on Interactions Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -350,8 +354,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Interactions - Droppable", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
-    const exerciseName = exercisesNamesData.droppableExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
+    exerciseName = exercisesNamesData.droppableExerciseName;
 
     await test.step("Click on Interactions Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -362,8 +366,8 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Interactions - Dragabble", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
-    const exerciseName = exercisesNamesData.dragabbleExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
+    exerciseName = exercisesNamesData.dragabbleExerciseName;
 
     await test.step("Click on Interactions Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -376,8 +380,8 @@ test.describe("Check access to every exercise", () => {
   // Book Store Application
 
   test("Book Store Application - Login", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
-    const exerciseName = exercisesNamesData.loginExerciseName;
+    exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
+    exerciseName = exercisesNamesData.loginExerciseName;
 
     await test.step("Click on Book Store Application Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -389,9 +393,9 @@ test.describe("Check access to every exercise", () => {
 
   // TODO: Investigate why Playwright not able to see "locator("li", { hasText: "Book Store" })" - Problem: locator resolved to 2 elements
   test.skip("Book Store Application - Book Store", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
-    const exerciseName = exercisesNamesData.bookStoreExerciseName;
-    const exerciseSlug = "books";
+    exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
+    exerciseName = exercisesNamesData.bookStoreExerciseName;
+    exerciseSlug = "books";
 
     await test.step("Click on Book Store Application Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -402,9 +406,9 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Book Store Application - Profile", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
-    const exerciseName = exercisesNamesData.profileExerciseName;
-    const exerciseSlug = "profile";
+    exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
+    exerciseName = exercisesNamesData.profileExerciseName;
+    exerciseSlug = "profile";
 
     await test.step("Click on Book Store Application Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
@@ -415,9 +419,9 @@ test.describe("Check access to every exercise", () => {
   });
 
   test("Book Store Application - Book Store API", async () => {
-    const exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
-    const exerciseName = exercisesNamesData.bookStoreAPIExerciseName;
-    const exerciseSlug = "swagger/";
+    exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
+    exerciseName = exercisesNamesData.bookStoreAPIExerciseName;
+    exerciseSlug = "swagger/";
 
     await test.step("Click on Book Store Application Menu button", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
