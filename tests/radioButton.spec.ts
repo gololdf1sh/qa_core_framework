@@ -41,7 +41,7 @@ test.describe("Check Radio Button Functionality", () => {
     });
   });
 
-  // BUG - "No" Radio Button is not available
+  // TODO: BUG - "No" Radio Button is not available
   test.skip("Check that 'No' Radio Button is available and Result Field is working correctly", async () => {
     radioButtonName = radioButtonsNames.noButtonName;
 
