@@ -25,11 +25,6 @@ The framework is modular, scalable, and easy to maintain, following **best pract
 | **Allure Reporter** | Generates detailed, visually rich test reports                             |
 | **WebStorm**        | IDE used for development                                                   |
 
-#### Versions (example):
-- Playwright: `1.42.x`
-- Node.js: `18+`
-- TypeScript: `5.x`
-
 ---
 
 ## Project Configuration
