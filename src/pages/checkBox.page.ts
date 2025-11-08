@@ -1,21 +1,21 @@
 import { expect, Locator, Page } from "@playwright/test";
 import { CheckBoxDataTypes } from "../types";
-import { CommonMethodsPage } from "./commonMethods.page";
 
-export class CheckBoxPage extends CommonMethodsPage {
+export class CheckBoxPage {
+  readonly page: Page;
   readonly resultField: Locator;
   readonly plusButton: Locator;
   readonly minusButton: Locator;
 
   constructor(page: Page) {
-    super(page);
+    this.page = page;
     this.resultField = this.page.locator("#result");
     this.plusButton = this.page.getByLabel("Expand all");
     this.minusButton = this.page.getByTitle("Collapse all");
   }
 
   async clickOnPlusButton() {
-    await this.checkThatElementIsVisible(this.plusButton);
+    await expect(this.plusButton).toBeVisible({ timeout: 3000 });
     await this.page.waitForTimeout(500);
     await this.plusButton.click();
   }
@@ -25,7 +25,7 @@ export class CheckBoxPage extends CommonMethodsPage {
 
     for (const fileName of fileNames) {
       const fileNameLocator = await this.generateFileLocator(fileName);
-      await this.checkThatElementIsVisible(fileNameLocator);
+      await expect(fileNameLocator).toBeVisible({ timeout: 3000 });
     }
   }
 
@@ -35,7 +35,7 @@ export class CheckBoxPage extends CommonMethodsPage {
 
   async clickOnFile(fileName: string) {
     let fileNameLocator = await this.generateFileLocator(fileName);
-    await this.checkThatElementIsVisible(fileNameLocator);
+    await expect(fileNameLocator).toBeVisible({ timeout: 3000 });
     await fileNameLocator.click();
     await this.page.waitForTimeout(500);
   }
