@@ -46,9 +46,11 @@ test.describe("Check Web Tables Functionality", () => {
     await test.step("Delete All Users from Web Table", async () => {
       await webTablesPage.deleteAllUsersFromWebTable();
     });
+
     await test.step("Add User via Registration Form", async () => {
       await webTablesPage.addUserViaRegistrationForm(userData);
     });
+
     await test.step("Check Added User Data", async () => {
       await webTablesPage.checkUserData(
         userNumber,

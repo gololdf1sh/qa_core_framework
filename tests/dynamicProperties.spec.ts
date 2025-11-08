@@ -27,9 +27,11 @@ test.describe("Check Dynamic Properties functionality", () => {
     await test.step("Check that 'Will enable 5 seconds' element is visible", async () => {
       await dynamicPropertiesPage.checkThatWillEnableFiveSecondsButtonIsVisible();
     });
+
     await test.step("Check that 'Will enable 5 seconds' element is disabled", async () => {
       await dynamicPropertiesPage.checkThatWillEnableFiveSecondsButtonIsDisabled();
     });
+
     await test.step("Check that 'Will enable 5 seconds' element is not disabled after 5 seconds", async () => {
       await dynamicPropertiesPage.checkThatWillEnableFiveSecondsButtonIsNotDisabled();
     });
@@ -39,6 +41,7 @@ test.describe("Check Dynamic Properties functionality", () => {
     await test.step("Check that 'Color Change' element is visible", async () => {
       await dynamicPropertiesPage.checkThatColorChangeButtonIsVisible();
     });
+
     await test.step("Check that 'Color Change' element changes color after period of time", async () => {
       await dynamicPropertiesPage.takeColorOfColorChangeButtonAndCheckThatColorIsChangedAfterFiveSeconds();
     });
@@ -48,6 +51,7 @@ test.describe("Check Dynamic Properties functionality", () => {
     await test.step("Check that 'Visible After 5 Seconds' element is not visible", async () => {
       await dynamicPropertiesPage.checkThatVisibleAfterFiveSecondsButtonIsNotVisible();
     });
+
     await test.step("Check that 'Visible After 5 Seconds' element is visible after 5 seconds", async () => {
       await dynamicPropertiesPage.checkThatVisibleAfterFiveSecondsButtonIsVisible();
     });
