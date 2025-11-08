@@ -1,11 +1,11 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { CommonMethodsPage } from "./commonMethods.page";
 
-export class RadioButtonPage extends CommonMethodsPage {
+export class RadioButtonPage {
+  readonly page: Page;
   readonly resultField: Locator;
 
   constructor(page: Page) {
-    super(page);
+    this.page = page;
     this.resultField = this.page.locator('[class="mt-3"]');
   }
 
@@ -14,7 +14,7 @@ export class RadioButtonPage extends CommonMethodsPage {
   }
   async clickOnRadioButton(radioButtonName: string) {
     let radioButtonLocator = await this.generateRadioButtonLocator(radioButtonName);
-    await this.checkThatElementIsVisible(radioButtonLocator);
+    await expect(radioButtonLocator).toBeVisible({ timeout: 3000 });
     await radioButtonLocator.click();
     await this.page.waitForTimeout(500);
   }

@@ -1,9 +1,9 @@
 import { expect, type Page } from "@playwright/test";
-import { CommonMethodsPage } from "./commonMethods.page";
 
-export class NavigationPage extends CommonMethodsPage {
+export class NavigationPage {
+  readonly page: Page;
   constructor(page: Page) {
-    super(page);
+    this.page = page;
   }
 
   async goToUrl(url: string) {
@@ -21,14 +21,14 @@ export class NavigationPage extends CommonMethodsPage {
 
   async openExerciseMenu(exerciseMenuName: string) {
     const menuButton = await this.generateExerciseMenuButtonLocator(exerciseMenuName);
-    await this.checkThatElementIsVisible(menuButton);
+    await expect(menuButton).toBeVisible({ timeout: 3000 });
     await menuButton.click();
     await this.page.waitForTimeout(500);
   }
 
   async clickOnExerciseButton(exerciseName: string) {
     const exerciseButton = await this.generateExerciseButtonLocator(exerciseName);
-    await this.checkThatElementIsVisible(exerciseButton);
+    await expect(exerciseButton).toBeVisible({ timeout: 3000 });
     await exerciseButton.click();
     await this.page.waitForTimeout(500);
   }
@@ -39,7 +39,9 @@ export class NavigationPage extends CommonMethodsPage {
   }
 
   async checkExerciseHeader(exerciseName: string) {
-    await this.checkThatElementIsVisible(this.page.locator('[class="text-center"]', { hasText: `${exerciseName}` }));
+    await expect(this.page.locator('[class="text-center"]', { hasText: `${exerciseName}` })).toBeVisible({
+      timeout: 3000,
+    });
   }
 
   generateExerciseURL(exerciseSlug: string) {

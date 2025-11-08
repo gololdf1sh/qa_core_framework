@@ -1,8 +1,9 @@
 import { expect, Locator, type Page } from "@playwright/test";
-import { CommonMethodsPage, WebTablesRegistrationFormModalPage } from "../pages";
+import { WebTablesRegistrationFormModalPage } from "../pages";
 import { generateUserDataTypes } from "../types";
 
-export class WebTablesPage extends CommonMethodsPage {
+export class WebTablesPage {
+  readonly page: Page;
   readonly webTablesRegistrationFormModalPage: WebTablesRegistrationFormModalPage;
   readonly addButton: Locator;
   readonly searchInput: Locator;
@@ -10,7 +11,7 @@ export class WebTablesPage extends CommonMethodsPage {
   readonly deleteUserButton: Locator;
 
   constructor(page: Page) {
-    super(page);
+    this.page = page;
     this.webTablesRegistrationFormModalPage = new WebTablesRegistrationFormModalPage(page);
     this.addButton = this.page.locator("#addNewRecordButton");
     this.searchInput = this.page.locator("#searchBox");
@@ -98,7 +99,7 @@ export class WebTablesPage extends CommonMethodsPage {
   }
 
   async clickOnFirstDeleteUserButton() {
-    await this.checkThatElementIsVisible(this.deleteUserButton.first());
+    await expect(this.deleteUserButton.first()).toBeVisible({ timeout: 3000 });
     await this.deleteUserButton.first().click();
     await this.page.waitForTimeout(500);
   }
@@ -111,7 +112,7 @@ export class WebTablesPage extends CommonMethodsPage {
   }
 
   async clickOnAddButton() {
-    await this.checkThatElementIsVisible(this.addButton);
+    await expect(this.addButton).toBeVisible({ timeout: 3000 });
     await this.addButton.click();
     await this.page.waitForTimeout(500);
   }
