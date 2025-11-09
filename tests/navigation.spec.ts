@@ -2,7 +2,7 @@ import { test } from "@playwright/test";
 import { NavigationPage } from "../src/pages";
 import { exercisesMenusNamesData, exercisesNamesData } from "../src/data";
 
-test.describe("Check access to every exercise", () => {
+test.describe("Navigation to exercises @Sbc26030f", () => {
   let navigationPage: NavigationPage;
 
   let exerciseMenuName: string;
@@ -18,7 +18,7 @@ test.describe("Check access to every exercise", () => {
 
   // Elements
 
-  test("Elements - Text Box", async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Text Box" exercise @Ta9b4636e', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.textBoxExerciseName;
 
@@ -31,7 +31,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Elements - Check Box", async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Check Box" exercise @Tc49faf52', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.checkBoxExerciseName;
 
@@ -44,7 +44,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Elements - Radio Button", async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Radio Button" exercise @T31e40541', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.radioButtonExerciseName;
 
@@ -57,7 +57,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Elements - Web Tables", async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Web Tables" exercise @T4923316c', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.webTablesExerciseName;
 
@@ -70,7 +70,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Elements - Buttons", async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Buttons" exercise @T3f6d27eb', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.buttonsExerciseName;
 
@@ -84,7 +84,7 @@ test.describe("Check access to every exercise", () => {
   });
 
   // TODO: Investigate why Playwright not able to see "locator('li', { hasText: 'Links' })" - Problem: locator resolved to 2 elements
-  test.skip("Elements - Links", async () => {
+  test.skip('Check that user is able to navigate to -> "Elements" menu -> "Links" exercise @T9958871a', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.linksExerciseName;
 
@@ -97,7 +97,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Elements - Broken Links - Images", async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Broken Links - Images" exercise @Tf6e113e6', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.brokenLinksImagesExerciseName;
 
@@ -110,7 +110,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Elements - Upload and Download", async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Upload and Download" exercise @Te6968a56', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.uploadAndDownloadExerciseName;
 
@@ -123,7 +123,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Elements - Dynamic Properties", async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Dynamic Properties" exercise @T6ee41a04', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.dynamicPropertiesExerciseName;
 
@@ -138,7 +138,7 @@ test.describe("Check access to every exercise", () => {
 
   // Forms
 
-  test("Forms - Practice Form", async () => {
+  test('Check that user is able to navigate to -> "Forms" menu -> "Practice Form" exercise @Tb2720172', async () => {
     exerciseMenuName = exercisesMenusNamesData.formMenuName;
     exerciseName = exercisesNamesData.practiceFormExerciseName;
 
@@ -153,7 +153,7 @@ test.describe("Check access to every exercise", () => {
 
   // Alerts, Frame & Windows
 
-  test("Alerts, Frame & Windows - Browser Windows", async () => {
+  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Browser Windows" exercise @Tf87ecdba', async () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.browserWindowsExerciseName;
 
@@ -166,7 +166,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Alerts, Frame & Windows - Alerts", async () => {
+  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Alerts" exercise @T5277fa3f', async () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.alertsExerciseName;
 
@@ -180,7 +180,7 @@ test.describe("Check access to every exercise", () => {
   });
 
   // TODO: Investigate why Playwright not able to see "locator("li", { hasText: "Frames" })" - Problem: locator resolved to 2 elements
-  test.skip("Alerts, Frame & Windows - Frames", async () => {
+  test.skip('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Frames" exercise @T78a391c4', async () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.framesExerciseName;
 
@@ -193,7 +193,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Alerts, Frame & Windows - Nested Frames", async () => {
+  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Nested Frames" exercise @Tba934737', async () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.nestedFramesExerciseName;
 
@@ -206,7 +206,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Alerts, Frame & Windows - Modal Dialogs", async () => {
+  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Modal Dialogs" exercise @Te7e41e0e', async () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.modalDialogExerciseName;
 
@@ -221,7 +221,7 @@ test.describe("Check access to every exercise", () => {
 
   // Widgets
 
-  test("Widgets - Accordian", async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Accordian" exercise @Tf153d214', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.accordianExerciseName;
 
@@ -234,7 +234,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Widgets - Auto Complete", async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Auto Complete" exercise @Teec61279', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.autoCompleteExerciseName;
 
@@ -247,7 +247,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Widgets - Date Picker", async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Date Picker" exercise @Tca9a0606', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.datePickerExerciseName;
 
@@ -260,7 +260,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Widgets - Slider", async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Slider" exercise @Tfdd949db', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.sliderExerciseName;
 
@@ -273,7 +273,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Widgets - Progress Bar", async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Progress Bar" exercise @T1ff693a5', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.progressBarExerciseName;
 
@@ -286,7 +286,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Widgets - Tabs", async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Tabs" exercise @T58fa4579', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.tabsExerciseName;
 
@@ -299,7 +299,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Widgets - Tool Tips", async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Tool Tips" exercise @Tf28cc9c4', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.toolTipsExerciseName;
 
@@ -313,7 +313,7 @@ test.describe("Check access to every exercise", () => {
   });
 
   // TODO: Investigate why Playwright not able to see "locator("li", { hasText: "Menu" })" - Problem: locator resolved to 2 elements
-  test.skip("Widgets - Menu", async () => {
+  test.skip('Check that user is able to navigate to -> "Widgets" menu -> "Menu" exercise @T7cd60bca', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.menuExerciseName;
 
@@ -326,7 +326,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Widgets - Select Menu", async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Select Menu" exercise @T0c601401', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.selectMenuExerciseName;
 
@@ -341,7 +341,7 @@ test.describe("Check access to every exercise", () => {
 
   // Interactions
 
-  test("Interactions - Sortable", async () => {
+  test('Check that user is able to navigate to -> "Interactions" menu -> "Sortable" exercise @T1abf9600', async () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.sortableExerciseName;
 
@@ -354,7 +354,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Interactions - Selectable", async () => {
+  test('Check that user is able to navigate to -> "Interactions" menu -> "Selectable" exercise @Tce9ef25a', async () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.selectableExerciseName;
 
@@ -367,7 +367,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Interactions - Resizable", async () => {
+  test('Check that user is able to navigate to -> "Interactions" menu -> "Resizable" exercise @Tfc00836d', async () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.resizableExerciseName;
 
@@ -380,7 +380,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Interactions - Droppable", async () => {
+  test('Check that user is able to navigate to -> "Interactions" menu -> "Droppable" exercise @Taa32a080', async () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.droppableExerciseName;
 
@@ -393,7 +393,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Interactions - Dragabble", async () => {
+  test('Check that user is able to navigate to -> "Interactions" menu -> "Dragabble" exercise @T0bbb0bfc', async () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.dragabbleExerciseName;
 
@@ -408,7 +408,7 @@ test.describe("Check access to every exercise", () => {
 
   // Book Store Application
 
-  test("Book Store Application - Login", async () => {
+  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Login" exercise @Te1cd0be7', async () => {
     exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
     exerciseName = exercisesNamesData.loginExerciseName;
 
@@ -422,7 +422,7 @@ test.describe("Check access to every exercise", () => {
   });
 
   // TODO: Investigate why Playwright not able to see "locator("li", { hasText: "Book Store" })" - Problem: locator resolved to 2 elements
-  test.skip("Book Store Application - Book Store", async () => {
+  test.skip('Check that user is able to navigate to -> "Book Store Application" menu -> "Book Store" exercise @T2f301c0c', async () => {
     exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
     exerciseName = exercisesNamesData.bookStoreExerciseName;
     exerciseSlug = "books";
@@ -436,7 +436,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Book Store Application - Profile", async () => {
+  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Profile" exercise @T26cc9908', async () => {
     exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
     exerciseName = exercisesNamesData.profileExerciseName;
     exerciseSlug = "profile";
@@ -450,7 +450,7 @@ test.describe("Check access to every exercise", () => {
     });
   });
 
-  test("Book Store Application - Book Store API", async () => {
+  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Book Store API" exercise @Tbcee65d1', async () => {
     exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
     exerciseName = exercisesNamesData.bookStoreAPIExerciseName;
     exerciseSlug = "swagger/";
