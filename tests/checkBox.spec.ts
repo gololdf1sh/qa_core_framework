@@ -7,7 +7,7 @@ import {
   exercisesNamesData,
 } from "../src/data";
 
-test.describe("Check Check Box functionality", () => {
+test.describe("Check Check Box functionality @S39137ba0", () => {
   let navigationPage: NavigationPage;
   let checkBoxPage: CheckBoxPage;
 
@@ -22,7 +22,7 @@ test.describe("Check Check Box functionality", () => {
     await navigationPage.openExercise(exerciseMenuName, exerciseName);
   });
 
-  test("Check access to every file in tree", async () => {
+  test("Check access to every file in tree @T2c410290", async () => {
     await test.step("Click on Plus Button", async () => {
       await checkBoxPage.clickOnPlusButton();
     });

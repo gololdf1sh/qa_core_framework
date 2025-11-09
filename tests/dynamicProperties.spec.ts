@@ -2,7 +2,7 @@ import { test } from "@playwright/test";
 import { DynamicPropertiesPage, NavigationPage } from "../src/pages";
 import { exercisesMenusNamesData, exercisesNamesData } from "../src/data";
 
-test.describe("Check Dynamic Properties functionality", () => {
+test.describe("Check Dynamic Properties functionality @S80941246", () => {
   let navigationPage: NavigationPage;
   let dynamicPropertiesPage: DynamicPropertiesPage;
 
@@ -17,13 +17,13 @@ test.describe("Check Dynamic Properties functionality", () => {
     await navigationPage.openExercise(exerciseMenuName, exerciseName);
   });
 
-  test("Check 'This text has random Id' element functionality", async () => {
+  test("Check 'This text has random Id' element functionality @T4bb82e70", async () => {
     await test.step("Check that 'This text has random Id' element is visible", async () => {
       await dynamicPropertiesPage.checkThatThisTextHasRandomIdIsVisible();
     });
   });
 
-  test("Check 'Will enable 5 seconds' element functionality", async () => {
+  test("Check 'Will enable 5 seconds' element functionality @T8b23122e", async () => {
     await test.step("Check that 'Will enable 5 seconds' element is visible", async () => {
       await dynamicPropertiesPage.checkThatWillEnableFiveSecondsButtonIsVisible();
     });
@@ -37,7 +37,7 @@ test.describe("Check Dynamic Properties functionality", () => {
     });
   });
 
-  test("Check 'Color Change' element functionality", async () => {
+  test("Check 'Color Change' element functionality @T2ed4e74c", async () => {
     await test.step("Check that 'Color Change' element is visible", async () => {
       await dynamicPropertiesPage.checkThatColorChangeButtonIsVisible();
     });
@@ -47,7 +47,7 @@ test.describe("Check Dynamic Properties functionality", () => {
     });
   });
 
-  test("Check 'Visible After 5 Seconds' element functionality", async () => {
+  test("Check 'Visible After 5 Seconds' element functionality @T68e1f4bb", async () => {
     await test.step("Check that 'Visible After 5 Seconds' element is not visible", async () => {
       await dynamicPropertiesPage.checkThatVisibleAfterFiveSecondsButtonIsNotVisible();
     });

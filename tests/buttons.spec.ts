@@ -2,7 +2,7 @@ import { test } from "@playwright/test";
 import { NavigationPage, ButtonsPage } from "../src/pages";
 import { buttonNames, clickResultFields, exercisesMenusNamesData, exercisesNamesData } from "../src/data";
 
-test.describe("Check Buttons functionality", () => {
+test.describe("Check Buttons functionality @S5381b560", () => {
   let navigationPage: NavigationPage;
   let buttonsPage: ButtonsPage;
 
@@ -29,7 +29,7 @@ test.describe("Check Buttons functionality", () => {
     await navigationPage.openExercise(exerciseMenuName, exerciseName);
   });
 
-  test("Check that Buttons working as expected", async () => {
+  test("Check that Buttons working as expected @Tc90a05c1", async () => {
     await test.step("Double-click on 'Double Click Me' button", async () => {
       await buttonsPage.dblClickOnButton(doubleClickMeButtonName);
     });
@@ -61,7 +61,7 @@ test.describe("Check Buttons functionality", () => {
     });
   });
 
-  test("Negative: Check that Result fields is not displayed if user does not comply with the conditions", async () => {
+  test("Negative: Check that Result fields is not displayed if user does not comply with the conditions @T117e4796", async () => {
     await test.step("Single-click on 'Double Click Me' button", async () => {
       await buttonsPage.clickOnButton(doubleClickMeButtonName);
     });

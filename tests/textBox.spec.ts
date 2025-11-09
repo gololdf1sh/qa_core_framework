@@ -2,7 +2,7 @@ import { test } from "@playwright/test";
 import { NavigationPage, TextBoxPage } from "../src/pages";
 import { exercisesMenusNamesData, exercisesNamesData, textBoxData } from "../src/data";
 
-test.describe("Check Text Box functionality", () => {
+test.describe("Check Text Box functionality @S91d60c01", () => {
   let navigationPage: NavigationPage;
   let textBoxPage: TextBoxPage;
 
@@ -17,7 +17,7 @@ test.describe("Check Text Box functionality", () => {
     await navigationPage.openExercise(exerciseMenuName, exerciseName);
   });
 
-  test("Check Text Box positive scenario", async () => {
+  test("Check Text Box positive scenario @T243e588b", async () => {
     await test.step("Fill Text Box Inputs", async () => {
       await textBoxPage.fillTextBoxInputs({
         fullName: textBoxData.userFullName.validUserFullName,
@@ -41,7 +41,7 @@ test.describe("Check Text Box functionality", () => {
     });
   });
 
-  test("Check Text Box positive scenario - empty fields with valid email", async () => {
+  test("Check Text Box positive scenario - empty fields with valid email @Tbe20d83d", async () => {
     await test.step("Fill Text Box Inputs", async () => {
       await textBoxPage.fillTextBoxInputs({
         fullName: textBoxData.userFullName.emptyUserFullName,
@@ -66,7 +66,7 @@ test.describe("Check Text Box functionality", () => {
   });
 
   // BUG
-  test("Check Text Box negative scenario - not valid email - first case (test+user@gmail.com)", async () => {
+  test("Check Text Box negative scenario - not valid email - first case (test+user@gmail.com) @T0775d178", async () => {
     await test.step("Fill Text Box Inputs", async () => {
       await textBoxPage.fillTextBoxInputs({
         fullName: textBoxData.userFullName.validUserFullName,
@@ -93,7 +93,7 @@ test.describe("Check Text Box functionality", () => {
     });
   });
 
-  test("Check Text Box negative scenario - not valid email - second case (testusergmail.com)", async () => {
+  test("Check Text Box negative scenario - not valid email - second case (testusergmail.com) @T23911a21", async () => {
     await test.step("Fill Text Box Inputs", async () => {
       await textBoxPage.fillTextBoxInputs({
         fullName: textBoxData.userFullName.validUserFullName,
@@ -120,7 +120,7 @@ test.describe("Check Text Box functionality", () => {
     });
   });
 
-  test("Check Text Box negative scenario - not valid email - third case (testuser@gmailcom)", async () => {
+  test("Check Text Box negative scenario - not valid email - third case (testuser@gmailcom) @T48c8bf59", async () => {
     await test.step("Fill Text Box Inputs", async () => {
       await textBoxPage.fillTextBoxInputs({
         fullName: textBoxData.userFullName.validUserFullName,
