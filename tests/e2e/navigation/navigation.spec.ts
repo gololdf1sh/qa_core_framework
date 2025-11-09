@@ -22,11 +22,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.textBoxExerciseName;
 
-    await test.step("Click on Elements Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Text Box exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -35,11 +35,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.checkBoxExerciseName;
 
-    await test.step("Click on Elements Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Check Box exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -48,11 +48,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.radioButtonExerciseName;
 
-    await test.step("Click on Elements Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Radio Button exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -61,11 +61,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.webTablesExerciseName;
 
-    await test.step("Click on Elements Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Web Tables exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -74,11 +74,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.buttonsExerciseName;
 
-    await test.step("Click on Elements Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Buttons exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -88,11 +88,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.linksExerciseName;
 
-    await test.step("Click on Elements Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Links exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -101,11 +101,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.brokenLinksImagesExerciseName;
 
-    await test.step("Click on Elements Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Broken Links - Images exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -114,11 +114,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.uploadAndDownloadExerciseName;
 
-    await test.step("Click on Elements Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Upload and Download exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -127,11 +127,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.dynamicPropertiesExerciseName;
 
-    await test.step("Click on Elements Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Dynamic Properties exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -142,11 +142,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.formMenuName;
     exerciseName = exercisesNamesData.practiceFormExerciseName;
 
-    await test.step("Click on Forms Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Practice Form exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -157,11 +157,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.browserWindowsExerciseName;
 
-    await test.step("Click on Alerts, Frame & Windows Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Browser Windows exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -170,11 +170,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.alertsExerciseName;
 
-    await test.step("Click on Alerts, Frame & Windows Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Alerts exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -184,11 +184,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.framesExerciseName;
 
-    await test.step("Click on Alerts, Frame & Windows Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Frames exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -197,11 +197,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.nestedFramesExerciseName;
 
-    await test.step("Click on Alerts, Frame & Windows Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Nested Frames exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -210,11 +210,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.modalDialogExerciseName;
 
-    await test.step("Click on Alerts, Frame & Windows Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Modal Dialogs exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -225,11 +225,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.accordianExerciseName;
 
-    await test.step("Click on Widgets Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Accordian exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -238,11 +238,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.autoCompleteExerciseName;
 
-    await test.step("Click on Widgets Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Auto Complete exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -251,11 +251,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.datePickerExerciseName;
 
-    await test.step("Click on Widgets Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Date Picker exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -264,11 +264,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.sliderExerciseName;
 
-    await test.step("Click on Widgets Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Slider exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -277,11 +277,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.progressBarExerciseName;
 
-    await test.step("Click on Widgets Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Progress Bar exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -290,11 +290,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.tabsExerciseName;
 
-    await test.step("Click on Widgets Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Tabs exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -303,11 +303,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.toolTipsExerciseName;
 
-    await test.step("Click on Widgets Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Tool Tips exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -317,11 +317,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.menuExerciseName;
 
-    await test.step("Click on Widgets Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Menu exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -330,11 +330,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.selectMenuExerciseName;
 
-    await test.step("Click on Widgets Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Select Menu exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -345,11 +345,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.sortableExerciseName;
 
-    await test.step("Click on Interactions Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Sortable exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -358,11 +358,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.selectableExerciseName;
 
-    await test.step("Click on Interactions Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Selectable exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -371,11 +371,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.resizableExerciseName;
 
-    await test.step("Click on Interactions Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Resizable exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -384,11 +384,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.droppableExerciseName;
 
-    await test.step("Click on Interactions Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Droppable exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -397,11 +397,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.dragabbleExerciseName;
 
-    await test.step("Click on Interactions Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Dragabble exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -412,11 +412,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
     exerciseName = exercisesNamesData.loginExerciseName;
 
-    await test.step("Click on Book Store Application Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Login exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseHeader(exerciseName);
     });
   });
@@ -427,11 +427,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseName = exercisesNamesData.bookStoreExerciseName;
     exerciseSlug = "books";
 
-    await test.step("Click on Book Store Application Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Book Store exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseURL(exerciseSlug);
     });
   });
@@ -441,11 +441,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseName = exercisesNamesData.profileExerciseName;
     exerciseSlug = "profile";
 
-    await test.step("Click on Book Store Application Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Profile exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseURL(exerciseSlug);
     });
   });
@@ -455,11 +455,11 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     exerciseName = exercisesNamesData.bookStoreAPIExerciseName;
     exerciseSlug = "swagger/";
 
-    await test.step("Click on Book Store Application Menu button", async () => {
+    await test.step("Open exercise", async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
 
-    await test.step("Click on Book Store API exercise button", async () => {
+    await test.step("Check that user is on exercise page", async () => {
       await navigationPage.checkExerciseURL(exerciseSlug);
     });
   });
