@@ -11,9 +11,6 @@ on:
       run:
         description: Testomat run id
         required: false
-      testomatio:
-        description: Testomat API token
-        required: false
 
 jobs:
   tests:
@@ -22,6 +19,7 @@ jobs:
       BASE_URL: ${{ secrets.BASE_URL }}
       TESTOMATIO: ${{ secrets.TESTOMATIO }}
       TESTOMATIO_RUN: ${{ github.event.inputs.run }}
+      TESTOMATIO_CREATE: 1
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,10 +34,10 @@ jobs:
 
       - run: npx playwright install --with-deps
 
-      - name: Run tests via Testomat
+      - name: Run tests and send to Testomat
         run: |
           CMD="npx playwright test --workers=1 --retries=1"
           if [ -n "${{ github.event.inputs.grep }}" ]; then
             CMD="$CMD --grep '${{ github.event.inputs.grep }}'"
           fi
-          npx @testomatio/cli test-run "$CMD"
+          npx @testomatio/reporter run "$CMD"

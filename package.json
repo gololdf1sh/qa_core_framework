@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "npx playwright test --workers=2 --retries=1",
+    "test:tm": "npx playwright test",
     "lint": "eslint . --config eslint.config.mjs --ext .ts",
     "build": "tsc",
     "prepare": "husky install",
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@eslint/js": "^9.26.0",
     "@playwright/test": "^1.54.1",
+    "@testomatio/reporter": "^2.3.7",
     "@types/node": "^22.15.18",
     "@typescript-eslint/eslint-plugin": "^8.33.0",
     "@typescript-eslint/parser": "^8.33.0",

@@ -15,5 +15,10 @@ export default defineConfig({
     trace: "on-first-retry",
     video: "retain-on-failure",
   },
-  reporter: [["list"], ["html", { open: "on-failure" }], ["allure-playwright"]],
+  reporter: [
+    ["list"],
+    ["html", { open: "on-failure" }],
+    ["allure-playwright"],
+    ["@testomatio/reporter/playwright", { apiKey: process.env.TESTOMATIO }],
+  ],
 });
