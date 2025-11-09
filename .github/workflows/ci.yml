@@ -1,22 +1,45 @@
-# .github/workflows/ci.yml
 name: CI
+
 on:
   pull_request:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      grep:
+        description: Filter tests
+        required: false
+      run:
+        description: Testomat run id
+        required: false
+      testomatio:
+        description: Testomat API token
+        required: false
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     env:
       BASE_URL: ${{ secrets.BASE_URL }}
+      TESTOMATIO: ${{ secrets.TESTOMATIO }}
+      TESTOMATIO_RUN: ${{ github.event.inputs.run }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+
       - run: npm ci
+
       - run: npx playwright install --with-deps
-      - run: npx playwright test --workers=1 --retries=1
+
+      - name: Run tests via Testomat
+        run: |
+          CMD="npx playwright test --workers=1 --retries=1"
+          if [ -n "${{ github.event.inputs.grep }}" ]; then
+            CMD="$CMD --grep '${{ github.event.inputs.grep }}'"
+          fi
+          npx testomatio test-run "$CMD"
