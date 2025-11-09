@@ -23,6 +23,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-node@v4
         with:
@@ -33,13 +35,18 @@ jobs:
 
       - run: npx playwright install --with-deps
 
-      - name: Run tests
+      - name: Run tests and send to Testomat
         run: |
           CMD="npx playwright test --workers=1 --retries=1"
           if [ -n "${{ github.event.inputs.grep }}" ]; then
             CMD="$CMD --grep '${{ github.event.inputs.grep }}'"
           fi
-          $CMD
+          npx @testomatio/reporter run "$CMD"
+
+      - name: Finish Testomat run
+        if: always()
+        run: |
+          npx @testomatio/reporter finish
         env:
-          BASE_URL: ${{ secrets.BASE_URL }}
-          TESTOMATIO: ${{ github.event.inputs.testomatio || secrets.TESTOMATIO }}
+          TESTOMATIO: ${{ secrets.TESTOMATIO }}
+          TESTOMATIO_RUN: ${{ github.event.inputs.run }}
