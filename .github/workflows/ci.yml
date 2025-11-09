@@ -9,15 +9,16 @@ on:
         description: Filter tests
         required: false
         default: ''
+      testomatio:
+        description: Testomat API key (sent by Testomat)
+        required: false
+      run:
+        description: Testomat run id (sent by Testomat)
+        required: false
 
 jobs:
   tests:
     runs-on: ubuntu-latest
-
-    env:
-      BASE_URL: ${{ secrets.BASE_URL }}
-      TESTOMATIO: ${{ secrets.TESTOMATIO }}
-      TESTOMATIO_CREATE: 1
 
     steps:
       - uses: actions/checkout@v4
@@ -31,10 +32,13 @@ jobs:
 
       - run: npx playwright install --with-deps
 
-      - name: Run tests
+      - name: Run tests via Testomat CLI
         run: |
           CMD="npx playwright test --workers=1 --retries=1"
           if [ -n "${{ github.event.inputs.grep }}" ]; then
             CMD="$CMD --grep '${{ github.event.inputs.grep }}'"
           fi
-          $CMD
+          npx @testomatio/reporter run "$CMD"
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          TESTOMATIO: ${{ github.event.inputs.testomatio || secrets.TESTOMATIO }}
