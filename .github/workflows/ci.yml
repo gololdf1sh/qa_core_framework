@@ -12,6 +12,10 @@ on:
       testomatio:
         description: Testomat API key (sent by Testomat)
         required: false
+      run:
+        description: Testomat run id (sent by Testomat)
+        required: false
+        default: ''
 
 jobs:
   tests:
@@ -29,14 +33,13 @@ jobs:
 
       - run: npx playwright install --with-deps
 
-      - name: Run tests via Testomat CLI
+      - name: Run tests
         run: |
           CMD="npx playwright test --workers=1 --retries=1"
           if [ -n "${{ github.event.inputs.grep }}" ]; then
             CMD="$CMD --grep '${{ github.event.inputs.grep }}'"
           fi
-          npx @testomatio/reporter run "$CMD" || true
+          $CMD
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
           TESTOMATIO: ${{ github.event.inputs.testomatio || secrets.TESTOMATIO }}
-          # важливо: не виставляємо TESTOMATIO_PROCEED
