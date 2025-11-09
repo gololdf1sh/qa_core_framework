@@ -1,8 +1,13 @@
 import { test } from "@playwright/test";
-import { exercisesMenusNamesData, exercisesNamesData, generateUserData, webTablesUsersData } from "../src/data";
-import { NavigationPage, WebTablesPage } from "../src/pages";
+import {
+  exercisesMenusNamesData,
+  exercisesNamesData,
+  generateUserData,
+  webTablesUsersData,
+} from "../../../../src/data";
+import { NavigationPage, WebTablesPage } from "../../../../src/pages";
 
-test.describe("Check Web Tables Functionality @S04eef924", () => {
+test.describe("'Web Tables' exercise @S2113f767", () => {
   let webTablesPage: WebTablesPage;
   let navigationPage: NavigationPage;
 
@@ -17,7 +22,7 @@ test.describe("Check Web Tables Functionality @S04eef924", () => {
     await navigationPage.openExercise(exercisesMenuName, exerciseName);
   });
 
-  test("Web Tables: Check existing users data @T63e96e9b", async () => {
+  test("Web Tables: Check existing users data @Te8ebf1d6", async () => {
     const userNumber = 1;
     const userFirstName = webTablesUsersData.firstUser.firstName;
     const userLastName = webTablesUsersData.firstUser.lastName;
@@ -39,7 +44,7 @@ test.describe("Check Web Tables Functionality @S04eef924", () => {
     });
   });
 
-  test("Web Tables: Check that User is able to add another User via Registration Form @Tad6235ad", async () => {
+  test("Web Tables: Check that User is able to add another User via Registration Form @T6455c8e1", async () => {
     const userNumber = 1;
     const userData = generateUserData();
 

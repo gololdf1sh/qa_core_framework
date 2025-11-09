@@ -1,8 +1,8 @@
 import { test } from "@playwright/test";
-import { DynamicPropertiesPage, NavigationPage } from "../src/pages";
-import { exercisesMenusNamesData, exercisesNamesData } from "../src/data";
+import { DynamicPropertiesPage, NavigationPage } from "../../../../src/pages";
+import { exercisesMenusNamesData, exercisesNamesData } from "../../../../src/data";
 
-test.describe("Check Dynamic Properties functionality @S80941246", () => {
+test.describe("'Dynamic Properties' exercise @Sff7f21df", () => {
   let navigationPage: NavigationPage;
   let dynamicPropertiesPage: DynamicPropertiesPage;
 
@@ -17,13 +17,13 @@ test.describe("Check Dynamic Properties functionality @S80941246", () => {
     await navigationPage.openExercise(exerciseMenuName, exerciseName);
   });
 
-  test("Check 'This text has random Id' element functionality @T4bb82e70", async () => {
+  test("Check 'This text has random Id' element @T29965385", async () => {
     await test.step("Check that 'This text has random Id' element is visible", async () => {
       await dynamicPropertiesPage.checkThatThisTextHasRandomIdIsVisible();
     });
   });
 
-  test("Check 'Will enable 5 seconds' element functionality @T8b23122e", async () => {
+  test("Check 'Will enable 5 seconds' element @T08dedd44", async () => {
     await test.step("Check that 'Will enable 5 seconds' element is visible", async () => {
       await dynamicPropertiesPage.checkThatWillEnableFiveSecondsButtonIsVisible();
     });
@@ -37,7 +37,7 @@ test.describe("Check Dynamic Properties functionality @S80941246", () => {
     });
   });
 
-  test("Check 'Color Change' element functionality @T2ed4e74c", async () => {
+  test("Check 'Color Change' element @T4c5bc69d", async () => {
     await test.step("Check that 'Color Change' element is visible", async () => {
       await dynamicPropertiesPage.checkThatColorChangeButtonIsVisible();
     });
@@ -47,7 +47,7 @@ test.describe("Check Dynamic Properties functionality @S80941246", () => {
     });
   });
 
-  test("Check 'Visible After 5 Seconds' element functionality @T68e1f4bb", async () => {
+  test("Check 'Visible After 5 Seconds' element @Tff87c31e", async () => {
     await test.step("Check that 'Visible After 5 Seconds' element is not visible", async () => {
       await dynamicPropertiesPage.checkThatVisibleAfterFiveSecondsButtonIsNotVisible();
     });

@@ -1,13 +1,13 @@
 import { test } from "@playwright/test";
-import { CheckBoxPage, NavigationPage } from "../src/pages";
+import { CheckBoxPage, NavigationPage } from "../../../../src/pages";
 import {
   checkBoxFilesNamesData,
   checkBoxResultFilesNamesData,
   exercisesMenusNamesData,
   exercisesNamesData,
-} from "../src/data";
+} from "../../../../src/data";
 
-test.describe("Check Check Box functionality @S39137ba0", () => {
+test.describe("'Checkbox' Exercise @S988b1f5f", () => {
   let navigationPage: NavigationPage;
   let checkBoxPage: CheckBoxPage;
 
@@ -22,7 +22,7 @@ test.describe("Check Check Box functionality @S39137ba0", () => {
     await navigationPage.openExercise(exerciseMenuName, exerciseName);
   });
 
-  test("Check access to every file in tree @T2c410290", async () => {
+  test("Check user has access to every file in tree @T65cba0f6", async () => {
     await test.step("Click on Plus Button", async () => {
       await checkBoxPage.clickOnPlusButton();
     });
