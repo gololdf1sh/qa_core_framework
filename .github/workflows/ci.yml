@@ -20,6 +20,7 @@ jobs:
       TESTOMATIO: ${{ secrets.TESTOMATIO }}
       TESTOMATIO_RUN: ${{ github.event.inputs.run }}
       TESTOMATIO_CREATE: 1
+      TESTOMATIO_PROCEED: 1
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,7 +46,3 @@ jobs:
       - name: Finish Testomat run
         if: ${{ github.event.inputs.run }}
         run: |
-          npx @testomatio/reporter finish
-        env:
-          TESTOMATIO: ${{ secrets.TESTOMATIO }}
-          TESTOMATIO_RUN: ${{ github.event.inputs.run }}
