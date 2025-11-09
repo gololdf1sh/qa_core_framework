@@ -42,4 +42,4 @@ jobs:
           if [ -n "${{ github.event.inputs.grep }}" ]; then
             CMD="$CMD --grep '${{ github.event.inputs.grep }}'"
           fi
-          npx testomatio test-run "$CMD"
+          npx @testomatio/cli test-run "$CMD"
