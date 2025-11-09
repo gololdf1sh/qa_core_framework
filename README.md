@@ -1,6 +1,9 @@
 [README.md](https://github.com/user-attachments/files/21976687/README.md)
 # QA Core Framework
 
+## Testomat.io
+https://app.testomat.io/projects/qa_core_framework/
+
 ## Overview
 
 **QA Core Framework** is a lightweight test automation framework built with **Playwright** and **TypeScript**.  
