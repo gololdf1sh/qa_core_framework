@@ -1,8 +1,8 @@
 import { test } from "@playwright/test";
-import { NavigationPage, UploadAndDownloadPage } from "../src/pages";
-import { exercisesMenusNamesData, exercisesNamesData } from "../src/data";
+import { NavigationPage, UploadAndDownloadPage } from "../../../../src/pages";
+import { exercisesMenusNamesData, exercisesNamesData } from "../../../../src/data";
 
-test.describe("Check Upload and Download functionality @Sdecf00d0", () => {
+test.describe("'Upload and Download' exercise @Se37ab3dc", () => {
   let navigationPage: NavigationPage;
   let uploadAndDownloadPage: UploadAndDownloadPage;
 
@@ -19,13 +19,13 @@ test.describe("Check Upload and Download functionality @Sdecf00d0", () => {
     await navigationPage.openExercise(exerciseMenuName, exerciseName);
   });
 
-  test("Check Download functionality @T4f2d5f7b", async () => {
+  test("Check Download functionality @T567e2b78", async () => {
     await test.step("Click on Download button and check that file was downloaded", async () => {
       await uploadAndDownloadPage.downloadFileMethod();
     });
   });
 
-  test("Check Upload functionality @T8d9fa932", async () => {
+  test("Check Upload functionality @Td45201b7", async () => {
     await test.step("Upload a file via input", async () => {
       await uploadAndDownloadPage.uploadFileMethod(pathToFile);
     });

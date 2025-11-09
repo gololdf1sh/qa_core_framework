@@ -1,8 +1,8 @@
 import { test } from "@playwright/test";
-import { NavigationPage } from "../src/pages";
-import { exercisesMenusNamesData, exercisesNamesData } from "../src/data";
+import { NavigationPage } from "../../../src/pages";
+import { exercisesMenusNamesData, exercisesNamesData } from "../../../src/data";
 
-test.describe("Navigation to exercises @Sbc26030f", () => {
+test.describe("Navigation to exercises @Sbfe46638", () => {
   let navigationPage: NavigationPage;
 
   let exerciseMenuName: string;
@@ -18,7 +18,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
 
   // Elements
 
-  test('Check that user is able to navigate to -> "Elements" menu -> "Text Box" exercise @Ta9b4636e', async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Text Box" exercise @T86f1a909', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.textBoxExerciseName;
 
@@ -31,7 +31,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Elements" menu -> "Check Box" exercise @Tc49faf52', async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Check Box" exercise @T73423083', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.checkBoxExerciseName;
 
@@ -44,7 +44,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Elements" menu -> "Radio Button" exercise @T31e40541', async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Radio Button" exercise @T1d28c1a4', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.radioButtonExerciseName;
 
@@ -57,7 +57,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Elements" menu -> "Web Tables" exercise @T4923316c', async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Web Tables" exercise @Tea903efe', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.webTablesExerciseName;
 
@@ -70,7 +70,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Elements" menu -> "Buttons" exercise @T3f6d27eb', async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Buttons" exercise @Tadac2cd7', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.buttonsExerciseName;
 
@@ -97,7 +97,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Elements" menu -> "Broken Links - Images" exercise @Tf6e113e6', async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Broken Links - Images" exercise @Tb8ce5a6c', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.brokenLinksImagesExerciseName;
 
@@ -110,7 +110,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Elements" menu -> "Upload and Download" exercise @Te6968a56', async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Upload and Download" exercise @T1fdf6702', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.uploadAndDownloadExerciseName;
 
@@ -123,7 +123,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Elements" menu -> "Dynamic Properties" exercise @T6ee41a04', async () => {
+  test('Check that user is able to navigate to -> "Elements" menu -> "Dynamic Properties" exercise @T43622572', async () => {
     exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     exerciseName = exercisesNamesData.dynamicPropertiesExerciseName;
 
@@ -138,7 +138,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
 
   // Forms
 
-  test('Check that user is able to navigate to -> "Forms" menu -> "Practice Form" exercise @Tb2720172', async () => {
+  test('Check that user is able to navigate to -> "Forms" menu -> "Practice Form" exercise @T7e3285c6', async () => {
     exerciseMenuName = exercisesMenusNamesData.formMenuName;
     exerciseName = exercisesNamesData.practiceFormExerciseName;
 
@@ -153,7 +153,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
 
   // Alerts, Frame & Windows
 
-  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Browser Windows" exercise @Tf87ecdba', async () => {
+  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Browser Windows" exercise @T9e895f81', async () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.browserWindowsExerciseName;
 
@@ -166,7 +166,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Alerts" exercise @T5277fa3f', async () => {
+  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Alerts" exercise @T0557432b', async () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.alertsExerciseName;
 
@@ -193,7 +193,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Nested Frames" exercise @Tba934737', async () => {
+  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Nested Frames" exercise @T4f1ea971', async () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.nestedFramesExerciseName;
 
@@ -206,7 +206,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Modal Dialogs" exercise @Te7e41e0e', async () => {
+  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Modal Dialogs" exercise @Tcdd5a99c', async () => {
     exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
     exerciseName = exercisesNamesData.modalDialogExerciseName;
 
@@ -221,7 +221,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
 
   // Widgets
 
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Accordian" exercise @Tf153d214', async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Accordian" exercise @Ta543c269', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.accordianExerciseName;
 
@@ -234,7 +234,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Auto Complete" exercise @Teec61279', async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Auto Complete" exercise @T4bfef15f', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.autoCompleteExerciseName;
 
@@ -247,7 +247,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Date Picker" exercise @Tca9a0606', async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Date Picker" exercise @Tad9e222c', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.datePickerExerciseName;
 
@@ -260,7 +260,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Slider" exercise @Tfdd949db', async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Slider" exercise @Ta85ac1d4', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.sliderExerciseName;
 
@@ -273,7 +273,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Progress Bar" exercise @T1ff693a5', async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Progress Bar" exercise @Tf471622e', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.progressBarExerciseName;
 
@@ -286,7 +286,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Tabs" exercise @T58fa4579', async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Tabs" exercise @T9ce1c645', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.tabsExerciseName;
 
@@ -299,7 +299,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Tool Tips" exercise @Tf28cc9c4', async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Tool Tips" exercise @Tba54602e', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.toolTipsExerciseName;
 
@@ -326,7 +326,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Select Menu" exercise @T0c601401', async () => {
+  test('Check that user is able to navigate to -> "Widgets" menu -> "Select Menu" exercise @Tb494a984', async () => {
     exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
     exerciseName = exercisesNamesData.selectMenuExerciseName;
 
@@ -341,7 +341,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
 
   // Interactions
 
-  test('Check that user is able to navigate to -> "Interactions" menu -> "Sortable" exercise @T1abf9600', async () => {
+  test('Check that user is able to navigate to -> "Interactions" menu -> "Sortable" exercise @T2adf1bdb', async () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.sortableExerciseName;
 
@@ -354,7 +354,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Interactions" menu -> "Selectable" exercise @Tce9ef25a', async () => {
+  test('Check that user is able to navigate to -> "Interactions" menu -> "Selectable" exercise @T59f618cf', async () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.selectableExerciseName;
 
@@ -367,7 +367,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Interactions" menu -> "Resizable" exercise @Tfc00836d', async () => {
+  test('Check that user is able to navigate to -> "Interactions" menu -> "Resizable" exercise @T56c3e322', async () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.resizableExerciseName;
 
@@ -380,7 +380,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Interactions" menu -> "Droppable" exercise @Taa32a080', async () => {
+  test('Check that user is able to navigate to -> "Interactions" menu -> "Droppable" exercise @T841add60', async () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.droppableExerciseName;
 
@@ -393,7 +393,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Interactions" menu -> "Dragabble" exercise @T0bbb0bfc', async () => {
+  test('Check that user is able to navigate to -> "Interactions" menu -> "Dragabble" exercise @Tf01b841c', async () => {
     exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
     exerciseName = exercisesNamesData.dragabbleExerciseName;
 
@@ -408,7 +408,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
 
   // Book Store Application
 
-  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Login" exercise @Te1cd0be7', async () => {
+  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Login" exercise @Tf2f52116', async () => {
     exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
     exerciseName = exercisesNamesData.loginExerciseName;
 
@@ -436,7 +436,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Profile" exercise @T26cc9908', async () => {
+  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Profile" exercise @T08641b20', async () => {
     exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
     exerciseName = exercisesNamesData.profileExerciseName;
     exerciseSlug = "profile";
@@ -450,7 +450,7 @@ test.describe("Navigation to exercises @Sbc26030f", () => {
     });
   });
 
-  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Book Store API" exercise @Tbcee65d1', async () => {
+  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Book Store API" exercise @T9c57ef12', async () => {
     exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
     exerciseName = exercisesNamesData.bookStoreAPIExerciseName;
     exerciseSlug = "swagger/";

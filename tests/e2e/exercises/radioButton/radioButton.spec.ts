@@ -1,8 +1,8 @@
 import { test } from "@playwright/test";
-import { exercisesMenusNamesData, exercisesNamesData, radioButtonsNames } from "../src/data";
-import { NavigationPage, RadioButtonPage } from "../src/pages";
+import { exercisesMenusNamesData, exercisesNamesData, radioButtonsNames } from "../../../../src/data";
+import { NavigationPage, RadioButtonPage } from "../../../../src/pages";
 
-test.describe("Check Radio Button Functionality @S2a1bb795", () => {
+test.describe("'Radio Button' exercise @S45959310", () => {
   let radioButtonPage: RadioButtonPage;
   let navigationPage: NavigationPage;
 
@@ -19,7 +19,7 @@ test.describe("Check Radio Button Functionality @S2a1bb795", () => {
     await navigationPage.openExercise(exercisesMenuName, exerciseName);
   });
 
-  test("Check that 'Yes' Radio Button is available and Result Field is working correctly @T910374ae", async () => {
+  test("Check that 'Yes' Radio Button is available and Result Field is working correctly @T03d619e3", async () => {
     radioButtonName = radioButtonsNames.yesButtonName;
 
     await test.step("Click on 'Yes' Radio Button", async () => {
@@ -31,7 +31,7 @@ test.describe("Check Radio Button Functionality @S2a1bb795", () => {
     });
   });
 
-  test("Check that 'Impressive' Radio Button is available and Result Field is working correctly @T011feb08", async () => {
+  test("Check that 'Impressive' Radio Button is available and Result Field is working correctly @Tf3beeacf", async () => {
     radioButtonName = radioButtonsNames.impressiveButtonName;
 
     await test.step("Click on 'Impressive' Radio Button", async () => {
