@@ -20,7 +20,9 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-
+    env:
+      TESTOMATIO: ${{ secrets.TESTOMATIO }}
+      TESTOMATIO_RUN: ${{ github.event.inputs.run }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,6 +49,3 @@ jobs:
         if: always()
         run: |
           npx @testomatio/reporter finish
-        env:
-          TESTOMATIO: ${{ secrets.TESTOMATIO }}
-          TESTOMATIO_RUN: ${{ github.event.inputs.run }}
