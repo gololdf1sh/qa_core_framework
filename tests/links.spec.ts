@@ -3,7 +3,7 @@ import { LinksPage, NavigationPage } from "../src/pages";
 import { exercisesMenusNamesData, exercisesNamesData } from "../src/data";
 import { linksExpectedData } from "../src/data/linksExerciseData";
 
-test.describe("Check Links functionality", () => {
+test.describe("Check Links functionality @Sbad42f3a", () => {
   let navigationPage: NavigationPage;
   let linksPage: LinksPage;
 
@@ -23,7 +23,7 @@ test.describe("Check Links functionality", () => {
     await navigationPage.openExercise(exerciseMenuName, exerciseName);
   });
 
-  test("Check Created Link functionality", async () => {
+  test("Check Created Link functionality @Te36829b2", async () => {
     createdLinkLocator = linksPage.createdLink;
     urlPart = linksExpectedData.createdLink.urlPart;
     expectedStatus = linksExpectedData.createdLink.expectedStatus;
@@ -38,7 +38,7 @@ test.describe("Check Links functionality", () => {
     });
   });
 
-  test("Check No Content Link functionality", async () => {
+  test("Check No Content Link functionality @T26362cc5", async () => {
     createdLinkLocator = linksPage.noContentLink;
     urlPart = linksExpectedData.noContentLink.urlPart;
     expectedStatus = linksExpectedData.noContentLink.expectedStatus;
@@ -53,7 +53,7 @@ test.describe("Check Links functionality", () => {
     });
   });
 
-  test("Check Moved Link functionality", async () => {
+  test("Check Moved Link functionality @Tae1e7d66", async () => {
     createdLinkLocator = linksPage.movedLink;
     urlPart = linksExpectedData.movedLink.urlPart;
     expectedStatus = linksExpectedData.movedLink.expectedStatus;
@@ -68,7 +68,7 @@ test.describe("Check Links functionality", () => {
     });
   });
 
-  test("Check Bad Request Link functionality", async () => {
+  test("Check Bad Request Link functionality @T2790069f", async () => {
     createdLinkLocator = linksPage.badRequestLink;
     urlPart = linksExpectedData.badRequestLink.urlPart;
     expectedStatus = linksExpectedData.badRequestLink.expectedStatus;
@@ -83,7 +83,7 @@ test.describe("Check Links functionality", () => {
     });
   });
 
-  test("Check Unauthorized Link functionality", async () => {
+  test("Check Unauthorized Link functionality @Ta7150343", async () => {
     createdLinkLocator = linksPage.unauthorizedLink;
     urlPart = linksExpectedData.unauthorizedLink.urlPart;
     expectedStatus = linksExpectedData.unauthorizedLink.expectedStatus;
@@ -98,7 +98,7 @@ test.describe("Check Links functionality", () => {
     });
   });
 
-  test("Check Forbidden Link functionality", async () => {
+  test("Check Forbidden Link functionality @T4545e6d0", async () => {
     createdLinkLocator = linksPage.forbiddenLink;
     urlPart = linksExpectedData.forbiddenLink.urlPart;
     expectedStatus = linksExpectedData.forbiddenLink.expectedStatus;
@@ -113,7 +113,7 @@ test.describe("Check Links functionality", () => {
     });
   });
 
-  test("Check Not Found Link functionality", async () => {
+  test("Check Not Found Link functionality @T53ce9499", async () => {
     createdLinkLocator = linksPage.invalidUrlLink;
     urlPart = linksExpectedData.invalidUrlLink.urlPart;
     expectedStatus = linksExpectedData.invalidUrlLink.expectedStatus;
@@ -128,7 +128,7 @@ test.describe("Check Links functionality", () => {
     });
   });
 
-  test("Check Simple Link functionality", async () => {
+  test("Check Simple Link functionality @Tdd99a6a2", async () => {
     createdLinkLocator = linksPage.simpleLink;
     let newPage: Page;
 
@@ -141,7 +141,7 @@ test.describe("Check Links functionality", () => {
     });
   });
 
-  test("Check Dynamic Link functionality", async () => {
+  test("Check Dynamic Link functionality @T0228e441", async () => {
     createdLinkLocator = linksPage.dynamicLink;
     let newPage: Page;
 
