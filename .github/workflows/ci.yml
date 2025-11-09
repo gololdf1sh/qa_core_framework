@@ -18,13 +18,10 @@ jobs:
     env:
       BASE_URL: ${{ secrets.BASE_URL }}
       TESTOMATIO: ${{ secrets.TESTOMATIO }}
-      TESTOMATIO_RUN: ${{ github.event.inputs.run }}
       TESTOMATIO_CREATE: 1
-      TESTOMATIO_PROCEED: 1
+      TESTOMATIO_RUN: ${{ github.event.inputs.run }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-node@v4
         with:
@@ -42,7 +39,3 @@ jobs:
             CMD="$CMD --grep '${{ github.event.inputs.grep }}'"
           fi
           npx @testomatio/reporter run "$CMD"
-
-      - name: Finish Testomat run
-        if: ${{ github.event.inputs.run }}
-        run: |
