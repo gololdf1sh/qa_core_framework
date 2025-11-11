@@ -41,7 +41,7 @@ jobs:
         run: |
           CMD="npx playwright test --workers=1 --retries=1"
           if [ -n "${{ github.event.inputs.grep }}" ]; then
-            CMD="$CMD --grep '${{ github.event.inputs.grep }}'"
+            CMD="$CMD --grep ${{ github.event.inputs.grep }}"
           fi
           npx @testomatio/reporter run "$CMD"
 
