@@ -7,7 +7,7 @@ import {
 } from "../../../../src/data";
 import { NavigationPage, WebTablesPage } from "../../../../src/pages";
 
-test.describe("'Web Tables' exercise @S2113f767", () => {
+test.describe("Web Tables exercise @S2113f767", () => {
   let webTablesPage: WebTablesPage;
   let navigationPage: NavigationPage;
 
