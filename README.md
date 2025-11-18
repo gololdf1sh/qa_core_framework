@@ -14,7 +14,6 @@ The framework is modular, scalable, and easy to maintain, following **best pract
 - Clear test organization by functionality
 - Parallel execution of tests
 - Retry logic for flaky tests
-- Detailed reporting with Allure and HTML
 
 ---
 
