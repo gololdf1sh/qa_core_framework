@@ -1,21 +1,24 @@
 import { Page, expect, Locator } from "@playwright/test";
 import * as fs from "node:fs/promises";
+import { timeouts } from "../config/timeouts";
+import { BasePage } from "./base.page";
 
-export class UploadAndDownloadPage {
+export class UploadAndDownloadPage extends BasePage {
   readonly page: Page;
   readonly downloadButton: Locator;
   readonly uploadFileInput: Locator;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
+
     this.downloadButton = this.page.locator("#downloadButton");
     this.uploadFileInput = this.page.locator("#uploadFile");
   }
 
   async clickOnDownloadButton() {
-    await expect(this.downloadButton).toBeVisible({ timeout: 3000 });
-    await this.downloadButton.click();
-    await this.page.waitForTimeout(500);
+    await this.checkThatElementIsVisible(this.downloadButton, timeouts.shortTimeout);
+    await this.downloadButton.click({ delay: timeouts.shortTimeout });
   }
 
   async downloadFileMethod() {
@@ -33,6 +36,5 @@ export class UploadAndDownloadPage {
 
   async uploadFileMethod(pathToFile: string) {
     await this.uploadFileInput.setInputFiles(pathToFile);
-    await this.page.waitForTimeout(500);
   }
 }

@@ -1,11 +1,16 @@
 import { expect, Locator, Page } from "@playwright/test";
+import { timeouts } from "../config/timeouts";
+import { BasePage } from "./base.page";
 
-export class RadioButtonPage {
+export class RadioButtonPage extends BasePage {
   readonly page: Page;
+
   readonly resultField: Locator;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
+
     this.resultField = this.page.locator('[class="mt-3"]');
   }
 
@@ -14,9 +19,8 @@ export class RadioButtonPage {
   }
   async clickOnRadioButton(radioButtonName: string) {
     let radioButtonLocator = await this.generateRadioButtonLocator(radioButtonName);
-    await expect(radioButtonLocator).toBeVisible({ timeout: 3000 });
-    await radioButtonLocator.click();
-    await this.page.waitForTimeout(500);
+    await this.checkThatElementIsVisible(radioButtonLocator, timeouts.shortTimeout);
+    await radioButtonLocator.click({ delay: timeouts.shortTimeout });
   }
 
   async checkResultField(radioButtonName: string) {
