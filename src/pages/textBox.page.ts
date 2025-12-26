@@ -1,8 +1,11 @@
 import { Page, expect, Locator } from "@playwright/test";
 import { TextBoxInputFieldsDataType } from "../types";
+import { BasePage } from "./base.page";
+import { timeouts } from "../config/timeouts";
 
-export class TextBoxPage {
+export class TextBoxPage extends BasePage {
   readonly page: Page;
+
   readonly fullNameInput: Locator;
   readonly emailInput: Locator;
   readonly currentAddressInput: Locator;
@@ -11,7 +14,9 @@ export class TextBoxPage {
   readonly resultField: Locator;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
+
     this.fullNameInput = this.page.locator("#userName");
     this.emailInput = this.page.locator("#userEmail");
     this.currentAddressInput = this.page.locator("#currentAddress");
@@ -21,33 +26,28 @@ export class TextBoxPage {
   }
 
   async fillFullNameInput(userFullName: string) {
-    await expect(this.fullNameInput).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.fullNameInput, timeouts.shortTimeout);
     await this.fullNameInput.fill(userFullName);
-    await this.page.waitForTimeout(500);
   }
 
   async fillEmailInput(userEmail: string) {
-    await expect(this.emailInput).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.emailInput, timeouts.shortTimeout);
     await this.emailInput.fill(userEmail);
-    await this.page.waitForTimeout(500);
   }
 
   async fillCurrentAddressInput(userCurrentAddress: string) {
-    await expect(this.currentAddressInput).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.currentAddressInput, timeouts.shortTimeout);
     await this.currentAddressInput.fill(userCurrentAddress);
-    await this.page.waitForTimeout(500);
   }
 
   async fillPermanentAddressInput(userPermanentAddress: string) {
-    await expect(this.permanentAddressInput).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.permanentAddressInput, timeouts.shortTimeout);
     await this.permanentAddressInput.fill(userPermanentAddress);
-    await this.page.waitForTimeout(500);
   }
 
   async clickSubmitButton() {
-    await expect(this.submitButton).toBeVisible({ timeout: 3000 });
-    await this.submitButton.click();
-    await this.page.waitForTimeout(500);
+    await this.checkThatElementIsVisible(this.submitButton, timeouts.shortTimeout);
+    await this.submitButton.click({ delay: timeouts.shortTimeout });
   }
 
   async fillTextBoxInputs(data: TextBoxInputFieldsDataType) {

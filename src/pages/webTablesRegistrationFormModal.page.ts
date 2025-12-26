@@ -1,7 +1,10 @@
-import { expect, Locator, type Page } from "@playwright/test";
+import { Locator, type Page } from "@playwright/test";
+import { BasePage } from "./base.page";
+import { timeouts } from "../config/timeouts";
 
-export class WebTablesRegistrationFormModalPage {
+export class WebTablesRegistrationFormModalPage extends BasePage {
   readonly page: Page;
+
   readonly firstNameInput: Locator;
   readonly lastNameInput: Locator;
   readonly emailInput: Locator;
@@ -11,7 +14,9 @@ export class WebTablesRegistrationFormModalPage {
   readonly submitButton: Locator;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
+
     this.firstNameInput = this.page.locator("#firstName");
     this.lastNameInput = this.page.locator("#lastName");
     this.emailInput = this.page.locator("#userEmail");
@@ -22,44 +27,38 @@ export class WebTablesRegistrationFormModalPage {
   }
 
   async fillFirstNameInput(userFirstName: string) {
-    await expect(this.firstNameInput).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.firstNameInput, timeouts.shortTimeout);
     await this.firstNameInput.fill(userFirstName);
-    await this.page.waitForTimeout(500);
   }
 
   async fillLastNameInput(userLastName: string) {
-    await expect(this.lastNameInput).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.lastNameInput, timeouts.shortTimeout);
     await this.lastNameInput.fill(userLastName);
-    await this.page.waitForTimeout(500);
   }
 
   async fillEmailInput(userEmail: string) {
-    await expect(this.emailInput).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.emailInput, timeouts.shortTimeout);
     await this.emailInput.fill(userEmail);
-    await this.page.waitForTimeout(500);
   }
 
   async fillAgeInput(userAge: string) {
-    await expect(this.ageInput).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.ageInput, timeouts.shortTimeout);
     await this.ageInput.fill(userAge);
   }
 
   async fillSalaryInput(userSalary: string) {
-    await expect(this.salaryInput).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.salaryInput, timeouts.shortTimeout);
     await this.salaryInput.fill(userSalary);
-    await this.page.waitForTimeout(500);
   }
 
   async fillDepartmentInput(userDepartment: string) {
-    await expect(this.departmentInput).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.departmentInput, timeouts.shortTimeout);
     await this.departmentInput.fill(userDepartment);
-    await this.page.waitForTimeout(500);
   }
 
   async clickSubmitButton() {
-    await expect(this.submitButton).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.submitButton, timeouts.shortTimeout);
     await this.submitButton.click();
-    await this.page.waitForTimeout(500);
   }
 
   async fillUserInfoAndClickSubmitButton(userData: {

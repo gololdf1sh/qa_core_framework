@@ -1,8 +1,12 @@
 import { expect, type Page } from "@playwright/test";
+import { timeouts } from "../config/timeouts";
+import { BasePage } from "./base.page";
 
-export class NavigationPage {
+export class NavigationPage extends BasePage {
   readonly page: Page;
+
   constructor(page: Page) {
+    super(page);
     this.page = page;
   }
 
@@ -21,16 +25,14 @@ export class NavigationPage {
 
   async openExerciseMenu(exerciseMenuName: string) {
     const menuButton = await this.generateExerciseMenuButtonLocator(exerciseMenuName);
-    await expect(menuButton).toBeVisible({ timeout: 3000 });
-    await menuButton.click();
-    await this.page.waitForTimeout(500);
+    await this.checkThatElementIsVisible(menuButton, timeouts.shortTimeout);
+    await menuButton.click({ delay: timeouts.shortTimeout });
   }
 
   async clickOnExerciseButton(exerciseName: string) {
     const exerciseButton = await this.generateExerciseButtonLocator(exerciseName);
-    await expect(exerciseButton).toBeVisible({ timeout: 3000 });
-    await exerciseButton.click();
-    await this.page.waitForTimeout(500);
+    await this.checkThatElementIsVisible(exerciseButton, timeouts.shortTimeout);
+    await exerciseButton.click({ delay: timeouts.shortTimeout });
   }
 
   async openExercise(exerciseMenuName: string, exerciseName: string) {

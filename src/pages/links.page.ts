@@ -1,7 +1,10 @@
 import { expect, Locator, Page } from "@playwright/test";
+import { timeouts } from "../config/timeouts";
+import { BasePage } from "./base.page";
 
-export class LinksPage {
+export class LinksPage extends BasePage {
   readonly page: Page;
+
   readonly simpleLink: Locator;
   readonly dynamicLink: Locator;
   readonly createdLink: Locator;
@@ -14,7 +17,9 @@ export class LinksPage {
   readonly linkResponseResultField: Locator;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
+
     this.simpleLink = this.page.locator("#simpleLink");
     this.dynamicLink = this.page.locator("#dynamicLink");
     this.createdLink = this.page.locator("#created");
@@ -28,7 +33,7 @@ export class LinksPage {
   }
 
   async clickOnLinkButton(linkButtonLocator: Locator) {
-    await expect(linkButtonLocator).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(linkButtonLocator, timeouts.shortTimeout);
     await linkButtonLocator.click();
     await this.page.waitForTimeout(500);
   }
@@ -42,7 +47,7 @@ export class LinksPage {
   }
 
   async checkThatResultFieldContainsExpectedText(expectedText: string) {
-    await expect(this.linkResponseResultField).toBeVisible({ timeout: 3000 });
+    await this.checkThatElementIsVisible(this.linkResponseResultField, timeouts.shortTimeout);
     await expect(this.linkResponseResultField).toContainText(expectedText);
   }
 

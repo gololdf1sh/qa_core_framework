@@ -1,14 +1,19 @@
 import { expect, Locator, Page } from "@playwright/test";
+import { timeouts } from "../config/timeouts";
+import { BasePage } from "./base.page";
 
-export class DynamicPropertiesPage {
+export class DynamicPropertiesPage extends BasePage {
   page: Page;
+
   readonly thisTextHasRandomId: Locator;
   readonly willEnableFiveSecondsButton: Locator;
   readonly colorChangeButton: Locator;
   readonly visibleAfterFiveSecondsButton: Locator;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
+
     this.thisTextHasRandomId = this.page.locator("p", { hasText: "This text has random Id" });
     this.willEnableFiveSecondsButton = this.page.locator("#enableAfter");
     this.colorChangeButton = this.page.locator("#colorChange");
@@ -16,23 +21,23 @@ export class DynamicPropertiesPage {
   }
 
   async checkThatThisTextHasRandomIdIsVisible() {
-    await expect(this.thisTextHasRandomId).toBeVisible({ timeout: 5000 });
+    await this.checkThatElementIsVisible(this.thisTextHasRandomId, timeouts.shortTimeout);
   }
 
   async checkThatWillEnableFiveSecondsButtonIsVisible() {
-    await expect(this.willEnableFiveSecondsButton).toBeVisible({ timeout: 5000 });
+    await this.checkThatElementIsVisible(this.willEnableFiveSecondsButton, timeouts.shortTimeout);
   }
 
   async checkThatColorChangeButtonIsVisible() {
-    await expect(this.colorChangeButton).toBeVisible({ timeout: 5000 });
+    await this.checkThatElementIsVisible(this.colorChangeButton, timeouts.shortTimeout);
   }
 
   async checkThatVisibleAfterFiveSecondsButtonIsVisible() {
-    await expect(this.visibleAfterFiveSecondsButton).toBeVisible({ timeout: 4900 });
+    await this.checkThatElementIsVisible(this.visibleAfterFiveSecondsButton, timeouts.shortTimeout);
   }
 
   async checkThatVisibleAfterFiveSecondsButtonIsNotVisible() {
-    await expect(this.visibleAfterFiveSecondsButton).not.toBeVisible({ timeout: 100 });
+    await this.checkThatElementIsNotVisible(this.visibleAfterFiveSecondsButton, timeouts.shortTimeout);
   }
 
   async checkThatWillEnableFiveSecondsButtonIsDisabled() {
