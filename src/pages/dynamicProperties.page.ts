@@ -3,7 +3,7 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "./base.page";
 
 export class DynamicPropertiesPage extends BasePage {
-  page: Page;
+  readonly page: Page;
 
   readonly thisTextHasRandomId: Locator;
   readonly willEnableFiveSecondsButton: Locator;

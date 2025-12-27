@@ -10,29 +10,24 @@ export class NavigationPage extends BasePage {
     this.page = page;
   }
 
-  async goToUrl(url: string) {
-    await this.page.goto(url);
-    await this.page.waitForLoadState("domcontentloaded", { timeout: 10000 });
-  }
-
-  async generateExerciseButtonLocator(exerciseName: string) {
+  private async generateExerciseButtonLocator(exerciseName: string) {
     return this.page.getByText(exerciseName, { exact: true });
   }
 
-  async generateExerciseMenuButtonLocator(exerciseMenuName: string) {
+  private async generateExerciseMenuButtonLocator(exerciseMenuName: string) {
     return this.page.locator('[class="card mt-4 top-card"]', { hasText: `${exerciseMenuName}` });
   }
 
-  async openExerciseMenu(exerciseMenuName: string) {
+  private async openExerciseMenu(exerciseMenuName: string) {
     const menuButton = await this.generateExerciseMenuButtonLocator(exerciseMenuName);
     await this.checkThatElementIsVisible(menuButton, timeouts.shortTimeout);
-    await menuButton.click({ delay: timeouts.shortTimeout });
+    await this.clickOnElement(menuButton, timeouts.superShort);
   }
 
-  async clickOnExerciseButton(exerciseName: string) {
+  private async clickOnExerciseButton(exerciseName: string) {
     const exerciseButton = await this.generateExerciseButtonLocator(exerciseName);
     await this.checkThatElementIsVisible(exerciseButton, timeouts.shortTimeout);
-    await exerciseButton.click({ delay: timeouts.shortTimeout });
+    await this.clickOnElement(exerciseButton, timeouts.superShort);
   }
 
   async openExercise(exerciseMenuName: string, exerciseName: string) {
@@ -41,17 +36,10 @@ export class NavigationPage extends BasePage {
   }
 
   async checkExerciseHeader(exerciseName: string) {
-    await expect(this.page.locator('[class="text-center"]', { hasText: `${exerciseName}` })).toBeVisible({
-      timeout: 3000,
-    });
-  }
-
-  generateExerciseURL(exerciseSlug: string) {
-    return "https://demoqa.com/" + exerciseSlug;
+    await this.checkThatElementIsVisible(this.page.locator('[class="text-center"]', { hasText: `${exerciseName}` }), timeouts.shortTimeout);
   }
 
   async checkExerciseURL(exerciseSlug: string) {
-    const exerciseURL = this.generateExerciseURL(exerciseSlug);
-    await expect(this.page).toHaveURL(exerciseURL);
+    await expect(this.page).toHaveURL(process.env.BASE_URL + exerciseSlug);
   }
 }

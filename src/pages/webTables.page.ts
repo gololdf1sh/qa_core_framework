@@ -1,4 +1,4 @@
-import { expect, Locator, type Page } from "@playwright/test";
+import { Locator, type Page } from "@playwright/test";
 import { WebTablesRegistrationFormModalPage } from "../pages";
 import { generateUserDataTypes } from "../types";
 import { BasePage } from "./base.page";
@@ -24,75 +24,67 @@ export class WebTablesPage extends BasePage {
     this.deleteUserButton = this.page.getByTitle("Delete");
   }
 
-  async generateFirstNameCellLocator(stringNumber: number) {
+  private async generateFirstNameCellLocator(stringNumber: number) {
     const indexedStringNumber = stringNumber - 1;
     return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7);
   }
 
-  async generateLastNameCellLocator(stringNumber: number) {
+  private async generateLastNameCellLocator(stringNumber: number) {
     const indexedStringNumber = stringNumber - 1;
     return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7 + 1);
   }
 
-  async generateAgeCellLocator(stringNumber: number) {
+  private async generateAgeCellLocator(stringNumber: number) {
     const indexedStringNumber = stringNumber - 1;
     return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7 + 2);
   }
 
-  async generateEmailCellLocator(stringNumber: number) {
+  private async generateEmailCellLocator(stringNumber: number) {
     const indexedStringNumber = stringNumber - 1;
     return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7 + 3);
   }
 
-  async generateSalaryCellLocator(stringNumber: number) {
+  private async generateSalaryCellLocator(stringNumber: number) {
     const indexedStringNumber = stringNumber - 1;
     return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7 + 4);
   }
 
-  async generateDepartmentCellLocator(stringNumber: number) {
+  private async generateDepartmentCellLocator(stringNumber: number) {
     const indexedStringNumber = stringNumber - 1;
     return this.page.locator('[role="gridcell"]').nth(indexedStringNumber * 7 + 5);
   }
 
-  async checkFirstNameCell(stringNumber: number, firstName: string) {
+  private async checkFirstNameCell(stringNumber: number, firstName: string) {
     let firstNameCellLocator = await this.generateFirstNameCellLocator(stringNumber);
-    await expect(firstNameCellLocator).toContainText(firstName);
+    await this.checkThatElementContainExpectedText(firstNameCellLocator, firstName);
   }
 
-  async checkLastNameCell(stringNumber: number, lastName: string) {
+  private async checkLastNameCell(stringNumber: number, lastName: string) {
     let lastNameCellLocator = await this.generateLastNameCellLocator(stringNumber);
-    await expect(lastNameCellLocator).toContainText(lastName);
+    await this.checkThatElementContainExpectedText(lastNameCellLocator, lastName);
   }
 
-  async checkAgeCell(stringNumber: number, age: string) {
+  private async checkAgeCell(stringNumber: number, age: string) {
     let ageCellLocator = await this.generateAgeCellLocator(stringNumber);
-    await expect(ageCellLocator).toContainText(age);
+    await this.checkThatElementContainExpectedText(ageCellLocator, age);
   }
 
-  async checkEmailCell(stringNumber: number, email: string) {
+  private async checkEmailCell(stringNumber: number, email: string) {
     let emailCellLocator = await this.generateEmailCellLocator(stringNumber);
-    await expect(emailCellLocator).toContainText(email);
+    await this.checkThatElementContainExpectedText(emailCellLocator, email);
   }
 
-  async checkSalaryCell(stringNumber: number, salary: string) {
+  private async checkSalaryCell(stringNumber: number, salary: string) {
     let salaryCellLocator = await this.generateSalaryCellLocator(stringNumber);
-    await expect(salaryCellLocator).toContainText(salary);
+    await this.checkThatElementContainExpectedText(salaryCellLocator, salary);
   }
 
-  async checkDepartmentCell(stringNumber: number, department: string) {
+  private async checkDepartmentCell(stringNumber: number, department: string) {
     let departmentCellLocator = await this.generateDepartmentCellLocator(stringNumber);
-    await expect(departmentCellLocator).toContainText(department);
+    await this.checkThatElementContainExpectedText(departmentCellLocator, department);
   }
 
-  async checkUserData(
-    userNumber: number,
-    firstName: string,
-    lastName: string,
-    age: string,
-    email: string,
-    salary: string,
-    department: string,
-  ) {
+  async checkUserData(userNumber: number, firstName: string, lastName: string, age: string, email: string, salary: string, department: string) {
     let stringNumber = userNumber;
 
     await this.checkFirstNameCell(stringNumber, firstName);
@@ -103,9 +95,9 @@ export class WebTablesPage extends BasePage {
     await this.checkDepartmentCell(stringNumber, department);
   }
 
-  async clickOnFirstDeleteUserButton() {
+  private async clickOnFirstDeleteUserButton() {
     await this.checkThatElementIsVisible(this.deleteUserButton.first(), timeouts.shortTimeout);
-    await this.deleteUserButton.first().click();
+    await this.clickOnElement(this.deleteUserButton.first(), timeouts.superShort);
   }
 
   async deleteAllUsersFromWebTable() {
@@ -115,9 +107,9 @@ export class WebTablesPage extends BasePage {
     }
   }
 
-  async clickOnAddButton() {
+  private async clickOnAddButton() {
     await this.checkThatElementIsVisible(this.addButton.first(), timeouts.shortTimeout);
-    await this.addButton.click();
+    await this.clickOnElement(this.addButton, timeouts.superShort);
   }
 
   async addUserViaRegistrationForm(userData: generateUserDataTypes) {

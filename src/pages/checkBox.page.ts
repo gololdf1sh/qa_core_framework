@@ -1,7 +1,7 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { CheckBoxDataTypes } from "../types";
 import { timeouts } from "../config/timeouts";
-import { BasePage } from "./base.page";
+import { BasePage } from "../pages";
 
 export class CheckBoxPage extends BasePage {
   readonly page: Page;
@@ -21,7 +21,7 @@ export class CheckBoxPage extends BasePage {
 
   async clickOnPlusButton() {
     await this.checkThatElementIsVisible(this.plusButton, timeouts.shortTimeout);
-    await this.plusButton.click({ delay: timeouts.shortTimeout });
+    await this.clickOnElement(this.plusButton, timeouts.superShort);
   }
 
   async checkThatAllFilesInTreeAreVisible(checkBoxFilesNamesData: CheckBoxDataTypes) {
@@ -33,15 +33,14 @@ export class CheckBoxPage extends BasePage {
     }
   }
 
-  async generateFileLocator(fileName: string) {
+  private async generateFileLocator(fileName: string) {
     return this.page.locator('[class="rct-title"]', { hasText: `${fileName}` });
   }
 
-  async clickOnFile(fileName: string) {
+  private async clickOnFile(fileName: string) {
     let fileNameLocator = await this.generateFileLocator(fileName);
     await this.checkThatElementIsVisible(fileNameLocator, timeouts.shortTimeout);
-    await fileNameLocator.click();
-    await this.page.waitForTimeout(500);
+    await this.clickOnElement(fileNameLocator, timeouts.superShort);
   }
 
   async clickOnAllFilesInTree(checkBoxFilesNamesData: CheckBoxDataTypes) {
@@ -54,7 +53,7 @@ export class CheckBoxPage extends BasePage {
 
   async checkResultField(checkBoxResultFilesNamesData: CheckBoxDataTypes) {
     for (const fileName of Object.values(checkBoxResultFilesNamesData)) {
-      await expect(this.resultField).toContainText(fileName);
+      await this.checkThatElementContainExpectedText(this.resultField, fileName);
     }
   }
 }

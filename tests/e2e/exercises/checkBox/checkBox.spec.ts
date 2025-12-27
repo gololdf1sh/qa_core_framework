@@ -1,11 +1,6 @@
 import { test } from "@playwright/test";
 import { CheckBoxPage, NavigationPage } from "../../../../src/pages";
-import {
-  checkBoxFilesNamesData,
-  checkBoxResultFilesNamesData,
-  exercisesMenusNamesData,
-  exercisesNamesData,
-} from "../../../../src/data";
+import { checkBoxFilesNamesData, checkBoxResultFilesNamesData, exercisesMenusNamesData, exercisesNamesData } from "../../../../src/data";
 
 test.describe("'Checkbox' Exercise @S988b1f5f", () => {
   let navigationPage: NavigationPage;

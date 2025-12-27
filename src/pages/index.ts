@@ -8,3 +8,4 @@ export * from "../pages/buttons.page";
 export * from "../pages/links.page";
 export * from "../pages/uploadAndDownload.page";
 export * from "../pages/dynamicProperties.page";
+export * from "../pages/base.page";
