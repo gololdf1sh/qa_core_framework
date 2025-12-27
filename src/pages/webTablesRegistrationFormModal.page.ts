@@ -29,42 +29,42 @@ export class WebTablesRegistrationFormModalPage extends BasePage {
   private async fillFirstNameInput(userFirstName: string) {
     await this.checkThatElementIsVisible(this.firstNameInput, timeouts.shortTimeout);
     await this.fillInputElement(this.firstNameInput, userFirstName);
-    await this.checkThatElementContainExpectedText(this.firstNameInput, userFirstName);
+    await this.checkThatInputHasExpectedValue(this.firstNameInput, userFirstName);
   }
 
   private async fillLastNameInput(userLastName: string) {
     await this.checkThatElementIsVisible(this.lastNameInput, timeouts.shortTimeout);
     await this.fillInputElement(this.lastNameInput, userLastName);
-    await this.checkThatElementContainExpectedText(this.lastNameInput, userLastName);
+    await this.checkThatInputHasExpectedValue(this.lastNameInput, userLastName);
   }
 
   private async fillEmailInput(userEmail: string) {
     await this.checkThatElementIsVisible(this.emailInput, timeouts.shortTimeout);
     await this.fillInputElement(this.emailInput, userEmail);
-    await this.checkThatElementContainExpectedText(this.emailInput, userEmail);
+    await this.checkThatInputHasExpectedValue(this.emailInput, userEmail);
   }
 
   private async fillAgeInput(userAge: string) {
     await this.checkThatElementIsVisible(this.ageInput, timeouts.shortTimeout);
     await this.fillInputElement(this.ageInput, userAge);
-    await this.checkThatElementContainExpectedText(this.ageInput, userAge);
+    await this.checkThatInputHasExpectedValue(this.ageInput, userAge);
   }
 
   private async fillSalaryInput(userSalary: string) {
     await this.checkThatElementIsVisible(this.salaryInput, timeouts.shortTimeout);
     await this.fillInputElement(this.salaryInput, userSalary);
-    await this.checkThatElementContainExpectedText(this.salaryInput, userSalary);
+    await this.checkThatInputHasExpectedValue(this.salaryInput, userSalary);
   }
 
   private async fillDepartmentInput(userDepartment: string) {
     await this.checkThatElementIsVisible(this.departmentInput, timeouts.shortTimeout);
     await this.fillInputElement(this.departmentInput, userDepartment);
-    await this.checkThatElementContainExpectedText(this.departmentInput, userDepartment);
+    await this.checkThatInputHasExpectedValue(this.departmentInput, userDepartment);
   }
 
   private async clickSubmitButton() {
     await this.checkThatElementIsVisible(this.submitButton, timeouts.shortTimeout);
-    await this.clickOnElement(this.submitButton, timeouts.superShort);
+    await this.clickOnElement(this.submitButton, timeouts.superShortTimeout);
   }
 
   async fillUserInfoAndClickSubmitButton(userData: {

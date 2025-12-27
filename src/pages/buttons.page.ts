@@ -26,7 +26,7 @@ export class ButtonsPage extends BasePage {
   async dblClickOnGeneratedButtonLocator(buttonName: string) {
     const buttonLocator = await this.generateButtonLocator(buttonName);
     await this.checkThatElementIsVisible(buttonLocator, timeouts.shortTimeout);
-    await buttonLocator.dblclick({ delay: timeouts.superShort });
+    await buttonLocator.dblclick({ delay: timeouts.superShortTimeout });
   }
 
   async rightClickOnGeneratedButtonLocator(buttonName: string) {

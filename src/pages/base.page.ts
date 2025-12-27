@@ -9,8 +9,18 @@ export class BasePage {
   }
 
   async goToUrl(url: string) {
-    await this.page.goto(url);
+    const response = await this.page.goto(url);
     await this.page.waitForLoadState("domcontentloaded", { timeout: timeouts.longTimeout });
+
+    if (!response) {
+      throw new Error(`goToUrl: no response returned for url: ${url}`);
+    }
+
+    if (!response.ok()) {
+      throw new Error(`goToUrl: navigation failed (HTTP ${response.status()}) for url: ${url}`);
+    }
+
+    await expect(this.page).toHaveURL(url);
   }
 
   async checkThatElementIsVisible(elementLocator: Locator, timeoutNumber: number) {
@@ -36,5 +46,9 @@ export class BasePage {
 
   async fillInputElement(elementLocator: Locator, textToFill: string) {
     await elementLocator.fill(textToFill);
+  }
+
+  async checkThatInputHasExpectedValue(elementLocator: Locator, expectedValue: string, timeoutNumber?: number) {
+    await expect(elementLocator).toHaveValue(expectedValue, { timeout: timeoutNumber });
   }
 }

@@ -97,7 +97,7 @@ export class WebTablesPage extends BasePage {
 
   private async clickOnFirstDeleteUserButton() {
     await this.checkThatElementIsVisible(this.deleteUserButton.first(), timeouts.shortTimeout);
-    await this.clickOnElement(this.deleteUserButton.first(), timeouts.superShort);
+    await this.clickOnElement(this.deleteUserButton.first(), timeouts.superShortTimeout);
   }
 
   async deleteAllUsersFromWebTable() {
@@ -109,7 +109,7 @@ export class WebTablesPage extends BasePage {
 
   private async clickOnAddButton() {
     await this.checkThatElementIsVisible(this.addButton.first(), timeouts.shortTimeout);
-    await this.clickOnElement(this.addButton, timeouts.superShort);
+    await this.clickOnElement(this.addButton, timeouts.superShortTimeout);
   }
 
   async addUserViaRegistrationForm(userData: generateUserDataTypes) {

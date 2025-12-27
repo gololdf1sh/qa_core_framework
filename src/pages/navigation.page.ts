@@ -21,13 +21,13 @@ export class NavigationPage extends BasePage {
   private async openExerciseMenu(exerciseMenuName: string) {
     const menuButton = await this.generateExerciseMenuButtonLocator(exerciseMenuName);
     await this.checkThatElementIsVisible(menuButton, timeouts.shortTimeout);
-    await this.clickOnElement(menuButton, timeouts.superShort);
+    await this.clickOnElement(menuButton, timeouts.superShortTimeout);
   }
 
   private async clickOnExerciseButton(exerciseName: string) {
     const exerciseButton = await this.generateExerciseButtonLocator(exerciseName);
     await this.checkThatElementIsVisible(exerciseButton, timeouts.shortTimeout);
-    await this.clickOnElement(exerciseButton, timeouts.superShort);
+    await this.clickOnElement(exerciseButton, timeouts.superShortTimeout);
   }
 
   async openExercise(exerciseMenuName: string, exerciseName: string) {

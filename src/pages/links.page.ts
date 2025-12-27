@@ -34,7 +34,7 @@ export class LinksPage extends BasePage {
 
   private async clickOnLinkButton(linkButtonLocator: Locator) {
     await this.checkThatElementIsVisible(linkButtonLocator, timeouts.shortTimeout);
-    await this.clickOnElement(linkButtonLocator, timeouts.superShort);
+    await this.clickOnElement(linkButtonLocator, timeouts.superShortTimeout);
   }
 
   async clickOnLinkButtonAndCheckResponse(linkButtonLocator: Locator, urlPart: string, expectedStatus: number) {

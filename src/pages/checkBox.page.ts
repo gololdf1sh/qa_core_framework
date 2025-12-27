@@ -21,7 +21,7 @@ export class CheckBoxPage extends BasePage {
 
   async clickOnPlusButton() {
     await this.checkThatElementIsVisible(this.plusButton, timeouts.shortTimeout);
-    await this.clickOnElement(this.plusButton, timeouts.superShort);
+    await this.clickOnElement(this.plusButton, timeouts.superShortTimeout);
   }
 
   async checkThatAllFilesInTreeAreVisible(checkBoxFilesNamesData: CheckBoxDataTypes) {
@@ -40,7 +40,7 @@ export class CheckBoxPage extends BasePage {
   private async clickOnFile(fileName: string) {
     let fileNameLocator = await this.generateFileLocator(fileName);
     await this.checkThatElementIsVisible(fileNameLocator, timeouts.shortTimeout);
-    await this.clickOnElement(fileNameLocator, timeouts.superShort);
+    await this.clickOnElement(fileNameLocator, timeouts.superShortTimeout);
   }
 
   async clickOnAllFilesInTree(checkBoxFilesNamesData: CheckBoxDataTypes) {

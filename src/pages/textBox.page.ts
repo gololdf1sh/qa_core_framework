@@ -47,7 +47,7 @@ export class TextBoxPage extends BasePage {
 
   async clickSubmitButton() {
     await this.checkThatElementIsVisible(this.submitButton, timeouts.shortTimeout);
-    await this.clickOnElement(this.submitButton, timeouts.superShort);
+    await this.clickOnElement(this.submitButton, timeouts.superShortTimeout);
   }
 
   async fillTextBoxInputs(data: TextBoxInputFieldsDataType) {

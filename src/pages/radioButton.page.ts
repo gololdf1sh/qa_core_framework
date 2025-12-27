@@ -21,7 +21,7 @@ export class RadioButtonPage extends BasePage {
   async clickOnRadioButton(radioButtonName: string) {
     let radioButtonLocator = await this.generateRadioButtonLocator(radioButtonName);
     await this.checkThatElementIsVisible(radioButtonLocator, timeouts.shortTimeout);
-    await this.clickOnElement(radioButtonLocator, timeouts.superShort);
+    await this.clickOnElement(radioButtonLocator, timeouts.superShortTimeout);
   }
 
   async checkResultField(radioButtonName: string) {

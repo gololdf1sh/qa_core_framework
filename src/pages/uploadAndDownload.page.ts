@@ -18,7 +18,7 @@ export class UploadAndDownloadPage extends BasePage {
 
   private async clickOnDownloadButton() {
     await this.checkThatElementIsVisible(this.downloadButton, timeouts.shortTimeout);
-    await this.clickOnElement(this.downloadButton, timeouts.superShort);
+    await this.clickOnElement(this.downloadButton, timeouts.superShortTimeout);
   }
 
   async downloadFileMethod() {
