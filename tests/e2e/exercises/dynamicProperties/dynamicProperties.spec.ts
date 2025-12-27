@@ -32,7 +32,7 @@ test.describe("'Dynamic Properties' exercise @Sff7f21df", () => {
       await dynamicPropertiesPage.checkThatWillEnableFiveSecondsButtonIsDisabled();
     });
 
-    await test.step("Check that 'Will enable 5 seconds' element is not disabled after 5 seconds", async () => {
+    await test.step("Check that 'Will enable 5 seconds' element is enable after 5 seconds", async () => {
       await dynamicPropertiesPage.checkThatWillEnableFiveSecondsButtonIsNotDisabled();
     });
   });

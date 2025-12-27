@@ -31,7 +31,7 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
 
   test("Check that 'Double Click Me' button is working as expected @T8ed6b164", async () => {
     await test.step("Double-click on 'Double Click Me' button", async () => {
-      await buttonsPage.dblClickOnButton(doubleClickMeButtonName);
+      await buttonsPage.dblClickOnGeneratedButtonLocator(doubleClickMeButtonName);
     });
 
     await test.step("Check that Result field contains expected result", async () => {
@@ -41,7 +41,7 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
 
   test("Check that 'Right Click Me' button is working as expected @T7f167a71", async () => {
     await test.step("Right-click on 'Right Click Me' button", async () => {
-      await buttonsPage.rightClickOnButton(rightClickMeButtonName);
+      await buttonsPage.rightClickOnGeneratedButtonLocator(rightClickMeButtonName);
     });
 
     await test.step("Check that Result field contains expected result", async () => {
@@ -51,7 +51,7 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
 
   test("Check that 'Click Me' button is working as expected @T92a16bf2", async () => {
     await test.step("Single-click on 'Click Me' button", async () => {
-      await buttonsPage.clickOnButton(clickMeButtonName);
+      await buttonsPage.clickOnGeneratedButtonLocator(clickMeButtonName);
     });
 
     await test.step("Check that Result field contains expected result", async () => {
@@ -61,15 +61,15 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
 
   test("Check that Result fields is able to contains all 3 results @T21138c15", async () => {
     await test.step("Double-click on 'Double Click Me' button", async () => {
-      await buttonsPage.dblClickOnButton(doubleClickMeButtonName);
+      await buttonsPage.dblClickOnGeneratedButtonLocator(doubleClickMeButtonName);
     });
 
     await test.step("Right-click on 'Right Click Me' button", async () => {
-      await buttonsPage.rightClickOnButton(rightClickMeButtonName);
+      await buttonsPage.rightClickOnGeneratedButtonLocator(rightClickMeButtonName);
     });
 
     await test.step("Single-click on 'Click Me' button", async () => {
-      await buttonsPage.clickOnButton(clickMeButtonName);
+      await buttonsPage.clickOnGeneratedButtonLocator(clickMeButtonName);
     });
 
     await test.step("Check that Result fields contains all 3 results", async () => {
@@ -81,7 +81,7 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
 
   test("Negative: Check that Result fields is not displayed after Single-click on 'Double Click Me' button @Tff95f388", async () => {
     await test.step("Single-click on 'Double Click Me' button", async () => {
-      await buttonsPage.clickOnButton(doubleClickMeButtonName);
+      await buttonsPage.clickOnGeneratedButtonLocator(doubleClickMeButtonName);
     });
 
     await test.step("Check that Result field does not displayed", async () => {
@@ -91,7 +91,7 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
 
   test("Negative: Check that Result fields is not displayed after Right-click on 'Double Click Me' button @T963ce354", async () => {
     await test.step("Right-click on 'Double Click Me' button", async () => {
-      await buttonsPage.rightClickOnButton(doubleClickMeButtonName);
+      await buttonsPage.rightClickOnGeneratedButtonLocator(doubleClickMeButtonName);
     });
 
     await test.step("Check that Result field does not displayed", async () => {
@@ -101,7 +101,7 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
 
   test("Negative: Check that Result fields is not displayed after Single-click on 'Right Click Me' button @T5848a1de", async () => {
     await test.step("Single-click on 'Right Click Me' button", async () => {
-      await buttonsPage.clickOnButton(rightClickMeButtonName);
+      await buttonsPage.clickOnGeneratedButtonLocator(rightClickMeButtonName);
     });
 
     await test.step("Check that Result field does not displayed", async () => {
@@ -111,7 +111,7 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
 
   test("Negative: Check that Result fields is not displayed after Double-click on 'Right Click Me' button @T7f361655", async () => {
     await test.step("Double-click on 'Right Click Me' button", async () => {
-      await buttonsPage.dblClickOnButton(rightClickMeButtonName);
+      await buttonsPage.dblClickOnGeneratedButtonLocator(rightClickMeButtonName);
     });
 
     await test.step("Check that Result field does not displayed", async () => {
@@ -121,7 +121,7 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
 
   test("Negative: Check that Result fields is not displayed after Right-click on 'Click Me' button @T0639d02e", async () => {
     await test.step("Right-click on 'Click Me' button", async () => {
-      await buttonsPage.rightClickOnButton(clickMeButtonName);
+      await buttonsPage.rightClickOnGeneratedButtonLocator(clickMeButtonName);
     });
 
     await test.step("Check that Result field does not displayed", async () => {

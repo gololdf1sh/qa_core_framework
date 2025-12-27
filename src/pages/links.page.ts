@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
 import { timeouts } from "../config/timeouts";
-import { BasePage } from "./base.page";
+import { BasePage } from "../pages";
 
 export class LinksPage extends BasePage {
   readonly page: Page;
@@ -32,10 +32,9 @@ export class LinksPage extends BasePage {
     this.linkResponseResultField = this.page.locator("#linkResponse");
   }
 
-  async clickOnLinkButton(linkButtonLocator: Locator) {
+  private async clickOnLinkButton(linkButtonLocator: Locator) {
     await this.checkThatElementIsVisible(linkButtonLocator, timeouts.shortTimeout);
-    await linkButtonLocator.click();
-    await this.page.waitForTimeout(500);
+    await this.clickOnElement(linkButtonLocator, timeouts.superShortTimeout);
   }
 
   async clickOnLinkButtonAndCheckResponse(linkButtonLocator: Locator, urlPart: string, expectedStatus: number) {
@@ -48,7 +47,7 @@ export class LinksPage extends BasePage {
 
   async checkThatResultFieldContainsExpectedText(expectedText: string) {
     await this.checkThatElementIsVisible(this.linkResponseResultField, timeouts.shortTimeout);
-    await expect(this.linkResponseResultField).toContainText(expectedText);
+    await this.checkThatElementContainExpectedText(this.linkResponseResultField, expectedText);
   }
 
   async clickAndOpenNewPage(locator: Locator): Promise<Page> {

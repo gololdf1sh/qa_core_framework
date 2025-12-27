@@ -1,10 +1,5 @@
 import { test } from "@playwright/test";
-import {
-  exercisesMenusNamesData,
-  exercisesNamesData,
-  generateUserData,
-  webTablesUsersData,
-} from "../../../../src/data";
+import { exercisesMenusNamesData, exercisesNamesData, generateUserData, webTablesUsersData } from "../../../../src/data";
 import { NavigationPage, WebTablesPage } from "../../../../src/pages";
 
 test.describe("Web Tables exercise @S2113f767", () => {
@@ -32,15 +27,7 @@ test.describe("Web Tables exercise @S2113f767", () => {
     const userDepartment = webTablesUsersData.firstUser.department;
 
     await test.step("Check First User Data", async () => {
-      await webTablesPage.checkUserData(
-        userNumber,
-        userFirstName,
-        userLastName,
-        userAge,
-        userEmail,
-        userSalary,
-        userDepartment,
-      );
+      await webTablesPage.checkUserData(userNumber, userFirstName, userLastName, userAge, userEmail, userSalary, userDepartment);
     });
   });
 
