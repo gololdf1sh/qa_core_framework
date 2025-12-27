@@ -13,8 +13,13 @@ test.describe("'Text Box' exercise @Sa34550bb", () => {
     const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.textBoxExerciseName;
 
-    await navigationPage.goToUrl(process.env.BASE_URL!);
-    await navigationPage.openExercise(exerciseMenuName, exerciseName);
+    test(`Go to ${process.env.BASE_URL!}`, async () => {
+      await navigationPage.goToUrl(process.env.BASE_URL!);
+    });
+
+    test(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
+      await navigationPage.openExercise(exerciseMenuName, exerciseName);
+    });
   });
 
   test("Check Text Box positive scenario @T0e4f7d50", async () => {

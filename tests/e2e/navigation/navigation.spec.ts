@@ -11,7 +11,10 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
 
   test.beforeEach(async ({ page }) => {
     navigationPage = new NavigationPage(page);
-    await navigationPage.goToUrl(process.env.BASE_URL!);
+
+    test(`Go to ${process.env.BASE_URL!}`, async () => {
+      await navigationPage.goToUrl(process.env.BASE_URL!);
+    });
   });
 
   // TODO: Implement navigation verification through a parameterized test

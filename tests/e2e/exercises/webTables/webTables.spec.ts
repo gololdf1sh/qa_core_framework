@@ -10,11 +10,16 @@ test.describe("Web Tables exercise @S2113f767", () => {
     webTablesPage = new WebTablesPage(page);
     navigationPage = new NavigationPage(page);
 
-    const exercisesMenuName = exercisesMenusNamesData.elementsMenuName;
+    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.webTablesExerciseName;
 
-    await navigationPage.goToUrl(process.env.BASE_URL!);
-    await navigationPage.openExercise(exercisesMenuName, exerciseName);
+    test(`Go to ${process.env.BASE_URL!}`, async () => {
+      await navigationPage.goToUrl(process.env.BASE_URL!);
+    });
+
+    test(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
+      await navigationPage.openExercise(exerciseMenuName, exerciseName);
+    });
   });
 
   test("Web Tables: Check existing users data @Te8ebf1d6", async () => {
