@@ -9,6 +9,10 @@ on:
         description: Filter tests
         required: false
         default: ''
+      run:
+        description: Testomat run id (sent by Testomat)
+        required: false
+        default: ''
 
 jobs:
   tests:
@@ -25,7 +29,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
-      - name: Setup Nade.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -34,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browser
+      - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
       - name: Run tests and send to Testomat
@@ -49,3 +53,14 @@ jobs:
         if: always()
         run: |
           npx @testomatio/reporter finish
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore
+          retention-days: 7
