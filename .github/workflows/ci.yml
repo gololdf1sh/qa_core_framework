@@ -21,6 +21,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     env:
+      BASE_URL: ${{ secrets.BASE_URL }}
       TESTOMATIO: ${{ secrets.TESTOMATIO }}
       TESTOMATIO_RUN: ${{ github.event.inputs.run }}
     steps:

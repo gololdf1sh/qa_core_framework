@@ -1,4 +1,4 @@
-import { Page, expect, Locator } from "@playwright/test";
+import { Page, Locator } from "@playwright/test";
 import { TextBoxInputFieldsDataType } from "../types";
 import { BasePage } from "./base.page";
 import { timeouts } from "../config/timeouts";
@@ -25,29 +25,29 @@ export class TextBoxPage extends BasePage {
     this.resultField = this.page.locator("#output");
   }
 
-  async fillFullNameInput(userFullName: string) {
+  private async fillFullNameInput(userFullName: string) {
     await this.checkThatElementIsVisible(this.fullNameInput, timeouts.shortTimeout);
-    await this.fullNameInput.fill(userFullName);
+    await this.fillInputElement(this.fullNameInput, userFullName);
   }
 
-  async fillEmailInput(userEmail: string) {
+  private async fillEmailInput(userEmail: string) {
     await this.checkThatElementIsVisible(this.emailInput, timeouts.shortTimeout);
-    await this.emailInput.fill(userEmail);
+    await this.fillInputElement(this.emailInput, userEmail);
   }
 
-  async fillCurrentAddressInput(userCurrentAddress: string) {
+  private async fillCurrentAddressInput(userCurrentAddress: string) {
     await this.checkThatElementIsVisible(this.currentAddressInput, timeouts.shortTimeout);
-    await this.currentAddressInput.fill(userCurrentAddress);
+    await this.fillInputElement(this.currentAddressInput, userCurrentAddress);
   }
 
-  async fillPermanentAddressInput(userPermanentAddress: string) {
+  private async fillPermanentAddressInput(userPermanentAddress: string) {
     await this.checkThatElementIsVisible(this.permanentAddressInput, timeouts.shortTimeout);
-    await this.permanentAddressInput.fill(userPermanentAddress);
+    await this.fillInputElement(this.permanentAddressInput, userPermanentAddress);
   }
 
   async clickSubmitButton() {
     await this.checkThatElementIsVisible(this.submitButton, timeouts.shortTimeout);
-    await this.submitButton.click({ delay: timeouts.shortTimeout });
+    await this.clickOnElement(this.submitButton, timeouts.superShortTimeout);
   }
 
   async fillTextBoxInputs(data: TextBoxInputFieldsDataType) {
@@ -59,15 +59,15 @@ export class TextBoxPage extends BasePage {
 
   async checkResultField(data: TextBoxInputFieldsDataType, validCase: boolean = true) {
     if (!validCase) {
-      await expect(this.resultField).not.toContainText(data.fullName);
-      await expect(this.resultField).not.toContainText(data.email);
-      await expect(this.resultField).not.toContainText(data.currentAddress);
-      await expect(this.resultField).not.toContainText(data.permanentAddress);
+      await this.checkThatElementDoesNotContainExpectedText(this.resultField, data.fullName);
+      await this.checkThatElementDoesNotContainExpectedText(this.resultField, data.email);
+      await this.checkThatElementDoesNotContainExpectedText(this.resultField, data.currentAddress);
+      await this.checkThatElementDoesNotContainExpectedText(this.resultField, data.permanentAddress);
     } else {
-      await expect(this.resultField).toContainText(data.fullName);
-      await expect(this.resultField).toContainText(data.email);
-      await expect(this.resultField).toContainText(data.currentAddress);
-      await expect(this.resultField).toContainText(data.permanentAddress);
+      await this.checkThatElementContainExpectedText(this.resultField, data.fullName);
+      await this.checkThatElementContainExpectedText(this.resultField, data.email);
+      await this.checkThatElementContainExpectedText(this.resultField, data.currentAddress);
+      await this.checkThatElementContainExpectedText(this.resultField, data.permanentAddress);
     }
   }
 }

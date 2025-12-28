@@ -1,10 +1,5 @@
 import { test } from "@playwright/test";
-import {
-  exercisesMenusNamesData,
-  exercisesNamesData,
-  generateUserData,
-  webTablesUsersData,
-} from "../../../../src/data";
+import { exercisesMenusNamesData, exercisesNamesData, generateUserData, webTablesUsersData } from "../../../../src/data";
 import { NavigationPage, WebTablesPage } from "../../../../src/pages";
 
 test.describe("Web Tables exercise @S2113f767", () => {
@@ -15,11 +10,16 @@ test.describe("Web Tables exercise @S2113f767", () => {
     webTablesPage = new WebTablesPage(page);
     navigationPage = new NavigationPage(page);
 
-    const exercisesMenuName = exercisesMenusNamesData.elementsMenuName;
+    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.webTablesExerciseName;
 
-    await navigationPage.goToUrl(process.env.BASE_URL!);
-    await navigationPage.openExercise(exercisesMenuName, exerciseName);
+    await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
+      await navigationPage.goToUrl(process.env.BASE_URL!);
+    });
+
+    await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
+      await navigationPage.openExercise(exerciseMenuName, exerciseName);
+    });
   });
 
   test("Web Tables: Check existing users data @Te8ebf1d6", async () => {
@@ -32,15 +32,7 @@ test.describe("Web Tables exercise @S2113f767", () => {
     const userDepartment = webTablesUsersData.firstUser.department;
 
     await test.step("Check First User Data", async () => {
-      await webTablesPage.checkUserData(
-        userNumber,
-        userFirstName,
-        userLastName,
-        userAge,
-        userEmail,
-        userSalary,
-        userDepartment,
-      );
+      await webTablesPage.checkUserData(userNumber, userFirstName, userLastName, userAge, userEmail, userSalary, userDepartment);
     });
   });
 

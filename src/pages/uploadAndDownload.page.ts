@@ -16,9 +16,9 @@ export class UploadAndDownloadPage extends BasePage {
     this.uploadFileInput = this.page.locator("#uploadFile");
   }
 
-  async clickOnDownloadButton() {
+  private async clickOnDownloadButton() {
     await this.checkThatElementIsVisible(this.downloadButton, timeouts.shortTimeout);
-    await this.downloadButton.click({ delay: timeouts.shortTimeout });
+    await this.clickOnElement(this.downloadButton, timeouts.superShortTimeout);
   }
 
   async downloadFileMethod() {

@@ -12,11 +12,16 @@ test.describe("'Radio Button' exercise @S45959310", () => {
     radioButtonPage = new RadioButtonPage(page);
     navigationPage = new NavigationPage(page);
 
-    const exercisesMenuName = exercisesMenusNamesData.elementsMenuName;
+    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.radioButtonExerciseName;
 
-    await navigationPage.goToUrl(process.env.BASE_URL!);
-    await navigationPage.openExercise(exercisesMenuName, exerciseName);
+    await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
+      await navigationPage.goToUrl(process.env.BASE_URL!);
+    });
+
+    await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
+      await navigationPage.openExercise(exerciseMenuName, exerciseName);
+    });
   });
 
   test("Check that 'Yes' Radio Button is available and Result Field is working correctly @T03d619e3", async () => {

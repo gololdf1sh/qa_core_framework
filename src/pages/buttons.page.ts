@@ -1,6 +1,6 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { clickResultFields } from "../data";
-import { BasePage } from "./base.page";
+import { BasePage } from "../pages";
 import { timeouts } from "../config/timeouts";
 
 export class ButtonsPage extends BasePage {
@@ -19,38 +19,38 @@ export class ButtonsPage extends BasePage {
     this.clickMeButtonResultField = this.page.locator(`#${clickResultFields.clickMeButtonResultField.name}`);
   }
 
-  async generateButtonLocator(buttonName: string) {
+  private async generateButtonLocator(buttonName: string) {
     return this.page.getByRole("button", { name: buttonName, exact: true });
   }
 
-  async dblClickOnButton(buttonName: string) {
+  async dblClickOnGeneratedButtonLocator(buttonName: string) {
     const buttonLocator = await this.generateButtonLocator(buttonName);
     await this.checkThatElementIsVisible(buttonLocator, timeouts.shortTimeout);
-    await buttonLocator.dblclick({ delay: 500 });
+    await buttonLocator.dblclick({ delay: timeouts.superShortTimeout });
   }
 
-  async rightClickOnButton(buttonName: string) {
+  async rightClickOnGeneratedButtonLocator(buttonName: string) {
     const buttonLocator = await this.generateButtonLocator(buttonName);
     await this.checkThatElementIsVisible(buttonLocator, timeouts.shortTimeout);
     await buttonLocator.click({ button: "right" });
   }
 
-  async clickOnButton(buttonName: string) {
+  async clickOnGeneratedButtonLocator(buttonName: string) {
     const buttonLocator = await this.generateButtonLocator(buttonName);
     await this.checkThatElementIsVisible(buttonLocator, timeouts.shortTimeout);
-    await buttonLocator.click();
+    await this.clickOnElement(buttonLocator);
   }
 
   async checkResultField(expectedField: string, expectedText: string) {
     if (expectedField === clickResultFields.doubleClickMeResultField.name) {
       await this.checkThatElementIsVisible(this.doubleClickMeResultField, timeouts.shortTimeout);
-      await expect(this.doubleClickMeResultField).toContainText(expectedText);
+      await this.checkThatElementContainExpectedText(this.doubleClickMeResultField, expectedText);
     } else if (expectedField === clickResultFields.rightClickMeButtonResultField.name) {
       await this.checkThatElementIsVisible(this.rightClickMeButtonResultField, timeouts.shortTimeout);
-      await expect(this.rightClickMeButtonResultField).toContainText(expectedText);
+      await this.checkThatElementContainExpectedText(this.rightClickMeButtonResultField, expectedText);
     } else {
       await this.checkThatElementIsVisible(this.clickMeButtonResultField, timeouts.shortTimeout);
-      await expect(this.clickMeButtonResultField).toContainText(expectedText);
+      await this.checkThatElementContainExpectedText(this.clickMeButtonResultField, expectedText);
     }
   }
 

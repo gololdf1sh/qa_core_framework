@@ -3,7 +3,7 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "./base.page";
 
 export class DynamicPropertiesPage extends BasePage {
-  page: Page;
+  readonly page: Page;
 
   readonly thisTextHasRandomId: Locator;
   readonly willEnableFiveSecondsButton: Locator;
@@ -33,7 +33,7 @@ export class DynamicPropertiesPage extends BasePage {
   }
 
   async checkThatVisibleAfterFiveSecondsButtonIsVisible() {
-    await this.checkThatElementIsVisible(this.visibleAfterFiveSecondsButton, timeouts.shortTimeout);
+    await this.checkThatElementIsVisible(this.visibleAfterFiveSecondsButton, timeouts.middleTimeout);
   }
 
   async checkThatVisibleAfterFiveSecondsButtonIsNotVisible() {
@@ -41,11 +41,11 @@ export class DynamicPropertiesPage extends BasePage {
   }
 
   async checkThatWillEnableFiveSecondsButtonIsDisabled() {
-    await expect(this.willEnableFiveSecondsButton).toHaveAttribute("disabled", { timeout: 100 });
+    await expect(this.willEnableFiveSecondsButton).toBeDisabled({ timeout: timeouts.superShortTimeout });
   }
 
   async checkThatWillEnableFiveSecondsButtonIsNotDisabled() {
-    await expect(this.willEnableFiveSecondsButton).not.toHaveAttribute("disabled", { timeout: 4900 });
+    await expect(this.willEnableFiveSecondsButton).toBeEnabled({ timeout: timeouts.middleTimeout });
   }
 
   async takeColorOfColorChangeButtonAndCheckThatColorIsChangedAfterFiveSeconds() {

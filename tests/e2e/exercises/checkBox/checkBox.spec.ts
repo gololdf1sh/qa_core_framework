@@ -1,11 +1,6 @@
 import { test } from "@playwright/test";
 import { CheckBoxPage, NavigationPage } from "../../../../src/pages";
-import {
-  checkBoxFilesNamesData,
-  checkBoxResultFilesNamesData,
-  exercisesMenusNamesData,
-  exercisesNamesData,
-} from "../../../../src/data";
+import { checkBoxFilesNamesData, checkBoxResultFilesNamesData, exercisesMenusNamesData, exercisesNamesData } from "../../../../src/data";
 
 test.describe("'Checkbox' Exercise @S988b1f5f", () => {
   let navigationPage: NavigationPage;
@@ -18,8 +13,13 @@ test.describe("'Checkbox' Exercise @S988b1f5f", () => {
     const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.checkBoxExerciseName;
 
-    await navigationPage.goToUrl(process.env.BASE_URL!);
-    await navigationPage.openExercise(exerciseMenuName, exerciseName);
+    await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
+      await navigationPage.goToUrl(process.env.BASE_URL!);
+    });
+
+    await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
+      await navigationPage.openExercise(exerciseMenuName, exerciseName);
+    });
   });
 
   test("Check user has access to every file in tree @T65cba0f6", async () => {

@@ -13,8 +13,13 @@ test.describe("'Dynamic Properties' exercise @Sff7f21df", () => {
     const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.dynamicPropertiesExerciseName;
 
-    await navigationPage.goToUrl(process.env.BASE_URL!);
-    await navigationPage.openExercise(exerciseMenuName, exerciseName);
+    await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
+      await navigationPage.goToUrl(process.env.BASE_URL!);
+    });
+
+    await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
+      await navigationPage.openExercise(exerciseMenuName, exerciseName);
+    });
   });
 
   test("Check 'This text has random Id' element @T29965385", async () => {
@@ -32,7 +37,7 @@ test.describe("'Dynamic Properties' exercise @Sff7f21df", () => {
       await dynamicPropertiesPage.checkThatWillEnableFiveSecondsButtonIsDisabled();
     });
 
-    await test.step("Check that 'Will enable 5 seconds' element is not disabled after 5 seconds", async () => {
+    await test.step("Check that 'Will enable 5 seconds' element is enable after 5 seconds", async () => {
       await dynamicPropertiesPage.checkThatWillEnableFiveSecondsButtonIsNotDisabled();
     });
   });
