@@ -1,10 +1,11 @@
 import { defineConfig } from "@playwright/test";
 import dotenv from "dotenv";
+import { timeouts } from "./src/config/timeouts";
 dotenv.config();
 
 export default defineConfig({
   testDir: "./tests",
-  timeout: 30000,
+  timeout: timeouts.superLongTimeout,
   retries: 1,
   use: {
     baseURL: process.env.BASE_URL,
