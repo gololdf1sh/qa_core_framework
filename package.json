@@ -7,7 +7,6 @@
     "test": "npx playwright test --workers=2 --retries=1",
     "test:tm": "npx playwright test",
     "lint": "eslint . --config eslint.config.mjs --ext .ts",
-    "build": "tsc",
     "prepare": "husky install",
     "report:allure": "allure generate ./allure-results --clean && allure open",
     "debug": "npx playwright test -g '' --debug"

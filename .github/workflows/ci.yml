@@ -1,4 +1,4 @@
-name: CI
+name: CI - Automation Test
 
 on:
   pull_request:
@@ -9,9 +9,6 @@ on:
         description: Filter tests
         required: false
         default: ''
-      testomatio:
-        description: Testomat API key (sent by Testomat)
-        required: false
       run:
         description: Testomat run id (sent by Testomat)
         required: false
@@ -19,24 +16,30 @@ on:
 
 jobs:
   tests:
+    name: Playwright Tests
     runs-on: ubuntu-latest
     env:
       BASE_URL: ${{ secrets.BASE_URL }}
       TESTOMATIO: ${{ secrets.TESTOMATIO }}
       TESTOMATIO_RUN: ${{ github.event.inputs.run }}
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      - run: npx playwright install --with-deps
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
 
       - name: Run tests and send to Testomat
         run: |
@@ -50,3 +53,14 @@ jobs:
         if: always()
         run: |
           npx @testomatio/reporter finish
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore
+          retention-days: 7

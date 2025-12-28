@@ -9,8 +9,10 @@ export class BasePage {
   }
 
   async goToUrl(url: string) {
-    const response = await this.page.goto(url);
-    await this.page.waitForLoadState("domcontentloaded", { timeout: timeouts.longTimeout });
+    const response = await this.page.goto(url, {
+      waitUntil: "domcontentloaded",
+      timeout: timeouts.superLongTimeout,
+    });
 
     if (!response) {
       throw new Error(`goToUrl: no response returned for url: ${url}`);
