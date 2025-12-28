@@ -13,11 +13,11 @@ test.describe("Web Tables exercise @S2113f767", () => {
     const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.webTablesExerciseName;
 
-    test(`Go to ${process.env.BASE_URL!}`, async () => {
+    await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
       await navigationPage.goToUrl(process.env.BASE_URL!);
     });
 
-    test(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
+    await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
       await navigationPage.openExercise(exerciseMenuName, exerciseName);
     });
   });

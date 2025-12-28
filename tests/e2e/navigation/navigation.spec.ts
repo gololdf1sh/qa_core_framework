@@ -12,7 +12,7 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
   test.beforeEach(async ({ page }) => {
     navigationPage = new NavigationPage(page);
 
-    test(`Go to ${process.env.BASE_URL!}`, async () => {
+    await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
       await navigationPage.goToUrl(process.env.BASE_URL!);
     });
   });
