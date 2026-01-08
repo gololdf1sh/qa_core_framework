@@ -49,12 +49,6 @@ jobs:
 
       - name: Run tests and send to Testomat
         run: npm test -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-        #run: |
-          CMD="npm test"
-          if [ -n "${{ github.event.inputs.grep }}" ]; then
-            CMD="$CMD --grep ${{ github.event.inputs.grep }}"
-          fi
-          npx @testomatio/reporter run "$CMD"
 
       - name: Finish Testomat run
         if: always()
