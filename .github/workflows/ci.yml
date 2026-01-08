@@ -43,6 +43,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run tests
+        run: npm test -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
