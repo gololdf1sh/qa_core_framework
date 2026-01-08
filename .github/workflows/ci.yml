@@ -9,14 +9,10 @@ on:
         description: Filter tests
         required: false
         default: ''
-      run:
-        description: Testomat run id (sent by Testomat)
-        required: false
-        default: ''
 
 jobs:
   tests:
-    name: Playwright Tests
+    name: Playwright Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
     runs-on: ubuntu-latest
 
     container:
@@ -25,13 +21,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2, 3]
-        shardTotal: [3]
+        shardIndex: [1, 2]
+        shardTotal: [2]
 
     env:
       BASE_URL: ${{ secrets.BASE_URL }}
-      TESTOMATIO: ${{ secrets.TESTOMATIO }}
-      TESTOMATIO_RUN: ${{ github.event.inputs.run }}
 
     steps:
       - name: Checkout repository
@@ -47,20 +41,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests and send to Testomat
-        run: npm test -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-
-      - name: Finish Testomat run
-        if: always()
-        run: |
-          npx @testomatio/reporter finish
-
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report-${{ matrix.shardIndex }}
-          #name: playwright-artifacts
           path: |
             playwright-report
             test-results
