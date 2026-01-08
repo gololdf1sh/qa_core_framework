@@ -18,6 +18,10 @@ jobs:
   tests:
     name: Playwright Tests
     runs-on: ubuntu-latest
+
+    container:
+      image: mcr.microsoft.com/playwright:v1.57.0-jammy
+
     env:
       BASE_URL: ${{ secrets.BASE_URL }}
       TESTOMATIO: ${{ secrets.TESTOMATIO }}
@@ -33,13 +37,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
 
       - name: Run tests and send to Testomat
         run: |
