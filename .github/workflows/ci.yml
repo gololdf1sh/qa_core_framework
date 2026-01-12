@@ -1,4 +1,4 @@
-name: CI - Automation Test
+name: CI - Automation Tests
 
 on:
   pull_request:
@@ -6,19 +6,45 @@ on:
   workflow_dispatch:
     inputs:
       grep:
-        description: Filter tests
+        description: Filter tests (Playwright grep)
         required: false
         default: ''
   schedule:
     - cron: '00 01 * * 1-5' # At 01:00 on every day-of-week from Monday through Friday
+env:
+  BASE_URL: ${{ secrets.BASE_URL }}
+  TESTOMATIO: ${{ secrets.TESTOMATIO }}
+  TESTOMATIO_RUNGROUP_TITLE: "CI - Automation Tests"
+  GREP: ${{ github.event.inputs.grep || '' }}
 
 jobs:
-  tests:
+  testomatio-start:
+    name: Testomat - start run
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.57.0-jammy
+    outputs:
+      run_id: ${{ steps.start.outputs.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Start Testomat run
+        id: start
+        shell: bash
+        run: |
+          RUN_ID="$(npx @testomatio/reporter start | tail -n 1)"
+          echo "run_id=$RUN_ID" >> "$GITHUB_OUTPUT"
+          echo "Started Testomat run: $RUN_ID"
+
+  run-playwright-tests:
     name: Playwright Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
     runs-on: ubuntu-latest
-
-    container:
-      image: mcr.microsoft.com/playwright:v1.57.0-jammy
+    container: mcr.microsoft.com/playwright:v1.57.0-jammy
+    needs: testomatio-start
 
     strategy:
       fail-fast: false
@@ -26,33 +52,79 @@ jobs:
         shardIndex: [1, 2]
         shardTotal: [2]
 
-    env:
-      BASE_URL: ${{ secrets.BASE_URL }}
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
+          cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
 
-      - name: Run tests
-        run: npm test -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: Run Playwright tests
+        env:
+          TESTOMATIO_RUN: ${{ needs.testomatio-start.outputs.run_id }}
+          TESTOMATIO_TITLE: "CI - Automation Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})"
 
-      - name: Upload artifacts
+        run: npm test -- --workers=1 --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --grep="${GREP}"
+
+
+      - name: Upload blob Playwright report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report-${{ matrix.shardIndex }}
-          path: |
-            playwright-report
-            test-results
-          if-no-files-found: ignore
+          name: blob-report-${{ matrix.shardIndex }}
+          path: blob-report/
+          retention-days: 7
+
+  testomatio-finish:
+    name: Testomat - finish run
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.57.0-jammy
+    needs: [testomatio-start, run-playwright-tests]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Finish Testomat run
+        run: npx @testomatio/reporter finish ${{ needs.testomatio-start.outputs.run_id }}
+
+  merge-report:
+    name: Merge Playwright HTML report
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.57.0-jammy
+    needs: run-playwright-tests
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Download all blob reports
+        uses: actions/download-artifact@v4
+        with:
+          pattern: blob-report-*
+          path: merged-blob
+          merge-multiple: true
+
+      - name: Merge into one HTML report
+        run: npx playwright merge-reports --reporter=html merged-blob
+
+      - name: Upload merged HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-merged
+          path: playwright-report/
           retention-days: 7

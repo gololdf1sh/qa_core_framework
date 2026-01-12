@@ -17,6 +17,7 @@ export default defineConfig({
     video: "retain-on-failure",
   },
   reporter: [
+    ["blob"],
     ["list"],
     ["html", { open: "on-failure" }],
     ["allure-playwright"],
