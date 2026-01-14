@@ -3,8 +3,6 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "./base.page";
 
 export class DynamicPropertiesPage extends BasePage {
-  readonly page: Page;
-
   readonly thisTextHasRandomId: Locator;
   readonly willEnableFiveSecondsButton: Locator;
   readonly colorChangeButton: Locator;
@@ -12,7 +10,6 @@ export class DynamicPropertiesPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
 
     this.thisTextHasRandomId = this.page.locator("p", { hasText: "This text has random Id" });
     this.willEnableFiveSecondsButton = this.page.locator("#enableAfter");

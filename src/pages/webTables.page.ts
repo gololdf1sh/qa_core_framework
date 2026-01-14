@@ -5,9 +5,8 @@ import { BasePage } from "./base.page";
 import { timeouts } from "../config/timeouts";
 
 export class WebTablesPage extends BasePage {
-  readonly page: Page;
-
   readonly webTablesRegistrationFormModalPage: WebTablesRegistrationFormModalPage;
+
   readonly addButton: Locator;
   readonly searchInput: Locator;
   readonly rowsPerPageDropdown: Locator;
@@ -15,7 +14,6 @@ export class WebTablesPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
 
     this.webTablesRegistrationFormModalPage = new WebTablesRegistrationFormModalPage(page);
     this.addButton = this.page.locator("#addNewRecordButton");

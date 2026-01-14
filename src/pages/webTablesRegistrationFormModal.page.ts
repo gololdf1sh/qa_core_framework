@@ -3,8 +3,6 @@ import { BasePage } from "./base.page";
 import { timeouts } from "../config/timeouts";
 
 export class WebTablesRegistrationFormModalPage extends BasePage {
-  readonly page: Page;
-
   readonly firstNameInput: Locator;
   readonly lastNameInput: Locator;
   readonly emailInput: Locator;
@@ -15,7 +13,6 @@ export class WebTablesRegistrationFormModalPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
 
     this.firstNameInput = this.page.locator("#firstName");
     this.lastNameInput = this.page.locator("#lastName");

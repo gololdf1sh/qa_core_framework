@@ -4,15 +4,12 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "../pages";
 
 export class CheckBoxPage extends BasePage {
-  readonly page: Page;
-
   readonly resultField: Locator;
   readonly plusButton: Locator;
   readonly minusButton: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
 
     this.resultField = this.page.locator("#result");
     this.plusButton = this.page.getByLabel("Expand all");

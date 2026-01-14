@@ -4,15 +4,12 @@ import { BasePage } from "../pages";
 import { timeouts } from "../config/timeouts";
 
 export class ButtonsPage extends BasePage {
-  readonly page: Page;
-
   readonly doubleClickMeResultField: Locator;
   readonly rightClickMeButtonResultField: Locator;
   readonly clickMeButtonResultField: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
 
     this.doubleClickMeResultField = this.page.locator(`#${clickResultFields.doubleClickMeResultField.name}`);
     this.rightClickMeButtonResultField = this.page.locator(`#${clickResultFields.rightClickMeButtonResultField.name}`);

@@ -1,26 +1,24 @@
 import { test } from "@playwright/test";
 import { exercisesMenusNamesData, exercisesNamesData, radioButtonsNames } from "../../../../src/data";
-import { NavigationPage, RadioButtonPage } from "../../../../src/pages";
+import { Application } from "../../../../src";
 
 test.describe("'Radio Button' exercise @S45959310", () => {
-  let radioButtonPage: RadioButtonPage;
-  let navigationPage: NavigationPage;
+  let app: Application;
 
   let radioButtonName: string;
 
   test.beforeEach(async ({ page }) => {
-    radioButtonPage = new RadioButtonPage(page);
-    navigationPage = new NavigationPage(page);
+    app = new Application(page);
 
     const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.radioButtonExerciseName;
 
     await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
-      await navigationPage.goToUrl(process.env.BASE_URL!);
+      await app.navigation.goToUrl(process.env.BASE_URL!);
     });
 
     await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
-      await navigationPage.openExercise(exerciseMenuName, exerciseName);
+      await app.navigation.openExercise(exerciseMenuName, exerciseName);
     });
   });
 
@@ -28,11 +26,11 @@ test.describe("'Radio Button' exercise @S45959310", () => {
     radioButtonName = radioButtonsNames.yesButtonName;
 
     await test.step("Click on 'Yes' Radio Button", async () => {
-      await radioButtonPage.clickOnRadioButton(radioButtonName);
+      await app.radioButton.clickOnRadioButton(radioButtonName);
     });
 
     await test.step("Check that Result Field contain Radio Button Name", async () => {
-      await radioButtonPage.checkResultField(radioButtonName);
+      await app.radioButton.checkResultField(radioButtonName);
     });
   });
 
@@ -40,11 +38,11 @@ test.describe("'Radio Button' exercise @S45959310", () => {
     radioButtonName = radioButtonsNames.impressiveButtonName;
 
     await test.step("Click on 'Impressive' Radio Button", async () => {
-      await radioButtonPage.clickOnRadioButton(radioButtonName);
+      await app.radioButton.clickOnRadioButton(radioButtonName);
     });
 
     await test.step("Check that Result Field contain Radio Button Name", async () => {
-      await radioButtonPage.checkResultField(radioButtonName);
+      await app.radioButton.checkResultField(radioButtonName);
     });
   });
 
@@ -53,11 +51,11 @@ test.describe("'Radio Button' exercise @S45959310", () => {
     radioButtonName = radioButtonsNames.noButtonName;
 
     await test.step("Click on 'No' Radio Button", async () => {
-      await radioButtonPage.clickOnRadioButton(radioButtonName);
+      await app.radioButton.clickOnRadioButton(radioButtonName);
     });
 
     await test.step("Check that Result Field contain Radio Button Name", async () => {
-      await radioButtonPage.checkResultField(radioButtonName);
+      await app.radioButton.checkResultField(radioButtonName);
     });
   });
 });
