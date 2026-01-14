@@ -1,10 +1,9 @@
 import { test } from "@playwright/test";
-import { NavigationPage, ButtonsPage } from "../../../../src/pages";
 import { buttonNames, clickResultFields, exercisesMenusNamesData, exercisesNamesData } from "../../../../src/data";
+import { Application } from "../../../../src";
 
 test.describe("'Buttons' Exercise @S08b052b1", () => {
-  let navigationPage: NavigationPage;
-  let buttonsPage: ButtonsPage;
+  let app: Application;
 
   const doubleClickMeButtonName = buttonNames.doubleClickMeButtonName;
   const rightClickMeButtonName = buttonNames.rightClickMeButtonName;
@@ -19,118 +18,117 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
   const clickMeButtonResultFieldText = clickResultFields.clickMeButtonResultField.expectedText;
 
   test.beforeEach(async ({ page }) => {
-    navigationPage = new NavigationPage(page);
-    buttonsPage = new ButtonsPage(page);
+    app = new Application(page);
 
     const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.buttonsExerciseName;
 
     await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
-      await navigationPage.goToUrl(process.env.BASE_URL!);
+      await app.navigation.goToUrl(process.env.BASE_URL!);
     });
 
     await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
-      await navigationPage.openExercise(exerciseMenuName, exerciseName);
+      await app.navigation.openExercise(exerciseMenuName, exerciseName);
     });
   });
 
   test("Check that 'Double Click Me' button is working as expected @T8ed6b164", async () => {
     await test.step("Double-click on 'Double Click Me' button", async () => {
-      await buttonsPage.dblClickOnGeneratedButtonLocator(doubleClickMeButtonName);
+      await app.buttons.dblClickOnGeneratedButtonLocator(doubleClickMeButtonName);
     });
 
     await test.step("Check that Result field contains expected result", async () => {
-      await buttonsPage.checkResultField(doubleClickMeResultFieldName, doubleClickMeResultFieldText);
+      await app.buttons.checkResultField(doubleClickMeResultFieldName, doubleClickMeResultFieldText);
     });
   });
 
   test("Check that 'Right Click Me' button is working as expected @T7f167a71", async () => {
     await test.step("Right-click on 'Right Click Me' button", async () => {
-      await buttonsPage.rightClickOnGeneratedButtonLocator(rightClickMeButtonName);
+      await app.buttons.rightClickOnGeneratedButtonLocator(rightClickMeButtonName);
     });
 
     await test.step("Check that Result field contains expected result", async () => {
-      await buttonsPage.checkResultField(rightClickMeButtonResultFieldName, rightClickMeButtonResultFieldText);
+      await app.buttons.checkResultField(rightClickMeButtonResultFieldName, rightClickMeButtonResultFieldText);
     });
   });
 
   test("Check that 'Click Me' button is working as expected @T92a16bf2", async () => {
     await test.step("Single-click on 'Click Me' button", async () => {
-      await buttonsPage.clickOnGeneratedButtonLocator(clickMeButtonName);
+      await app.buttons.clickOnGeneratedButtonLocator(clickMeButtonName);
     });
 
     await test.step("Check that Result field contains expected result", async () => {
-      await buttonsPage.checkResultField(clickMeButtonResultFieldName, clickMeButtonResultFieldText);
+      await app.buttons.checkResultField(clickMeButtonResultFieldName, clickMeButtonResultFieldText);
     });
   });
 
   test("Check that Result fields is able to contains all 3 results @T21138c15", async () => {
     await test.step("Double-click on 'Double Click Me' button", async () => {
-      await buttonsPage.dblClickOnGeneratedButtonLocator(doubleClickMeButtonName);
+      await app.buttons.dblClickOnGeneratedButtonLocator(doubleClickMeButtonName);
     });
 
     await test.step("Right-click on 'Right Click Me' button", async () => {
-      await buttonsPage.rightClickOnGeneratedButtonLocator(rightClickMeButtonName);
+      await app.buttons.rightClickOnGeneratedButtonLocator(rightClickMeButtonName);
     });
 
     await test.step("Single-click on 'Click Me' button", async () => {
-      await buttonsPage.clickOnGeneratedButtonLocator(clickMeButtonName);
+      await app.buttons.clickOnGeneratedButtonLocator(clickMeButtonName);
     });
 
     await test.step("Check that Result fields contains all 3 results", async () => {
-      await buttonsPage.checkResultField(doubleClickMeResultFieldName, doubleClickMeResultFieldText);
-      await buttonsPage.checkResultField(rightClickMeButtonResultFieldName, rightClickMeButtonResultFieldText);
-      await buttonsPage.checkResultField(clickMeButtonResultFieldName, clickMeButtonResultFieldText);
+      await app.buttons.checkResultField(doubleClickMeResultFieldName, doubleClickMeResultFieldText);
+      await app.buttons.checkResultField(rightClickMeButtonResultFieldName, rightClickMeButtonResultFieldText);
+      await app.buttons.checkResultField(clickMeButtonResultFieldName, clickMeButtonResultFieldText);
     });
   });
 
   test("Negative: Check that Result fields is not displayed after Single-click on 'Double Click Me' button @Tff95f388", async () => {
     await test.step("Single-click on 'Double Click Me' button", async () => {
-      await buttonsPage.clickOnGeneratedButtonLocator(doubleClickMeButtonName);
+      await app.buttons.clickOnGeneratedButtonLocator(doubleClickMeButtonName);
     });
 
     await test.step("Check that Result field does not displayed", async () => {
-      await buttonsPage.checkThatResultFieldIsNotDisplayed(doubleClickMeResultFieldName);
+      await app.buttons.checkThatResultFieldIsNotDisplayed(doubleClickMeResultFieldName);
     });
   });
 
   test("Negative: Check that Result fields is not displayed after Right-click on 'Double Click Me' button @T963ce354", async () => {
     await test.step("Right-click on 'Double Click Me' button", async () => {
-      await buttonsPage.rightClickOnGeneratedButtonLocator(doubleClickMeButtonName);
+      await app.buttons.rightClickOnGeneratedButtonLocator(doubleClickMeButtonName);
     });
 
     await test.step("Check that Result field does not displayed", async () => {
-      await buttonsPage.checkThatResultFieldIsNotDisplayed(doubleClickMeResultFieldName);
+      await app.buttons.checkThatResultFieldIsNotDisplayed(doubleClickMeResultFieldName);
     });
   });
 
   test("Negative: Check that Result fields is not displayed after Single-click on 'Right Click Me' button @T5848a1de", async () => {
     await test.step("Single-click on 'Right Click Me' button", async () => {
-      await buttonsPage.clickOnGeneratedButtonLocator(rightClickMeButtonName);
+      await app.buttons.clickOnGeneratedButtonLocator(rightClickMeButtonName);
     });
 
     await test.step("Check that Result field does not displayed", async () => {
-      await buttonsPage.checkThatResultFieldIsNotDisplayed(rightClickMeButtonResultFieldName);
+      await app.buttons.checkThatResultFieldIsNotDisplayed(rightClickMeButtonResultFieldName);
     });
   });
 
   test("Negative: Check that Result fields is not displayed after Double-click on 'Right Click Me' button @T7f361655", async () => {
     await test.step("Double-click on 'Right Click Me' button", async () => {
-      await buttonsPage.dblClickOnGeneratedButtonLocator(rightClickMeButtonName);
+      await app.buttons.dblClickOnGeneratedButtonLocator(rightClickMeButtonName);
     });
 
     await test.step("Check that Result field does not displayed", async () => {
-      await buttonsPage.checkThatResultFieldIsNotDisplayed(rightClickMeButtonResultFieldName);
+      await app.buttons.checkThatResultFieldIsNotDisplayed(rightClickMeButtonResultFieldName);
     });
   });
 
   test("Negative: Check that Result fields is not displayed after Right-click on 'Click Me' button @T0639d02e", async () => {
     await test.step("Right-click on 'Click Me' button", async () => {
-      await buttonsPage.rightClickOnGeneratedButtonLocator(clickMeButtonName);
+      await app.buttons.rightClickOnGeneratedButtonLocator(clickMeButtonName);
     });
 
     await test.step("Check that Result field does not displayed", async () => {
-      await buttonsPage.checkThatResultFieldIsNotDisplayed(clickMeButtonResultFieldName);
+      await app.buttons.checkThatResultFieldIsNotDisplayed(clickMeButtonResultFieldName);
     });
   });
 });

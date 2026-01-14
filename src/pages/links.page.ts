@@ -3,8 +3,6 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "../pages";
 
 export class LinksPage extends BasePage {
-  readonly page: Page;
-
   readonly simpleLink: Locator;
   readonly dynamicLink: Locator;
   readonly createdLink: Locator;
@@ -18,7 +16,6 @@ export class LinksPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
 
     this.simpleLink = this.page.locator("#simpleLink");
     this.dynamicLink = this.page.locator("#dynamicLink");

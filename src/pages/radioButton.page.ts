@@ -3,13 +3,10 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "./base.page";
 
 export class RadioButtonPage extends BasePage {
-  readonly page: Page;
-
   readonly resultField: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
 
     this.resultField = this.page.locator('[class="mt-3"]');
   }

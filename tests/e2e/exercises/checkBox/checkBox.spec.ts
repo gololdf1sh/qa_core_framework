@@ -1,42 +1,40 @@
 import { test } from "@playwright/test";
-import { CheckBoxPage, NavigationPage } from "../../../../src/pages";
 import { checkBoxFilesNamesData, checkBoxResultFilesNamesData, exercisesMenusNamesData, exercisesNamesData } from "../../../../src/data";
+import { Application } from "../../../../src";
 
 test.describe("'Checkbox' Exercise @S988b1f5f", () => {
-  let navigationPage: NavigationPage;
-  let checkBoxPage: CheckBoxPage;
+  let app: Application;
 
   test.beforeEach(async ({ page }) => {
-    navigationPage = new NavigationPage(page);
-    checkBoxPage = new CheckBoxPage(page);
+    app = new Application(page);
 
     const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.checkBoxExerciseName;
 
     await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
-      await navigationPage.goToUrl(process.env.BASE_URL!);
+      await app.navigation.goToUrl(process.env.BASE_URL!);
     });
 
     await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
-      await navigationPage.openExercise(exerciseMenuName, exerciseName);
+      await app.navigation.openExercise(exerciseMenuName, exerciseName);
     });
   });
 
   test("Check user has access to every file in tree @T65cba0f6", async () => {
     await test.step("Click on Plus Button", async () => {
-      await checkBoxPage.clickOnPlusButton();
+      await app.checkBox.clickOnPlusButton();
     });
 
     await test.step("Check that all Files in tree are visible", async () => {
-      await checkBoxPage.checkThatAllFilesInTreeAreVisible(checkBoxFilesNamesData);
+      await app.checkBox.checkThatAllFilesInTreeAreVisible(checkBoxFilesNamesData);
     });
 
     await test.step("Click on every File in tree", async () => {
-      await checkBoxPage.clickOnAllFilesInTree(checkBoxFilesNamesData);
+      await app.checkBox.clickOnAllFilesInTree(checkBoxFilesNamesData);
     });
 
     await test.step("Check Result Field", async () => {
-      await checkBoxPage.checkResultField(checkBoxResultFilesNamesData);
+      await app.checkBox.checkResultField(checkBoxResultFilesNamesData);
     });
   });
 });

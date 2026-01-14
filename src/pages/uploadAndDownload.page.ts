@@ -4,13 +4,11 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "./base.page";
 
 export class UploadAndDownloadPage extends BasePage {
-  readonly page: Page;
   readonly downloadButton: Locator;
   readonly uploadFileInput: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
 
     this.downloadButton = this.page.locator("#downloadButton");
     this.uploadFileInput = this.page.locator("#uploadFile");

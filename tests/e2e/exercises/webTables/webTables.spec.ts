@@ -1,24 +1,22 @@
 import { test } from "@playwright/test";
 import { exercisesMenusNamesData, exercisesNamesData, generateUserData, webTablesUsersData } from "../../../../src/data";
-import { NavigationPage, WebTablesPage } from "../../../../src/pages";
+import { Application } from "../../../../src";
 
 test.describe("Web Tables exercise @S2113f767", () => {
-  let webTablesPage: WebTablesPage;
-  let navigationPage: NavigationPage;
+  let app: Application;
 
   test.beforeEach(async ({ page }) => {
-    webTablesPage = new WebTablesPage(page);
-    navigationPage = new NavigationPage(page);
+    app = new Application(page);
 
     const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
     const exerciseName = exercisesNamesData.webTablesExerciseName;
 
     await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
-      await navigationPage.goToUrl(process.env.BASE_URL!);
+      await app.navigation.goToUrl(process.env.BASE_URL!);
     });
 
     await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
-      await navigationPage.openExercise(exerciseMenuName, exerciseName);
+      await app.navigation.openExercise(exerciseMenuName, exerciseName);
     });
   });
 
@@ -32,7 +30,7 @@ test.describe("Web Tables exercise @S2113f767", () => {
     const userDepartment = webTablesUsersData.firstUser.department;
 
     await test.step("Check First User Data", async () => {
-      await webTablesPage.checkUserData(userNumber, userFirstName, userLastName, userAge, userEmail, userSalary, userDepartment);
+      await app.webTables.checkUserData(userNumber, userFirstName, userLastName, userAge, userEmail, userSalary, userDepartment);
     });
   });
 
@@ -41,15 +39,15 @@ test.describe("Web Tables exercise @S2113f767", () => {
     const userData = generateUserData();
 
     await test.step("Delete All Users from Web Table", async () => {
-      await webTablesPage.deleteAllUsersFromWebTable();
+      await app.webTables.deleteAllUsersFromWebTable();
     });
 
     await test.step("Add User via Registration Form", async () => {
-      await webTablesPage.addUserViaRegistrationForm(userData);
+      await app.webTables.addUserViaRegistrationForm(userData);
     });
 
     await test.step("Check Added User Data", async () => {
-      await webTablesPage.checkUserData(
+      await app.webTables.checkUserData(
         userNumber,
         userData.userFirstName,
         userData.userLastName,

@@ -4,8 +4,6 @@ import { BasePage } from "./base.page";
 import { timeouts } from "../config/timeouts";
 
 export class TextBoxPage extends BasePage {
-  readonly page: Page;
-
   readonly fullNameInput: Locator;
   readonly emailInput: Locator;
   readonly currentAddressInput: Locator;
@@ -15,7 +13,6 @@ export class TextBoxPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
 
     this.fullNameInput = this.page.locator("#userName");
     this.emailInput = this.page.locator("#userEmail");
