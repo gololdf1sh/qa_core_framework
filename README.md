@@ -19,13 +19,13 @@ The framework is modular, scalable, and easy to maintain, following **best pract
 
 ## Technologies
 
-| Technology          | Description                                                                 |
-|---------------------|-----------------------------------------------------------------------------|
-| **Playwright**      | Browser automation library for end-to-end testing                          |
-| **TypeScript**      | A superset of JavaScript with type safety for more reliable code            |
-| **Node.js**         | JavaScript runtime environment                                             |
-| **Allure Reporter** | Generates detailed, visually rich test reports                             |
-| **WebStorm**        | IDE used for development                                                   |
+| Technology             | Description                                                      |
+|------------------------|------------------------------------------------------------------|
+| **Playwright**         | Browser automation library for end-to-end testing                |
+| **TypeScript**         | A superset of JavaScript with type safety for more reliable code |
+| **Node.js**            | JavaScript runtime environment                                   |
+| **Allure Reporter**    | Generates detailed, visually rich test reports                   |
+| **Visual Studio Code** | IDE used for development                                         |
 
 ---
 
