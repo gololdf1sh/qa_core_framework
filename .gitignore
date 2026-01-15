@@ -5,3 +5,4 @@ dist/
 .env
 reports/
 allure-results/
+.vscode
