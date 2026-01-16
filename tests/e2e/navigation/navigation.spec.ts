@@ -1,13 +1,46 @@
 import { test } from "@playwright/test";
-import { exercisesMenusNamesData, exercisesNamesData } from "../../../src/data";
+import { exercisesMenusNamesData, exercisesData } from "../../../src/data";
 import { Application } from "../../../src";
+
+const testCases = [
+  { menuName: exercisesMenusNamesData.elementsMenuName, exerciseName: exercisesData.textBox.name, slug: exercisesData.textBox.slug, id: "@T86f1a909" },
+  { menuName: exercisesMenusNamesData.elementsMenuName, exerciseName: exercisesData.checkBox.name, slug: exercisesData.checkBox.slug, id: "@T92b3c810" },
+  { menuName: exercisesMenusNamesData.elementsMenuName, exerciseName: exercisesData.radioButton.name, slug: exercisesData.radioButton.slug, id: "@T47d5e211" },
+  { menuName: exercisesMenusNamesData.elementsMenuName, exerciseName: exercisesData.webTables.name, slug: exercisesData.webTables.slug, id: "@T58f6g312" },
+  { menuName: exercisesMenusNamesData.elementsMenuName, exerciseName: exercisesData.buttons.name, slug: exercisesData.buttons.slug, id: "@T69h7i413" },
+  { menuName: exercisesMenusNamesData.elementsMenuName, exerciseName: exercisesData.brokenLinksImages.name, slug: exercisesData.brokenLinksImages.slug, id: "@T70j8k514" },
+  { menuName: exercisesMenusNamesData.elementsMenuName, exerciseName: exercisesData.uploadAndDownload.name, slug: exercisesData.uploadAndDownload.slug, id: "@T81l9m615" },
+  { menuName: exercisesMenusNamesData.elementsMenuName, exerciseName: exercisesData.dynamicProperties.name, slug: exercisesData.dynamicProperties.slug, id: "@T92n0o716" },
+  { menuName: exercisesMenusNamesData.formMenuName, exerciseName: exercisesData.practiceForm.name, slug: exercisesData.practiceForm.slug, id: "@T03p1q817" },
+  { menuName: exercisesMenusNamesData.alertsFrameWindowsMenuName, exerciseName: exercisesData.browserWindows.name, slug: exercisesData.browserWindows.slug, id: "@T14r2s918" },
+  { menuName: exercisesMenusNamesData.alertsFrameWindowsMenuName, exerciseName: exercisesData.alerts.name, slug: exercisesData.alerts.slug, id: "@T25t3u019" },
+  { menuName: exercisesMenusNamesData.alertsFrameWindowsMenuName, exerciseName: exercisesData.nestedFrames.name, slug: exercisesData.nestedFrames.slug, id: "@T36v4w120" },
+  { menuName: exercisesMenusNamesData.alertsFrameWindowsMenuName, exerciseName: exercisesData.modalDialogs.name, slug: exercisesData.modalDialogs.slug, id: "@T47x5y221" },
+  { menuName: exercisesMenusNamesData.windowsMenuName, exerciseName: exercisesData.accordian.name, slug: exercisesData.accordian.slug, id: "@T58z6a322" },
+  { menuName: exercisesMenusNamesData.windowsMenuName, exerciseName: exercisesData.autoComplete.name, slug: exercisesData.autoComplete.slug, id: "@T69b7c423" },
+  { menuName: exercisesMenusNamesData.windowsMenuName, exerciseName: exercisesData.datePicker.name, slug: exercisesData.datePicker.slug, id: "@T70d8e524" },
+  { menuName: exercisesMenusNamesData.windowsMenuName, exerciseName: exercisesData.slider.name, slug: exercisesData.slider.slug, id: "@T81f9g625" },
+  { menuName: exercisesMenusNamesData.windowsMenuName, exerciseName: exercisesData.progressBar.name, slug: exercisesData.progressBar.slug, id: "@T92h0i726" },
+  { menuName: exercisesMenusNamesData.windowsMenuName, exerciseName: exercisesData.tabs.name, slug: exercisesData.tabs.slug, id: "@T03j1k827" },
+  { menuName: exercisesMenusNamesData.windowsMenuName, exerciseName: exercisesData.toolTips.name, slug: exercisesData.toolTips.slug, id: "@T14l2m928" },
+  { menuName: exercisesMenusNamesData.windowsMenuName, exerciseName: exercisesData.selectMenu.name, slug: exercisesData.selectMenu.slug, id: "@T25n3o029" },
+  { menuName: exercisesMenusNamesData.interactionMenuName, exerciseName: exercisesData.sortable.name, slug: exercisesData.sortable.slug, id: "@T36p4q130" },
+  { menuName: exercisesMenusNamesData.interactionMenuName, exerciseName: exercisesData.selectable.name, slug: exercisesData.selectable.slug, id: "@T47r5s231" },
+  { menuName: exercisesMenusNamesData.interactionMenuName, exerciseName: exercisesData.resizable.name, slug: exercisesData.resizable.slug, id: "@T58t6u332" },
+  { menuName: exercisesMenusNamesData.interactionMenuName, exerciseName: exercisesData.droppable.name, slug: exercisesData.droppable.slug, id: "@T69v7w433" },
+  { menuName: exercisesMenusNamesData.interactionMenuName, exerciseName: exercisesData.dragabble.name, slug: exercisesData.dragabble.slug, id: "@T70x8y534" },
+];
+
+const bookStoreApplicationMenuTestCases = [
+  // TODO: locator for login exercise button resolved to 2 elements - need to create separate test for this case
+  // { menuName: exercisesMenusNamesData.bookStoreApplicationMenuName, exerciseName: exercisesData.login.name, slug: exercisesData.login.slug, id: "@Tf2f52116" },
+  { menuName: exercisesMenusNamesData.bookStoreApplicationMenuName, exerciseName: exercisesData.bookStore.name, slug: exercisesData.bookStore.slug, id: "@T2f301c0c" },
+  { menuName: exercisesMenusNamesData.bookStoreApplicationMenuName, exerciseName: exercisesData.profile.name, slug: exercisesData.profile.slug, id: "@T08641b20" },
+  { menuName: exercisesMenusNamesData.bookStoreApplicationMenuName, exerciseName: exercisesData.bookStoreAPI.name, slug: exercisesData.bookStoreAPI.slug, id: "@T9c57ef12" },
+];
 
 test.describe("Navigation to exercises @Sbfe46638", () => {
   let app: Application;
-
-  let exerciseMenuName: string;
-  let exerciseName: string;
-  let exerciseSlug: string;
 
   test.beforeEach(async ({ page }) => {
     app = new Application(page);
@@ -17,454 +50,28 @@ test.describe("Navigation to exercises @Sbfe46638", () => {
     });
   });
 
-  // TODO: Implement navigation verification through a parameterized test
-
-  // Elements
-
-  test('Check that user is able to navigate to -> "Elements" menu -> "Text Box" exercise @T86f1a909', async () => {
-    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    exerciseName = exercisesNamesData.textBoxExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Elements" menu -> "Check Box" exercise @T73423083', async () => {
-    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    exerciseName = exercisesNamesData.checkBoxExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Elements" menu -> "Radio Button" exercise @T1d28c1a4', async () => {
-    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    exerciseName = exercisesNamesData.radioButtonExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Elements" menu -> "Web Tables" exercise @Tea903efe', async () => {
-    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    exerciseName = exercisesNamesData.webTablesExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Elements" menu -> "Buttons" exercise @Tadac2cd7', async () => {
-    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    exerciseName = exercisesNamesData.buttonsExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  // TODO: Investigate why Playwright not able to see "locator('li', { hasText: 'Links' })" - Problem: locator resolved to 2 elements
-  test.skip('Check that user is able to navigate to -> "Elements" menu -> "Links" exercise @T9958871a', async () => {
-    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    exerciseName = exercisesNamesData.linksExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Elements" menu -> "Broken Links - Images" exercise @Tb8ce5a6c', async () => {
-    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    exerciseName = exercisesNamesData.brokenLinksImagesExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Elements" menu -> "Upload and Download" exercise @T1fdf6702', async () => {
-    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    exerciseName = exercisesNamesData.uploadAndDownloadExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Elements" menu -> "Dynamic Properties" exercise @T43622572', async () => {
-    exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    exerciseName = exercisesNamesData.dynamicPropertiesExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  // Forms
-
-  test('Check that user is able to navigate to -> "Forms" menu -> "Practice Form" exercise @T7e3285c6', async () => {
-    exerciseMenuName = exercisesMenusNamesData.formMenuName;
-    exerciseName = exercisesNamesData.practiceFormExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  // Alerts, Frame & Windows
-
-  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Browser Windows" exercise @T9e895f81', async () => {
-    exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
-    exerciseName = exercisesNamesData.browserWindowsExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Alerts" exercise @T0557432b', async () => {
-    exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
-    exerciseName = exercisesNamesData.alertsExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  // TODO: Investigate why Playwright not able to see "locator("li", { hasText: "Frames" })" - Problem: locator resolved to 2 elements
-  test.skip('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Frames" exercise @T78a391c4', async () => {
-    exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
-    exerciseName = exercisesNamesData.framesExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Nested Frames" exercise @T4f1ea971', async () => {
-    exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
-    exerciseName = exercisesNamesData.nestedFramesExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Alerts, Frame & Windows" menu -> "Modal Dialogs" exercise @Tcdd5a99c', async () => {
-    exerciseMenuName = exercisesMenusNamesData.alertsFrameWindowsMenuName;
-    exerciseName = exercisesNamesData.modalDialogExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  // Widgets
-
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Accordian" exercise @Ta543c269', async () => {
-    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    exerciseName = exercisesNamesData.accordianExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Auto Complete" exercise @T4bfef15f', async () => {
-    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    exerciseName = exercisesNamesData.autoCompleteExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Date Picker" exercise @Tad9e222c', async () => {
-    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    exerciseName = exercisesNamesData.datePickerExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Slider" exercise @Ta85ac1d4', async () => {
-    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    exerciseName = exercisesNamesData.sliderExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Progress Bar" exercise @Tf471622e', async () => {
-    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    exerciseName = exercisesNamesData.progressBarExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Tabs" exercise @T9ce1c645', async () => {
-    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    exerciseName = exercisesNamesData.tabsExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Tool Tips" exercise @Tba54602e', async () => {
-    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    exerciseName = exercisesNamesData.toolTipsExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  // TODO: Investigate why Playwright not able to see "locator("li", { hasText: "Menu" })" - Problem: locator resolved to 2 elements
-  test.skip('Check that user is able to navigate to -> "Widgets" menu -> "Menu" exercise @T7cd60bca', async () => {
-    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    exerciseName = exercisesNamesData.menuExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Widgets" menu -> "Select Menu" exercise @Tb494a984', async () => {
-    exerciseMenuName = exercisesMenusNamesData.windowsMenuName;
-    exerciseName = exercisesNamesData.selectMenuExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  // Interactions
-
-  test('Check that user is able to navigate to -> "Interactions" menu -> "Sortable" exercise @T2adf1bdb', async () => {
-    exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
-    exerciseName = exercisesNamesData.sortableExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Interactions" menu -> "Selectable" exercise @T59f618cf', async () => {
-    exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
-    exerciseName = exercisesNamesData.selectableExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Interactions" menu -> "Resizable" exercise @T56c3e322', async () => {
-    exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
-    exerciseName = exercisesNamesData.resizableExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Interactions" menu -> "Droppable" exercise @T841add60', async () => {
-    exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
-    exerciseName = exercisesNamesData.droppableExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Interactions" menu -> "Dragabble" exercise @Tf01b841c', async () => {
-    exerciseMenuName = exercisesMenusNamesData.interactionMenuName;
-    exerciseName = exercisesNamesData.dragabbleExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  // Book Store Application
-
-  // TODO: Fix Locator for Login button
-  test.skip('Check that user is able to navigate to -> "Book Store Application" menu -> "Login" exercise @Tf2f52116', async () => {
-    exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
-    exerciseName = exercisesNamesData.loginExerciseName;
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseHeader(exerciseName);
-    });
-  });
-
-  // TODO: Investigate why Playwright not able to see "locator("li", { hasText: "Book Store" })" - Problem: locator resolved to 2 elements
-  test.skip('Check that user is able to navigate to -> "Book Store Application" menu -> "Book Store" exercise @T2f301c0c', async () => {
-    exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
-    exerciseName = exercisesNamesData.bookStoreExerciseName;
-    exerciseSlug = "books";
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseURL(exerciseSlug);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Profile" exercise @T08641b20', async () => {
-    exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
-    exerciseName = exercisesNamesData.profileExerciseName;
-    exerciseSlug = "profile";
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseURL(exerciseSlug);
-    });
-  });
-
-  test('Check that user is able to navigate to -> "Book Store Application" menu -> "Book Store API" exercise @T9c57ef12', async () => {
-    exerciseMenuName = exercisesMenusNamesData.bookStoreApplicationMenuName;
-    exerciseName = exercisesNamesData.bookStoreAPIExerciseName;
-    exerciseSlug = "swagger/";
-
-    await test.step("Open exercise", async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
-    });
-
-    await test.step("Check that user is on exercise page", async () => {
-      await app.navigation.checkExerciseURL(exerciseSlug);
-    });
-  });
+  for (const { menuName, exerciseName, slug, id } of testCases) {
+    test(`Check that user is able to navigate to -> "${menuName}" menu -> "${exerciseName}" exercise ${id}`, async () => {
+      await test.step("Open exercise", async () => {
+        await app.navigation.openExercise(menuName, exerciseName);
+      });
+
+      await test.step(`Check that user is on ${menuName} - ${exerciseName} exercise page`, async () => {
+        await app.navigation.checkExerciseHeader(exerciseName);
+        await app.navigation.checkExerciseURL(slug);
+      });
+    });
+  }
+
+  for (const { menuName, exerciseName, slug, id } of bookStoreApplicationMenuTestCases) {
+    test(`Check that user is able to navigate to -> "${menuName}" menu -> "${exerciseName}" exercise ${id}`, async () => {
+      await test.step("Open exercise", async () => {
+        await app.navigation.openExercise(menuName, exerciseName);
+      });
+
+      await test.step(`Check that user is on ${menuName} - ${exerciseName} exercise page`, async () => {
+        await app.navigation.checkExerciseURL(slug);
+      });
+    });
+  }
 });

@@ -5,7 +5,7 @@ export const linksExpectedData = {
     urlPart: "/created",
   },
   noContentLink: {
-    expectedText: "Link has responded with staus 204 and status text No Content",
+    expectedText: "Link has responded with status 204 and status text No Content",
     expectedStatus: 204,
     urlPart: "/no-content",
   },

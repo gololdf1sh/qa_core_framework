@@ -35,10 +35,7 @@ export class LinksPage extends BasePage {
   }
 
   async clickOnLinkButtonAndCheckResponse(linkButtonLocator: Locator, urlPart: string, expectedStatus: number) {
-    const [response] = await Promise.all([
-      this.page.waitForResponse((resp) => resp.url().includes(urlPart)),
-      this.clickOnLinkButton(linkButtonLocator),
-    ]);
+    const [response] = await Promise.all([this.page.waitForResponse((resp) => resp.url().includes(urlPart)), this.clickOnLinkButton(linkButtonLocator)]);
     expect(response.status()).toBe(expectedStatus);
   }
 

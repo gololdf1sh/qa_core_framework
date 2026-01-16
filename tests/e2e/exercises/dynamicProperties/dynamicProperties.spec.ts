@@ -1,5 +1,5 @@
 import { test } from "@playwright/test";
-import { exercisesMenusNamesData, exercisesNamesData } from "../../../../src/data";
+import { exercisesMenusNamesData, exercisesData } from "../../../../src/data";
 import { Application } from "../../../../src";
 
 test.describe("'Dynamic Properties' exercise @Sff7f21df", () => {
@@ -8,15 +8,10 @@ test.describe("'Dynamic Properties' exercise @Sff7f21df", () => {
   test.beforeEach(async ({ page }) => {
     app = new Application(page);
 
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.dynamicPropertiesExerciseName;
+    const exerciseUrl = process.env.BASE_URL! + exercisesData.dynamicProperties.slug;
 
-    await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
-      await app.navigation.goToUrl(process.env.BASE_URL!);
-    });
-
-    await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
+    await test.step(`Go to ${exerciseUrl!}`, async () => {
+      await app.navigation.goToUrl(exerciseUrl);
     });
   });
 

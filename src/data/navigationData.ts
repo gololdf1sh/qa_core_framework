@@ -1,4 +1,4 @@
-import { exerciseMenuNamesDataTypes, exercisesNamesDataTypes } from "../types";
+import { exerciseMenuNamesDataTypes, exercisesDataTypes } from "../types";
 
 export const exercisesMenusNamesData: exerciseMenuNamesDataTypes = {
   elementsMenuName: "Elements",
@@ -9,38 +9,137 @@ export const exercisesMenusNamesData: exerciseMenuNamesDataTypes = {
   bookStoreApplicationMenuName: "Book Store Application",
 };
 
-export const exercisesNamesData: exercisesNamesDataTypes = {
-  textBoxExerciseName: "Text Box",
-  checkBoxExerciseName: "Check Box",
-  radioButtonExerciseName: "Radio Button",
-  webTablesExerciseName: "Web Tables",
-  buttonsExerciseName: "Buttons",
-  linksExerciseName: "Links",
-  brokenLinksImagesExerciseName: "Broken Links - Images",
-  uploadAndDownloadExerciseName: "Upload and Download",
-  dynamicPropertiesExerciseName: "Dynamic Properties",
-  practiceFormExerciseName: "Practice Form",
-  browserWindowsExerciseName: "Browser Windows",
-  alertsExerciseName: "Alerts",
-  framesExerciseName: "Frame",
-  nestedFramesExerciseName: "Nested Frames",
-  modalDialogExerciseName: "Modal Dialogs",
-  accordianExerciseName: "Accordian",
-  autoCompleteExerciseName: "Auto Complete",
-  datePickerExerciseName: "Date Picker",
-  sliderExerciseName: "Slider",
-  progressBarExerciseName: "Progress Bar",
-  tabsExerciseName: "Tabs",
-  toolTipsExerciseName: "Tool Tips",
-  menuExerciseName: "Menu",
-  selectMenuExerciseName: "Select Menu",
-  sortableExerciseName: "Sortable",
-  selectableExerciseName: "Selectable",
-  resizableExerciseName: "Resizable",
-  droppableExerciseName: "Droppable",
-  dragabbleExerciseName: "Dragabble",
-  loginExerciseName: "Login",
-  bookStoreExerciseName: "Book Store",
-  profileExerciseName: "Profile",
-  bookStoreAPIExerciseName: "Book Store API",
+export const exercisesData: exercisesDataTypes = {
+  textBox: {
+    name: "Text Box",
+    slug: "text-box",
+  },
+  checkBox: {
+    name: "Check Box",
+    slug: "checkbox",
+  },
+  radioButton: {
+    name: "Radio Button",
+    slug: "radio-button",
+  },
+  webTables: {
+    name: "Web Tables",
+    slug: "webtables",
+  },
+  buttons: {
+    name: "Buttons",
+    slug: "buttons",
+  },
+  links: {
+    name: "Links",
+    slug: "links",
+  },
+  brokenLinksImages: {
+    name: "Broken Links - Images",
+    slug: "broken",
+  },
+  uploadAndDownload: {
+    name: "Upload and Download",
+    slug: "upload-download",
+  },
+  dynamicProperties: {
+    name: "Dynamic Properties",
+    slug: "dynamic-properties",
+  },
+  practiceForm: {
+    name: "Practice Form",
+    slug: "automation-practice-form",
+  },
+  browserWindows: {
+    name: "Browser Windows",
+    slug: "browser-windows",
+  },
+  alerts: {
+    name: "Alerts",
+    slug: "alerts",
+  },
+  frames: {
+    name: "Frame",
+    slug: "frames",
+  },
+  nestedFrames: {
+    name: "Nested Frames",
+    slug: "nestedframes",
+  },
+  modalDialogs: {
+    name: "Modal Dialogs",
+    slug: "modal-dialogs",
+  },
+  accordian: {
+    name: "Accordian",
+    slug: "accordian",
+  },
+  autoComplete: {
+    name: "Auto Complete",
+    slug: "auto-complete",
+  },
+  datePicker: {
+    name: "Date Picker",
+    slug: "date-picker",
+  },
+  slider: {
+    name: "Slider",
+    slug: "slider",
+  },
+  progressBar: {
+    name: "Progress Bar",
+    slug: "progress-bar",
+  },
+  tabs: {
+    name: "Tabs",
+    slug: "tabs",
+  },
+  toolTips: {
+    name: "Tool Tips",
+    slug: "tool-tips",
+  },
+  menu: {
+    name: "Menu",
+    slug: "menu",
+  },
+  selectMenu: {
+    name: "Select Menu",
+    slug: "select-menu",
+  },
+  sortable: {
+    name: "Sortable",
+    slug: "sortable",
+  },
+  selectable: {
+    name: "Selectable",
+    slug: "selectable",
+  },
+  resizable: {
+    name: "Resizable",
+    slug: "resizable",
+  },
+  droppable: {
+    name: "Droppable",
+    slug: "droppable",
+  },
+  dragabble: {
+    name: "Dragabble",
+    slug: "dragabble",
+  },
+  login: {
+    name: "Login",
+    slug: "login",
+  },
+  bookStore: {
+    name: "Book Store",
+    slug: "books",
+  },
+  profile: {
+    name: "Profile",
+    slug: "profile",
+  },
+  bookStoreAPI: {
+    name: "Book Store API",
+    slug: "swagger/",
+  },
 };

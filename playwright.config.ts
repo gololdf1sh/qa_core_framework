@@ -16,11 +16,5 @@ export default defineConfig({
     trace: "on",
     video: "retain-on-failure",
   },
-  reporter: [
-    ["blob"],
-    ["list"],
-    ["html", { open: "on-failure" }],
-    ["allure-playwright"],
-    ["@testomatio/reporter/playwright", { apiKey: process.env.TESTOMATIO }],
-  ],
+  reporter: [["blob"], ["list"], ["html", { open: "on-failure" }], ["allure-playwright"], ["@testomatio/reporter/playwright", { apiKey: process.env.TESTOMATIO }]],
 });
