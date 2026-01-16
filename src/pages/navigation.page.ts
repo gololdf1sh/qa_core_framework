@@ -7,8 +7,8 @@ export class NavigationPage extends BasePage {
     super(page);
   }
 
-  private async generateExerciseButtonLocator(exerciseName: string) {
-    return this.page.getByText(exerciseName, { exact: true });
+  private generateExerciseButtonLocator(exerciseName: string) {
+    return this.page.locator(".btn", { has: this.page.locator(`text="${exerciseName}"`) });
   }
 
   private async generateExerciseMenuButtonLocator(exerciseMenuName: string) {

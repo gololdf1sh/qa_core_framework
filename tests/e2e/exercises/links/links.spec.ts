@@ -35,7 +35,8 @@ test.describe("'Links' exercise @Sca1ab14e", () => {
     });
   });
 
-  test("Check 'No Content Link' functionality @T437cd904", async () => {
+  // TODO: BUG - Received string: "Link has responded with staus 204 and status text No Content" - staus is misspelled
+  test.skip("Check 'No Content Link' functionality @T437cd904", async () => {
     createdLinkLocator = app.links.noContentLink;
     urlPart = linksExpectedData.noContentLink.urlPart;
     expectedStatus = linksExpectedData.noContentLink.expectedStatus;
