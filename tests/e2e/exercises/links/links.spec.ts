@@ -1,5 +1,5 @@
 import { expect, Locator, Page, test } from "@playwright/test";
-import { exercisesMenusNamesData, exercisesNamesData } from "../../../../src/data";
+import { exercisesData } from "../../../../src/data";
 import { linksExpectedData } from "../../../../src/data/linksExerciseData";
 import { Application } from "../../../../src";
 
@@ -13,15 +13,10 @@ test.describe("'Links' exercise @Sca1ab14e", () => {
   test.beforeEach(async ({ page }) => {
     app = new Application(page);
 
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.linksExerciseName;
+    const exerciseUrl = process.env.BASE_URL! + exercisesData.links.slug;
 
-    await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
-      await app.navigation.goToUrl(process.env.BASE_URL!);
-    });
-
-    await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
+    await test.step(`Go to ${exerciseUrl!}`, async () => {
+      await app.navigation.goToUrl(exerciseUrl);
     });
   });
 

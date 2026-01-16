@@ -7,7 +7,7 @@ export abstract class BasePage {
   async goToUrl(url: string) {
     const response = await this.page.goto(url, {
       waitUntil: "domcontentloaded",
-      timeout: timeouts.superLongTimeout,
+      timeout: timeouts.shortTimeout,
     });
 
     if (!response) {

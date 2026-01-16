@@ -1,5 +1,5 @@
 import { test } from "@playwright/test";
-import { buttonNames, clickResultFields, exercisesMenusNamesData, exercisesNamesData } from "../../../../src/data";
+import { buttonNames, clickResultFields, exercisesData } from "../../../../src/data";
 import { Application } from "../../../../src";
 
 test.describe("'Buttons' Exercise @S08b052b1", () => {
@@ -20,15 +20,10 @@ test.describe("'Buttons' Exercise @S08b052b1", () => {
   test.beforeEach(async ({ page }) => {
     app = new Application(page);
 
-    const exerciseMenuName = exercisesMenusNamesData.elementsMenuName;
-    const exerciseName = exercisesNamesData.buttonsExerciseName;
+    const exerciseUrl = process.env.BASE_URL! + exercisesData.buttons.slug;
 
-    await test.step(`Go to ${process.env.BASE_URL!}`, async () => {
-      await app.navigation.goToUrl(process.env.BASE_URL!);
-    });
-
-    await test.step(`Go to ${exerciseMenuName} - ${exerciseName}`, async () => {
-      await app.navigation.openExercise(exerciseMenuName, exerciseName);
+    await test.step(`Go to ${exerciseUrl!}`, async () => {
+      await app.navigation.goToUrl(exerciseUrl);
     });
   });
 
