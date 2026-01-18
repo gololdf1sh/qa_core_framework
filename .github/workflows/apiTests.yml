@@ -1,4 +1,4 @@
-name: CI - Automation Tests
+name: CI - API Automation Tests
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ on:
         required: false
         default: ''
   schedule:
-    - cron: '00 01 * * 1,3,5'
+    - cron: '00 02 * * 1,3,5'
 env:
   BASE_URL: ${{ secrets.BASE_URL }}
   TESTOMATIO: ${{ secrets.TESTOMATIO }}
@@ -41,7 +41,7 @@ jobs:
           echo "Started Testomat run: $RUN_ID"
 
   run-playwright-tests:
-    name: Playwright Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
+    name: API Automation Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/playwright:v1.57.0-jammy
     needs: testomatio-start
@@ -64,12 +64,12 @@ jobs:
 
       - run: npm ci
 
-      - name: Run Playwright tests
+      - name: Run API Automation Tests
         env:
           TESTOMATIO_RUN: ${{ needs.testomatio-start.outputs.run_id }}
-          TESTOMATIO_TITLE: "CI - Automation Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})"
+          TESTOMATIO_TITLE: "CI - API Automation Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})"
 
-        run: npm test -- --workers=1 --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --grep="${GREP}"
+        run: npm test -- project=ApiTests --workers=1 --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --grep="${GREP}"
 
 
       - name: Upload blob Playwright report
