@@ -69,7 +69,7 @@ jobs:
           TESTOMATIO_RUN: ${{ needs.testomatio-start.outputs.run_id }}
           TESTOMATIO_TITLE: "CI - UI Automation Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})"
 
-        run: npm test -- --project=UiTests --workers=1 --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --grep="${GREP}"
+        run: npm runUiTests -- --workers=1 --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --grep="${GREP}"
 
 
       - name: Upload blob Playwright report
