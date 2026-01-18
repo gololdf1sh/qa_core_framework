@@ -1,6 +1,6 @@
 import { test } from "@playwright/test";
-import { exercisesMenusNamesData, exercisesData } from "../../../../src/data";
-import { Application } from "../../../../src";
+import { exercisesMenusNamesData, exercisesData } from "../../../src/data";
+import { Application } from "../../../src";
 
 const testCases = [
   { menuName: exercisesMenusNamesData.elementsMenuName, exerciseName: exercisesData.textBox.name, slug: exercisesData.textBox.slug, id: "@T86f1a909" },
