@@ -4,3 +4,5 @@ export * from "../data/checkBoxData";
 export * from "../data/radioButtonData";
 export * from "../data/webTablesUsersData";
 export * from "../data/buttonsExerciseData";
+export * from "../data/linksExerciseData";
+export * from "../data/apiTestsData";

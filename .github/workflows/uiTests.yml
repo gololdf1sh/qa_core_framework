@@ -1,0 +1,130 @@
+name: CI - UI Automation Tests
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      grep:
+        description: Filter tests (Playwright grep)
+        required: false
+        default: ''
+  schedule:
+    - cron: '00 01 * * 1,3,5'
+env:
+  BASE_URL: ${{ secrets.BASE_URL }}
+  TESTOMATIO: ${{ secrets.TESTOMATIO }}
+  TESTOMATIO_RUNGROUP_TITLE: "CI - Automation Tests"
+  GREP: ${{ github.event.inputs.grep || '' }}
+
+jobs:
+  testomatio-start:
+    name: Testomat - start run
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.57.0-jammy
+    outputs:
+      run_id: ${{ steps.start.outputs.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Start Testomat run
+        id: start
+        shell: bash
+        run: |
+          RUN_ID="$(npx @testomatio/reporter start | tail -n 1)"
+          echo "run_id=$RUN_ID" >> "$GITHUB_OUTPUT"
+          echo "Started Testomat run: $RUN_ID"
+
+  run-playwright-tests:
+    name: UI Automation Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.57.0-jammy
+    needs: testomatio-start
+
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2]
+        shardTotal: [2]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run UI Automation Tests
+        env:
+          TESTOMATIO_RUN: ${{ needs.testomatio-start.outputs.run_id }}
+          TESTOMATIO_TITLE: "CI - UI Automation Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})"
+
+        run: npm run uiTests -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --grep="${GREP}"
+
+
+      - name: Upload blob Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: blob-report-${{ matrix.shardIndex }}
+          path: blob-report/
+          retention-days: 7
+
+  testomatio-finish:
+    name: Testomat - finish run
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.57.0-jammy
+    needs: [testomatio-start, run-playwright-tests]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Finish Testomat run
+        run: npx @testomatio/reporter finish ${{ needs.testomatio-start.outputs.run_id }}
+
+  merge-report:
+    name: Merge Playwright HTML report
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.57.0-jammy
+    needs: run-playwright-tests
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Download all blob reports
+        uses: actions/download-artifact@v4
+        with:
+          pattern: blob-report-*
+          path: merged-blob
+          merge-multiple: true
+
+      - name: Merge into one HTML report
+        run: npx playwright merge-reports --reporter=html merged-blob
+
+      - name: Upload merged HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-merged
+          path: playwright-report/
+          retention-days: 7
