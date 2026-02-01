@@ -8,7 +8,6 @@ export default defineConfig({
   timeout: timeouts.superLongTimeout,
   retries: 1,
   use: {
-    baseURL: process.env.BASE_URL,
     headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
@@ -17,8 +16,8 @@ export default defineConfig({
     video: "retain-on-failure",
   },
   projects: [
-    { name: "UiTests", testDir: "./tests/ui", testMatch: "**/*.spec.ts" },
-    { name: "ApiTests", testDir: "./tests/api", testMatch: "**/*.spec.ts" },
+    { name: "UiTests", use: { baseURL: process.env.BASE_URL }, testDir: "./tests/ui", testMatch: "**/*.spec.ts" },
+    { name: "ApiTests", use: { baseURL: process.env.API_BASE_URL }, testDir: "./tests/api", testMatch: "**/*.spec.ts" },
   ],
   reporter: [["blob"], ["list"], ["html", { open: "on-failure" }], ["allure-playwright"], ["@testomatio/reporter/playwright", { apiKey: process.env.TESTOMATIO }]],
 });

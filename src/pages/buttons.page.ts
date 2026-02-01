@@ -4,17 +4,9 @@ import { BasePage } from "../pages";
 import { timeouts } from "../config/timeouts";
 
 export class ButtonsPage extends BasePage {
-  readonly doubleClickMeResultField: Locator;
-  readonly rightClickMeButtonResultField: Locator;
-  readonly clickMeButtonResultField: Locator;
-
-  constructor(page: Page) {
-    super(page);
-
-    this.doubleClickMeResultField = this.page.locator(`#${clickResultFields.doubleClickMeResultField.name}`);
-    this.rightClickMeButtonResultField = this.page.locator(`#${clickResultFields.rightClickMeButtonResultField.name}`);
-    this.clickMeButtonResultField = this.page.locator(`#${clickResultFields.clickMeButtonResultField.name}`);
-  }
+  readonly doubleClickMeResultField: Locator = this.page.locator(`#${clickResultFields.doubleClickMeResultField.name}`);
+  readonly rightClickMeButtonResultField: Locator = this.page.locator(`#${clickResultFields.rightClickMeButtonResultField.name}`);
+  readonly clickMeButtonResultField: Locator = this.page.locator(`#${clickResultFields.clickMeButtonResultField.name}`);
 
   private async generateButtonLocator(buttonName: string) {
     return this.page.getByRole("button", { name: buttonName, exact: true });

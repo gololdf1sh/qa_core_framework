@@ -3,10 +3,6 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "./base.page";
 
 export class NavigationPage extends BasePage {
-  constructor(page: Page) {
-    super(page);
-  }
-
   private generateExerciseButtonLocator(exerciseName: string) {
     return this.page.locator(".btn", { has: this.page.locator(`text="${exerciseName}"`) });
   }

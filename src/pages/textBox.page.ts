@@ -4,23 +4,12 @@ import { BasePage } from "./base.page";
 import { timeouts } from "../config/timeouts";
 
 export class TextBoxPage extends BasePage {
-  readonly fullNameInput: Locator;
-  readonly emailInput: Locator;
-  readonly currentAddressInput: Locator;
-  readonly permanentAddressInput: Locator;
-  readonly submitButton: Locator;
-  readonly resultField: Locator;
-
-  constructor(page: Page) {
-    super(page);
-
-    this.fullNameInput = this.page.locator("#userName");
-    this.emailInput = this.page.locator("#userEmail");
-    this.currentAddressInput = this.page.locator("#currentAddress");
-    this.permanentAddressInput = this.page.locator("#permanentAddress");
-    this.submitButton = this.page.locator("#submit");
-    this.resultField = this.page.locator("#output");
-  }
+  readonly fullNameInput: Locator = this.page.locator("#userName");
+  readonly emailInput: Locator = this.page.locator("#userEmail");
+  readonly currentAddressInput: Locator = this.page.locator("#currentAddress");
+  readonly permanentAddressInput: Locator = this.page.locator("#permanentAddress");
+  readonly submitButton: Locator = this.page.locator("#submit");
+  readonly resultField: Locator = this.page.locator("#output");
 
   private async fillFullNameInput(userFullName: string) {
     await this.checkThatElementIsVisible(this.fullNameInput, timeouts.shortTimeout);

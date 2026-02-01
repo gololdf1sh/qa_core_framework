@@ -3,13 +3,7 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "./base.page";
 
 export class RadioButtonPage extends BasePage {
-  readonly resultField: Locator;
-
-  constructor(page: Page) {
-    super(page);
-
-    this.resultField = this.page.locator('[class="mt-3"]');
-  }
+  readonly resultField: Locator = this.page.locator('[class="mt-3"]');
 
   private async generateRadioButtonLocator(radioButtonName: string): Promise<Locator> {
     return this.page.locator('[class*="custom-radio"]', { hasText: `${radioButtonName}` });

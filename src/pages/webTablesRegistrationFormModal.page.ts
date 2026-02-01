@@ -3,25 +3,13 @@ import { BasePage } from "./base.page";
 import { timeouts } from "../config/timeouts";
 
 export class WebTablesRegistrationFormModalPage extends BasePage {
-  readonly firstNameInput: Locator;
-  readonly lastNameInput: Locator;
-  readonly emailInput: Locator;
-  readonly ageInput: Locator;
-  readonly salaryInput: Locator;
-  readonly departmentInput: Locator;
-  readonly submitButton: Locator;
-
-  constructor(page: Page) {
-    super(page);
-
-    this.firstNameInput = this.page.locator("#firstName");
-    this.lastNameInput = this.page.locator("#lastName");
-    this.emailInput = this.page.locator("#userEmail");
-    this.ageInput = this.page.locator("#age");
-    this.salaryInput = this.page.locator("#salary");
-    this.departmentInput = this.page.locator("#department");
-    this.submitButton = this.page.locator("#submit");
-  }
+  readonly firstNameInput: Locator = this.page.locator("#firstName");
+  readonly lastNameInput: Locator = this.page.locator("#lastName");
+  readonly emailInput: Locator = this.page.locator("#userEmail");
+  readonly ageInput: Locator = this.page.locator("#age");
+  readonly salaryInput: Locator = this.page.locator("#salary");
+  readonly departmentInput: Locator = this.page.locator("#department");
+  readonly submitButton: Locator = this.page.locator("#submit");
 
   private async fillFirstNameInput(userFirstName: string) {
     await this.checkThatElementIsVisible(this.firstNameInput, timeouts.shortTimeout);

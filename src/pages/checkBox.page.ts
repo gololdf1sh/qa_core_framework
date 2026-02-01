@@ -4,17 +4,9 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "../pages";
 
 export class CheckBoxPage extends BasePage {
-  readonly resultField: Locator;
-  readonly plusButton: Locator;
-  readonly minusButton: Locator;
-
-  constructor(page: Page) {
-    super(page);
-
-    this.resultField = this.page.locator("#result");
-    this.plusButton = this.page.getByLabel("Expand all");
-    this.minusButton = this.page.getByTitle("Collapse all");
-  }
+  readonly resultField: Locator = this.page.locator("#result");
+  readonly plusButton: Locator = this.page.getByLabel("Expand all");
+  readonly minusButton: Locator = this.page.getByTitle("Collapse all");
 
   async clickOnPlusButton() {
     await this.checkThatElementIsVisible(this.plusButton, timeouts.shortTimeout);
