@@ -3,19 +3,10 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "./base.page";
 
 export class DynamicPropertiesPage extends BasePage {
-  readonly thisTextHasRandomId: Locator;
-  readonly willEnableFiveSecondsButton: Locator;
-  readonly colorChangeButton: Locator;
-  readonly visibleAfterFiveSecondsButton: Locator;
-
-  constructor(page: Page) {
-    super(page);
-
-    this.thisTextHasRandomId = this.page.locator("p", { hasText: "This text has random Id" });
-    this.willEnableFiveSecondsButton = this.page.locator("#enableAfter");
-    this.colorChangeButton = this.page.locator("#colorChange");
-    this.visibleAfterFiveSecondsButton = this.page.locator("#visibleAfter");
-  }
+  readonly thisTextHasRandomId: Locator = this.page.locator("p", { hasText: "This text has random Id" });
+  readonly willEnableFiveSecondsButton: Locator = this.page.locator("#enableAfter");
+  readonly colorChangeButton: Locator = this.page.locator("#colorChange");
+  readonly visibleAfterFiveSecondsButton: Locator = this.page.locator("#visibleAfter");
 
   async checkThatThisTextHasRandomIdIsVisible() {
     await this.checkThatElementIsVisible(this.thisTextHasRandomId, timeouts.shortTimeout);

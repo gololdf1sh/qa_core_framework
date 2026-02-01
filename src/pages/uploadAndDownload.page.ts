@@ -4,15 +4,8 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "./base.page";
 
 export class UploadAndDownloadPage extends BasePage {
-  readonly downloadButton: Locator;
-  readonly uploadFileInput: Locator;
-
-  constructor(page: Page) {
-    super(page);
-
-    this.downloadButton = this.page.locator("#downloadButton");
-    this.uploadFileInput = this.page.locator("#uploadFile");
-  }
+  readonly downloadButton: Locator = this.page.locator("#downloadButton");
+  readonly uploadFileInput: Locator = this.page.locator("#uploadFile");
 
   private async clickOnDownloadButton() {
     await this.checkThatElementIsVisible(this.downloadButton, timeouts.shortTimeout);

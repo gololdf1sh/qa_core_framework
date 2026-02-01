@@ -2,7 +2,11 @@ import { expect, Locator, Page } from "@playwright/test";
 import { timeouts } from "../config/timeouts";
 
 export abstract class BasePage {
-  constructor(protected page: Page) {}
+  protected page: Page;
+
+  constructor(page: Page) {
+    this.page = page;
+  }
 
   async goToUrl(url: string) {
     const response = await this.page.goto(url, {

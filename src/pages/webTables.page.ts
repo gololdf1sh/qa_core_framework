@@ -5,22 +5,12 @@ import { BasePage } from "./base.page";
 import { timeouts } from "../config/timeouts";
 
 export class WebTablesPage extends BasePage {
-  readonly webTablesRegistrationFormModalPage: WebTablesRegistrationFormModalPage;
+  readonly webTablesRegistrationFormModalPage: WebTablesRegistrationFormModalPage = new WebTablesRegistrationFormModalPage(this.page);
 
-  readonly addButton: Locator;
-  readonly searchInput: Locator;
-  readonly rowsPerPageDropdown: Locator;
-  readonly deleteUserButton: Locator;
-
-  constructor(page: Page) {
-    super(page);
-
-    this.webTablesRegistrationFormModalPage = new WebTablesRegistrationFormModalPage(page);
-    this.addButton = this.page.locator("#addNewRecordButton");
-    this.searchInput = this.page.locator("#searchBox");
-    this.rowsPerPageDropdown = this.page.getByLabel("rows per page");
-    this.deleteUserButton = this.page.getByTitle("Delete");
-  }
+  readonly addButton: Locator = this.page.locator("#addNewRecordButton");
+  readonly searchInput: Locator = this.page.locator("#searchBox");
+  readonly rowsPerPageDropdown: Locator = this.page.getByLabel("rows per page");
+  readonly deleteUserButton: Locator = this.page.getByTitle("Delete");
 
   private async generateFirstNameCellLocator(stringNumber: number) {
     const indexedStringNumber = stringNumber - 1;

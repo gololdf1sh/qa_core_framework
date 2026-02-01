@@ -3,31 +3,16 @@ import { timeouts } from "../config/timeouts";
 import { BasePage } from "../pages";
 
 export class LinksPage extends BasePage {
-  readonly simpleLink: Locator;
-  readonly dynamicLink: Locator;
-  readonly createdLink: Locator;
-  readonly noContentLink: Locator;
-  readonly movedLink: Locator;
-  readonly badRequestLink: Locator;
-  readonly unauthorizedLink: Locator;
-  readonly forbiddenLink: Locator;
-  readonly invalidUrlLink: Locator;
-  readonly linkResponseResultField: Locator;
-
-  constructor(page: Page) {
-    super(page);
-
-    this.simpleLink = this.page.locator("#simpleLink");
-    this.dynamicLink = this.page.locator("#dynamicLink");
-    this.createdLink = this.page.locator("#created");
-    this.noContentLink = this.page.locator("#no-content");
-    this.movedLink = this.page.locator("#moved");
-    this.badRequestLink = this.page.locator("#bad-request");
-    this.unauthorizedLink = this.page.locator("#unauthorized");
-    this.forbiddenLink = this.page.locator("#forbidden");
-    this.invalidUrlLink = this.page.locator("#invalid-url");
-    this.linkResponseResultField = this.page.locator("#linkResponse");
-  }
+  readonly simpleLink: Locator = this.page.locator("#simpleLink");
+  readonly dynamicLink: Locator = this.page.locator("#dynamicLink");
+  readonly createdLink: Locator = this.page.locator("#created");
+  readonly noContentLink: Locator = this.page.locator("#no-content");
+  readonly movedLink: Locator = this.page.locator("#moved");
+  readonly badRequestLink: Locator = this.page.locator("#bad-request");
+  readonly unauthorizedLink: Locator = this.page.locator("#unauthorized");
+  readonly forbiddenLink: Locator = this.page.locator("#forbidden");
+  readonly invalidUrlLink: Locator = this.page.locator("#invalid-url");
+  readonly linkResponseResultField: Locator = this.page.locator("#linkResponse");
 
   private async clickOnLinkButton(linkButtonLocator: Locator) {
     await this.checkThatElementIsVisible(linkButtonLocator, timeouts.shortTimeout);
