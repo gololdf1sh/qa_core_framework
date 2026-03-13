@@ -72,6 +72,15 @@ jobs:
         run: npm run uiTests -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --grep="${GREP}"
 
 
+      - name: Upload screenshots on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-${{ matrix.shardIndex }}
+          path: test-results/
+          retention-days: 7
+          if-no-files-found: ignore
+
       - name: Upload blob Playwright report
         if: always()
         uses: actions/upload-artifact@v4
